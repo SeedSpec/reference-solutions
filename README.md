@@ -1,21 +1,27 @@
-# Allowance Tracker reference application
+# SeedSpec reference applications
 
-This small application is an implementation experiment for the resolved Allowance Tracker and Chore Streaks SeedSpec packages in `.seedspec/`. It is evidence for the SeedSpec workflow, not a prescribed application architecture.
+Independent runnable applications that exercise the SeedSpec Protocol as downstream consumers. Each application owns its implementation, tests, and resolved `.seedspec` state.
 
-The protocol, schemas, runtime, and CLI are maintained in [SeedSpec/seedspec](https://github.com/SeedSpec/seedspec). This repository remains an independent downstream consumer.
+The protocol, schemas, runtime, CLI, and conformance suite are maintained in [SeedSpec/seedspec](https://github.com/SeedSpec/seedspec).
 
-The local product deliberately calls chores **Bhores**. That semantic mapping and the Chore Streaks capability-revision review are recorded in `.seedspec/implementation-notes.md`.
+## Applications
 
-Run it with Node.js 20 or newer:
-
-```bash
-npm start
+```text
+apps/
+└── allowance-tracker/    household allowance and chore workflow reference
 ```
 
-Then open `http://127.0.0.1:4173`. The demo stores state in memory and resets when the process restarts.
+## Development
 
-Run its tests with:
+Install and test every application from the repository root:
 
 ```bash
-npm test
+npm install
+npm run check
+```
+
+Run the Allowance Tracker:
+
+```bash
+npm run start:allowance-tracker
 ```

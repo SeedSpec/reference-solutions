@@ -1,3 +1,5 @@
-# SeedSpec project guidance
+# SeedSpec reference applications
 
-Read `.seedspec/agent-guide.md` before planning or implementing SeedSpec work. Preserve project-local behavior and terminology, record material deviations in `.seedspec/implementation-notes.md`, and record acceptance evidence in `.seedspec/verification-report.md`.
+Keep every runnable application inside `apps/<name>/` with its own package, tests, implementation, and `.seedspec` workspace. Run `npm run check` from the repository root before committing changes.
+
+Reference applications consume the protocol but do not define it. Protocol schemas, runtime behavior, CLI behavior, and conformance rules belong in `SeedSpec/seedspec`.

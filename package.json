@@ -1,19 +1,23 @@
 {
-  "name": "seedspec-allowance-tracker-reference-app",
+  "name": "@seedspec/reference-apps",
   "version": "0.1.0-alpha.1",
   "private": true,
+  "description": "Independent reference applications for the SeedSpec Protocol",
   "type": "module",
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "start": "node src/server.js",
-    "test": "node --test",
+    "test": "npm run test --workspaces --if-present",
     "check:names": "node ./scripts/check-clean-names.mjs",
-    "check": "npm run check:names && npm test"
+    "check": "npm run check:names && npm test",
+    "start:allowance-tracker": "npm run start --workspace @seedspec/reference-allowance-tracker"
   },
   "engines": {
     "node": ">=20"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SeedSpec/allowance-tracker-reference.git"
+    "url": "https://github.com/SeedSpec/reference-apps.git"
   }
 }
