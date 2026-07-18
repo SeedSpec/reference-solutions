@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4efe6">
+    <title>Allowance Tracker — SeedSpec field test</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Allowance Tracker home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 36 36" role="img">
+              <path d="M8 10.5 18 5l10 5.5v15L18 31 8 25.5Z" fill="none" stroke="currentColor" stroke-width="2.3"/>
+              <path d="m12 18 4 4 8-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+            </svg>
+          </span>
+          <span>
+            <strong>Allowance</strong>
+            <small>SeedSpec field test</small>
+          </span>
+        </a>
+
+        <label class="actor-switcher">
+          <span>Viewing as</span>
+          <select id="actor-select" aria-label="Choose current actor"></select>
+        </label>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div>
+            <p class="eyebrow">Household work, made visible</p>
+            <h1>Small jobs.<br><em>Real momentum.</em></h1>
+            <p class="hero-copy">Create a bhore, finish the work, approve it, and watch allowance and consistency grow together.</p>
+          </div>
+          <div class="hero-note">
+            <span class="note-index">A1</span>
+            <p><strong>Why “bhores”?</strong> This local rename deliberately tests whether an implementing agent can preserve a project's vocabulary while integrating a SeedSpec written about chores.</p>
+          </div>
+        </section>
+
+        <section class="metric-grid" aria-label="Household summary">
+          <article class="metric metric-balance">
+            <span>Available balance</span>
+            <strong id="metric-balance">$0.00</strong>
+            <small id="metric-owner">No child selected</small>
+          </article>
+          <article class="metric">
+            <span>Waiting for review</span>
+            <strong id="metric-review">0</strong>
+            <small>submitted assignments</small>
+          </article>
+          <article class="metric metric-streak">
+            <span>Current streak</span>
+            <strong><span id="metric-current">0</span> <i>days</i></strong>
+            <small>today is still yours</small>
+          </article>
+          <article class="metric">
+            <span>Personal best</span>
+            <strong><span id="metric-longest">0</span> <i>days</i></strong>
+            <small>longest approved run</small>
+          </article>
+        </section>
+
+        <div id="guardian-tools" class="workspace-grid">
+          <section class="panel compose-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Guardian tools</p>
+                <h2>Set the rhythm</h2>
+              </div>
+              <span class="step-number">01</span>
+            </div>
+
+            <form id="bhore-form" class="stacked-form">
+              <label>
+                Bhore title
+                <input name="title" required placeholder="Water the porch plants">
+              </label>
+              <div class="form-row">
+                <label>
+                  Reward
+                  <span class="money-input"><span>$</span><input name="reward" required min="0" step="0.01" type="number" value="2.50"></span>
+                </label>
+                <label>
+                  Instructions
+                  <input name="instructions" placeholder="What does done mean?">
+                </label>
+              </div>
+              <button class="primary-button" type="submit">Create bhore <span>→</span></button>
+            </form>
+
+            <div class="rule"></div>
+
+            <form id="assignment-form" class="stacked-form compact-form">
+              <h3>Assign existing work</h3>
+              <label>
+                Bhore
+                <select name="bhoreId" id="assignment-bhore" required></select>
+              </label>
+              <div class="form-row">
+                <label>
+                  Child
+                  <select name="childId" id="assignment-child" required></select>
+                </label>
+                <label>
+                  Due date
+                  <input name="dueDate" id="assignment-due" type="date" required>
+                </label>
+              </div>
+              <button class="secondary-button" type="submit">Add assignment</button>
+            </form>
+
+            <form id="child-form" class="inline-form">
+              <label>
+                Add a child
+                <input name="name" required placeholder="Name">
+              </label>
+              <button class="icon-button" type="submit" aria-label="Add child">+</button>
+            </form>
+          </section>
+
+          <section class="panel work-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">This household</p>
+                <h2>Bhores</h2>
+              </div>
+              <span class="step-number">02</span>
+            </div>
+            <div id="bhore-list" class="card-list"></div>
+          </section>
+        </div>
+
+        <section class="panel assignment-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">From promise to proof</p>
+              <h2>Assignments</h2>
+            </div>
+            <span class="step-number">03</span>
+          </div>
+          <div id="assignment-list" class="assignment-list"></div>
+        </section>
+
+        <section class="ledger-section">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Append-only history</p>
+              <h2>Allowance ledger</h2>
+            </div>
+            <span class="step-number">04</span>
+          </div>
+          <div id="ledger-list" class="ledger-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+protocol_version: "0.1"
+status: ready
+integration_status: review
+application:
+  id: org.seedspec.examples.allowance-tracker
+  version: 0.1.0-alpha.1
+  digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+features:
+  - id: org.seedspec.chore-streaks
+    version: 0.1.0-alpha.1
+    digest: sha256:849b0cd3c96ba1d5e7da65cce23cdc2e41c238ec27e2e06a3f171f6ebbe81e77
+configuration: resolved-config.yaml
+artifact_index: artifacts.yaml
+lockfile: dependencies.lock.yaml
+resolved_spec: resolved-spec.md
+agent_guide: agent-guide.md
+implementation_notes: implementation-notes.md
+verification_report: verification-report.md
+resolved_decisions: []
+unresolved_decisions: []
