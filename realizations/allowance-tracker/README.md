@@ -1,6 +1,6 @@
 # Allowance Tracker reference application
 
-This small application is an implementation experiment for the resolved Allowance Tracker and Chore Streaks SeedSpec packages in `.seedspec/`. It is one workspace in the reference-applications monorepo and evidence for the SeedSpec workflow, not a prescribed application architecture.
+This small application is an implementation experiment for the resolved Allowance Tracker and Chore Streaks SeedSpec packages in `.seedspec/`. It is one realization in the reference-solutions repository and evidence for the SeedSpec workflow, not a prescribed application architecture.
 
 The protocol, schemas, runtime, and CLI are maintained in [SeedSpec/seedspec](https://github.com/SeedSpec/seedspec). This monorepo remains an independent downstream consumer.
 
