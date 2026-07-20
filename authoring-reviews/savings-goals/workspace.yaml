@@ -1,0 +1,10 @@
+authoring_state_version: "0.1"
+package:
+  path: ../../packages/savings-goals
+  id: org.seedspec.savings-goals
+  version: 0.1.0-alpha.2
+  kind: feature
+protocol_version: "0.1"
+target: harden
+created_with: 0.1.0-alpha.2
+last_observed_digest: sha256:0fa282b7ea7abc6ee3be0190cd015d6b5ed370623aadcfa5046942c68af17616

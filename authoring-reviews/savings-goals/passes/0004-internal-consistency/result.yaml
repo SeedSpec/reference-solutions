@@ -1,0 +1,51 @@
+authoring_result_version: "0.1"
+pass: 0004-internal-consistency
+area: internal-consistency
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:7d0f14a31118facadaa5a2bc3656a7b7ecd49dbf3cdb56aa77a89eb54e7c26cf
+package_digest_after: sha256:d265443d9a9150c852fe02959fa0fbf67a281497ac88c92bfca1a872c13205e5
+outcome: completed
+summary: The audit aligned tracked-mode records, overfunding, completion disposition, reverse transitions, active-goal limits, capability language, and acceptance. Deletion-fund option semantics remain unresolved.
+findings:
+  - id: tracked-mode-transaction-conflict
+    source: definition/feature.md#allocate-value; capabilities/goal-allocations.md
+    assessment: Tracked progress previously required a transaction while promising no balance change.
+    consequence: Hosts could misrepresent intent as a balance mutation.
+    recommendation: Use an attributed goal-allocation record and reserve host balance transactions for actual balance or availability effects.
+    status: resolved
+  - id: reached-state-reversal
+    source: definition/feature.md#state-model
+    assessment: The prose permitted one reached-to-active path while omitting the equivalent withdrawal path and diagram edge.
+    consequence: Equivalent progress changes could produce inconsistent state.
+    recommendation: Define both paths through the progress invariant.
+    status: resolved
+  - id: deletion-funds-still-unclear
+    source: configuration/schema.json#deletion_funds
+    assessment: Return available and transfer to balance still lack distinct transaction-level meanings.
+    consequence: Deletion or archival accounting remains non-portable.
+    recommendation: Require author resolution before calling package hardening complete.
+    status: open
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied:
+    - path: packages/savings-goals/definition/feature.md
+      basis: agent-proposed
+      reason: Defined tracked records, overfunding, completion dispositions, reverse transitions, and goal-limit semantics.
+    - path: packages/savings-goals/acceptance/criteria.md
+      basis: agent-proposed
+      reason: Aligned observable criteria with clarified accounting and state behavior.
+    - path: packages/savings-goals/capabilities/goal-allocations.md
+      basis: agent-proposed
+      reason: Distinguished feature allocation records from host balance changes.
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - seedspec validate packages/savings-goals
+    - seedspec lint packages/savings-goals
+    - seedspec digest packages/savings-goals

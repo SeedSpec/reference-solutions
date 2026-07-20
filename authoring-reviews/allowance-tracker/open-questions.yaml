@@ -1,0 +1,20 @@
+authoring_state_version: "0.1"
+questions:
+  - id: recurring-allowance-shape
+    source: configuration/example.yaml#recurring_allowance
+    question: Is scheduled recurring allowance part of the core application or a separately composable addition?
+    reason: The answer determines whether the package must define accounting, scheduling, retry, and failure behavior.
+    priority: high
+    status: open
+  - id: monthly-cadence-weekday
+    source: configuration/schema.json#recurring_allowance
+    question: If monthly recurring allowance remains, what exact calendar rule determines its effective day?
+    reason: A weekday alone cannot identify one monthly occurrence.
+    priority: high
+    status: open
+  - id: overdue-boundary
+    source: definition/app.md#configuration-behavior
+    question: Which timezone and instant make a due assignment overdue or expired?
+    reason: The selected policy changes whether work remains eligible.
+    priority: medium
+    status: open

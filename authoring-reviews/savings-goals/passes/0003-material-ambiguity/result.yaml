@@ -1,0 +1,52 @@
+authoring_result_version: "0.1"
+pass: 0003-material-ambiguity
+area: material-ambiguity
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:7d0f14a31118facadaa5a2bc3656a7b7ecd49dbf3cdb56aa77a89eb54e7c26cf
+package_digest_after: sha256:7d0f14a31118facadaa5a2bc3656a7b7ecd49dbf3cdb56aa77a89eb54e7c26cf
+outcome: completed
+summary: Four material ambiguities remain around tracked allocations, fund disposition, active-goal limits, and reverse state transitions.
+findings:
+  - id: tracked-allocation-record
+    source: definition/feature.md#allocate-value
+    assessment: Tracked mode requires an allocation transaction while saying spendable availability does not change, but the required transaction capability describes attributed balance changes.
+    consequence: Integrations may create zero-value balance transactions, non-balance events, or misleading balance changes.
+    recommendation: Define the auditable record required in tracked mode and whether the transaction capability is sufficient.
+    status: deferred
+  - id: fund-disposition-meanings
+    source: configuration/schema.json#completion_funds; configuration/schema.json#deletion_funds
+    assessment: Return available, transfer to balance, keep reserved, and record spending do not have fully distinct observable accounting definitions.
+    consequence: Closing or archiving the same goal can produce different balance and transaction histories.
+    recommendation: Define one transaction-level outcome for every option and remove options that are behaviorally synonymous.
+    status: deferred
+  - id: active-goal-limit
+    source: definition/feature.md#create-a-goal
+    assessment: The package does not state whether reached goals count toward max_active_goals.
+    consequence: Hosts can allow different numbers of unfinished goals under the same configuration.
+    recommendation: Define the statuses included in the limit.
+    status: deferred
+  - id: reverse-state-transitions
+    source: definition/feature.md#state-model
+    assessment: Target increases may return reached goals to active, but withdrawals that reduce progress below target are not assigned a transition.
+    consequence: Equivalent progress changes can leave goals in inconsistent states.
+    recommendation: Define reached-to-active behavior for every operation that reduces progress below target.
+    status: deferred
+questions:
+  asked: []
+  answered: []
+  deferred:
+    - tracked-allocation-record
+    - fund-disposition-meanings
+    - active-goal-limit
+    - reverse-state-transitions
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - seedspec validate packages/savings-goals
+    - seedspec lint packages/savings-goals
+    - seedspec digest packages/savings-goals

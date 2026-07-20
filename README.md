@@ -16,6 +16,8 @@ packages/
 ├── hubspot-daily-metric/   configured-system and automation workflow package
 └── savings-goals/          reusable feature package
 
+authoring-reviews/            non-distributable audit workspaces and pass logs
+
 project-inputs/
 ├── completion-scopes/         example project completion boundaries
 └── configuration-selections/ example package configuration choices
@@ -28,6 +30,11 @@ Packages declare the protocol version they consume. This repository may update
 them for a newer protocol in its own commits and releases; their source does not
 serve as protocol conformance data. The protocol repository keeps small,
 artificial fixtures for self-contained schema, runtime, and conformance tests.
+
+`authoring-reviews/` preserves experimental `seedspec audit` instructions,
+standardized results, open questions, and package digests. These files are
+development evidence rather than SeedSpec package content and must never be
+included when a package is distributed.
 
 ## Development
 

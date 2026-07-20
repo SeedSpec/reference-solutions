@@ -1,0 +1,16 @@
+authoring_state_version: "0.1"
+questions:
+  - id: show-longest-semantics
+    source: configuration/example.yaml#show_longest
+    question: Does false hide longest streak presentation while preserving calculation, or remove longest-streak capability behavior entirely?
+    reason: Consumers need one observable interpretation of the configuration.
+    priority: medium
+    status: resolved
+    resolution: The setting suppresses longest-streak presentation only; deterministic derivation remains available and current streak is unaffected.
+  - id: archived-owner-late-approval
+    source: definition/feature.md#business-rules
+    question: Should work completed before actor archival qualify when its approval or correction is processed afterward?
+    reason: Processing order must not create inconsistent historical streaks.
+    priority: medium
+    status: resolved
+    resolution: Qualification follows the work's effective event time. Post-archival processing can preserve pre-archival work but cannot create credit for later work.

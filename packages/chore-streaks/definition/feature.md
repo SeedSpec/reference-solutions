@@ -48,9 +48,17 @@ When a host-authorized correction changes whether an assignment qualifies or cha
 3. Calendar days follow one stable household-level time zone when `day_boundary` is `household-local`.
 4. A streak is based on calendar adjacency, not elapsed 24-hour windows.
 5. Today does not break a current streak until its local day has ended.
-6. Archived actors retain historical streak evidence but do not accumulate new qualifying events.
+6. Archived actors retain historical streak evidence but cannot perform new qualifying work. A late approval or correction follows the qualifying work's effective event time, so processing after archival does not erase or invent historical streak credit.
 7. Zero-reward work follows `include_zero_reward`.
 8. Rejected, cancelled, or merely submitted work does not qualify when `qualification` is `approved`.
+
+## Configuration behavior
+
+- `daily_target` is the number of distinct qualifying assignments required for one qualifying day.
+- `day_boundary` assigns effective event times to either the household's stable local calendar or UTC.
+- `include_zero_reward` decides whether otherwise qualifying zero-reward work contributes.
+- `show_longest` controls presentation of the longest streak to otherwise authorized viewers. The longest streak remains deterministically derivable for correction and reconstruction even when it is not shown; current-streak behavior is unaffected.
+- `qualification` is fixed to accepted approval for this package version.
 
 ## Failure and history
 

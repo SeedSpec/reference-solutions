@@ -1,0 +1,11 @@
+authoring_instruction_version: "0.1"
+pass: 0002-kind-aware-discovery
+area: kind-aware-discovery
+target: harden
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package:
+  id: org.seedspec.savings-goals
+  version: 0.1.0-alpha.1
+  kind: feature
+package_digest_before: sha256:7d0f14a31118facadaa5a2bc3656a7b7ecd49dbf3cdb56aa77a89eb54e7c26cf

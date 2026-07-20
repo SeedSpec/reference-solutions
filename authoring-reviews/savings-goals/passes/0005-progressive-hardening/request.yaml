@@ -1,0 +1,11 @@
+authoring_instruction_version: "0.1"
+pass: 0005-progressive-hardening
+area: progressive-hardening
+target: harden
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package:
+  id: org.seedspec.savings-goals
+  version: 0.1.0-alpha.1
+  kind: feature
+package_digest_before: sha256:d265443d9a9150c852fe02959fa0fbf67a281497ac88c92bfca1a872c13205e5

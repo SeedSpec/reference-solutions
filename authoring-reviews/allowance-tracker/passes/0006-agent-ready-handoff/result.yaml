@@ -1,0 +1,46 @@
+authoring_result_version: "0.1"
+pass: 0006-agent-ready-handoff
+area: agent-ready-handoff
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+package_digest_after: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+outcome: completed
+summary: A cold agent receives clear product identity, configuration, optional material, trust boundaries, acceptance workflow, and resolution commands. Recurring allowance remains a material place where the agent would have to guess.
+findings:
+  - id: cold-handoff-core
+    source: seedspec begin packages/allowance-tracker
+    assessment: The generated handoff correctly prevents premature implementation and directs configuration, artifact, acceptance, and resolution review.
+    consequence: A fresh agent can enter the SeedSpec workflow without prior conversation.
+    recommendation: Preserve the generated handoff structure.
+    status: ready
+  - id: recurring-allowance-cold-guess
+    source: configuration/example.yaml#recurring_allowance
+    assessment: The handoff exposes the selected fields but no package material can explain their complete behavior.
+    consequence: A fresh agent must omit or invent scheduled accounting behavior.
+    recommendation: Resolve the authoring questions before using the example configuration as a reusable handoff.
+    status: needs-author
+  - id: begin-section-order
+    source: seedspec begin output
+    assessment: The no-decisions message appeared beneath Implementation profiles rather than its own Solution decisions heading.
+    consequence: Agent-facing output was harder to parse and appeared malformed.
+    recommendation: Keep the deterministic formatter correction in the SeedSpec runtime.
+    status: resolved-in-tooling
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied:
+    - path: ../seedspec/packages/runtime/src/begin.js
+      basis: mechanical
+      reason: Kept solution-decision content under the correct heading in agent-facing output.
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - seedspec begin packages/allowance-tracker
+    - seedspec validate packages/allowance-tracker
+    - seedspec lint packages/allowance-tracker
+    - seedspec digest packages/allowance-tracker

@@ -14,3 +14,6 @@
 12. Rebuilding from the same retained history produces the same current and longest streak values.
 13. A historical correction updates the derived streak without deleting assignment or approval history.
 14. Household-local day boundaries use one stable household time zone rather than the viewer's time zone.
+15. When `show_longest` is false, authorized viewers still receive current-streak behavior but are not shown the longest streak.
+16. Approval or correction processed after an owner is archived follows the qualifying work's effective event time and cannot create credit for work performed after archival.
+17. With `day_boundary: utc`, every event is assigned to its UTC calendar day regardless of household or viewer timezone.

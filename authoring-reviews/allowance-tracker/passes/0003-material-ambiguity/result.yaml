@@ -1,0 +1,45 @@
+authoring_result_version: "0.1"
+pass: 0003-material-ambiguity
+area: material-ambiguity
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+package_digest_after: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+outcome: completed
+summary: Three consequential ambiguities were identified and deferred for author judgment. The rest of the core assignment, approval, and accounting behavior is unusually explicit.
+findings:
+  - id: recurring-allowance-shape
+    source: configuration/example.yaml#recurring_allowance
+    assessment: The package does not establish whether recurring allowance is core behavior or an optional addition, nor what transaction, retry, and failure semantics apply.
+    consequence: Implementations can produce different balances under identical configuration.
+    recommendation: Decide scope first, then either remove the option or define a scheduled transaction workflow and acceptance.
+    status: deferred
+  - id: monthly-cadence-weekday
+    source: configuration/schema.json#recurring_allowance
+    assessment: Monthly cadence requires a weekday but does not define which monthly occurrence or what happens when a calendar period lacks the implied date.
+    consequence: Monthly credits can occur on different days across implementations.
+    recommendation: Replace or supplement weekday with cadence-specific scheduling semantics if the behavior remains core.
+    status: deferred
+  - id: overdue-boundary
+    source: definition/app.md#configuration-behavior
+    assessment: The package defines overdue policy but not the timezone or exact boundary at which an assignment becomes overdue.
+    consequence: Availability and expiration can differ near a due-date boundary.
+    recommendation: Define the household time boundary or explicitly delegate it to a host-level configuration.
+    status: deferred
+questions:
+  asked: []
+  answered: []
+  deferred:
+    - recurring-allowance-shape
+    - monthly-cadence-weekday
+    - overdue-boundary
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - seedspec validate packages/allowance-tracker
+    - seedspec lint packages/allowance-tracker
+    - seedspec digest packages/allowance-tracker

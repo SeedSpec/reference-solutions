@@ -1,0 +1,43 @@
+authoring_result_version: "0.1"
+pass: 0006-agent-ready-handoff
+area: agent-ready-handoff
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:8e993b0b3b502c4f1266720854c84adfd673af7af1edb499e35becad5bafe75b
+package_digest_after: sha256:0fa282b7ea7abc6ee3be0190cd015d6b5ed370623aadcfa5046942c68af17616
+outcome: completed
+summary: The cold handoff exposes the portable feature, behavioral choices, host integration, acceptance, and resolution workflow. Deletion-fund vocabulary is the remaining point where a fresh agent would need author clarification.
+findings:
+  - id: cold-handoff-mostly-ready
+    source: seedspec begin packages/savings-goals
+    assessment: The package now explains tracked versus reserved records, state reversals, fund completion, limits, atomicity, and observable failure behavior without prescribing host architecture.
+    consequence: A fresh agent can faithfully implement the example configuration, which uses the unambiguous return-available deletion path.
+    recommendation: Proceed to implementation evaluation with the example while retaining the unresolved alternative as authoring debt.
+    status: ready-with-open-question
+  - id: package-and-capability-revision-required
+    source: seedspec.yaml#version; capabilities/goal-allocations.md
+    assessment: The audit materially clarified package behavior and expanded the allocation contract.
+    consequence: Reusing the prior package and capability versions would make changed semantics indistinguishable in registries and dependency locks.
+    recommendation: Advance both prerelease package version and goal-allocation capability revision.
+    status: resolved
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied:
+    - path: packages/savings-goals/seedspec.yaml
+      basis: mechanical
+      reason: Advanced the package to 0.1.0-alpha.2 and goal-allocation capability to 1.1.0.
+    - path: packages/savings-goals/capabilities/goal-allocations.md
+      basis: agent-proposed
+      reason: Recorded the capability revision and clarified tracked versus balance-changing operations.
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - seedspec begin packages/savings-goals
+    - seedspec validate packages/savings-goals
+    - seedspec lint packages/savings-goals
+    - seedspec digest packages/savings-goals
