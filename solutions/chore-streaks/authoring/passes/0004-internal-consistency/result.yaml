@@ -1,0 +1,42 @@
+authoring_result_version: "0.1"
+pass: 0004-internal-consistency
+area: internal-consistency
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:849b0cd3c96ba1d5e7da65cce23cdc2e41c238ec27e2e06a3f171f6ebbe81e77
+package_digest_after: sha256:f85df5d4e26cb9b4551f4afd044e102b3e40c0589388cbd6a99b80825c49e187
+outcome: completed
+summary: The audit repaired missing configuration semantics and processing-order ambiguity. Definition, capability contract, configuration, integration guidance, and acceptance now agree.
+findings:
+  - id: show-longest-definition-gap
+    source: configuration/example.yaml#show_longest; definition/feature.md
+    assessment: The configuration existed without a defined effect.
+    consequence: Agents could hide calculation, hide presentation, or ignore the option.
+    recommendation: Define presentation-only suppression and preserve deterministic derivation.
+    status: resolved
+  - id: archived-owner-processing-order
+    source: definition/feature.md#business-rules
+    assessment: Qualification after archival could depend on approval processing time rather than effective work time.
+    consequence: Identical work history could produce different streaks.
+    recommendation: Anchor historical credit to the effective event time.
+    status: resolved
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied:
+    - path: solutions/chore-streaks/seedspec/definition/feature.md
+      basis: agent-proposed
+      reason: Defined every configuration field and made archival processing order deterministic.
+    - path: solutions/chore-streaks/seedspec/acceptance/criteria.md
+      basis: agent-proposed
+      reason: Added observable coverage for longest-streak visibility, archival timing, and UTC boundaries.
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/chore-streaks/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/chore-streaks/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 digest solutions/chore-streaks/seedspec

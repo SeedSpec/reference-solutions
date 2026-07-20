@@ -1,0 +1,12 @@
+protocol_version: "0.1"
+scope: project
+status: not-declared
+packages:
+  - package: org.seedspec.examples.allowance-tracker
+    kind: application
+    selection: none
+    profiles: []
+  - package: org.seedspec.chore-streaks
+    kind: feature
+    selection: none
+    profiles: []

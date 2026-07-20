@@ -1,0 +1,36 @@
+authoring_result_version: "0.1"
+pass: 0001-concern-separation
+area: concern-separation
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:849b0cd3c96ba1d5e7da65cce23cdc2e41c238ec27e2e06a3f171f6ebbe81e77
+package_digest_after: sha256:849b0cd3c96ba1d5e7da65cce23cdc2e41c238ec27e2e06a3f171f6ebbe81e77
+outcome: completed
+summary: Portable streak behavior, host integration guidance, behavioral configuration, capability contract, and acceptance are cleanly separated.
+findings:
+  - id: host-example-correctly-scoped
+    source: integration/requirements.md#chore-streaks-integration-requirements
+    assessment: The Allowance Tracker mapping is correctly retained as integration guidance rather than leaking its private vocabulary into portable feature intent.
+    consequence: Other hosts can preserve local terminology while still using the feature contract.
+    recommendation: Preserve the current separation.
+    status: accepted
+  - id: longest-visibility-is-configuration
+    source: configuration/example.yaml#show_longest
+    assessment: Whether eligible users see the longest streak is a behavioral presentation choice and is appropriately represented as configuration rather than an implementation profile.
+    consequence: The behavior still needs semantic consistency coverage in a later pass.
+    recommendation: Keep it as configuration and verify its defined effect during consistency review.
+    status: accepted
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/chore-streaks/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/chore-streaks/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 digest solutions/chore-streaks/seedspec

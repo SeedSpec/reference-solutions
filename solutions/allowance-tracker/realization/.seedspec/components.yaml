@@ -1,0 +1,22 @@
+protocol_version: "0.1"
+components:
+  - package: org.seedspec.examples.allowance-tracker
+    name: acceptance
+    source_path: acceptance/
+    path: components/org.seedspec.examples.allowance-tracker/acceptance/
+    review: before-completion-claim
+  - package: org.seedspec.examples.allowance-tracker
+    name: reference
+    source_path: reference/
+    path: components/org.seedspec.examples.allowance-tracker/reference/
+    review: before-planning
+  - package: org.seedspec.chore-streaks
+    name: acceptance
+    source_path: acceptance/
+    path: components/org.seedspec.chore-streaks/acceptance/
+    review: before-completion-claim
+  - package: org.seedspec.chore-streaks
+    name: integration
+    source_path: integration/
+    path: components/org.seedspec.chore-streaks/integration/
+    review: before-integration

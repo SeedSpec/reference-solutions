@@ -1,0 +1,30 @@
+protocol_version: "0.1"
+status: ready
+configuration_status: selected
+completion_scope_status: recorded
+declaration_status: review
+artifact_status: review
+implementation_profile_status: not-declared
+root:
+  id: org.seedspec.examples.allowance-tracker
+  version: 0.1.0-alpha.1
+  digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+additions:
+  - id: org.seedspec.chore-streaks
+    version: 0.1.0-alpha.2
+    digest: sha256:79ad4c15679607b269257b1612e6b2f0118af4144ca6b4392af1076f775eb21b
+configuration: resolved-config.yaml
+component_index: components.yaml
+artifact_index: artifacts.yaml
+implementation_resource_index: implementation-resources.yaml
+implementation_resource_state: implementation-resource-state.yaml
+implementation_profile_state: implementation-profile-state.yaml
+lockfile: dependencies.lock.yaml
+resolved_spec: resolved-spec.md
+agent_guide: agent-guide.md
+implementation_notes: implementation-notes.md
+verification_report: verification-report.md
+completion_scope: completion-scope.yaml
+verification_state: verification-state.yaml
+resolved_decisions: []
+unresolved_decisions: []

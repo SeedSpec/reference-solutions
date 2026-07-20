@@ -1,0 +1,36 @@
+authoring_result_version: "0.1"
+pass: 0001-concern-separation
+area: concern-separation
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:8935cc090490ab4411e7a9ca2d40173a5dc7bcab52b252747bb8af29a6df787b
+package_digest_after: sha256:8935cc090490ab4411e7a9ca2d40173a5dc7bcab52b252747bb8af29a6df787b
+outcome: completed
+summary: Provider-specific core intent is deliberately separated from three implementation profiles, operational security guidance, examples, and acceptance evidence.
+findings:
+  - id: provider-specific-core-is-intentional
+    source: definition/solution.md#target-systems
+    assessment: HubSpot and Slack are genuine constraints of this authored solution rather than accidental implementation details.
+    consequence: The package remains honest about its tested platform context while allowing user-directed adaptation.
+    recommendation: Keep HubSpot and Slack in core intent.
+    status: accepted
+  - id: realization-directions-are-profiles
+    source: seedspec.yaml#implementation_profiles
+    assessment: HubSpot-native, existing automation platform, and scheduled service are alternative ways to realize the same intended outcome and are correctly represented as implementation profiles.
+    consequence: The implementing agent can compare directions without treating them as product configuration.
+    recommendation: Preserve the profile separation.
+    status: accepted
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/hubspot-daily-metric/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/hubspot-daily-metric/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 digest solutions/hubspot-daily-metric/seedspec

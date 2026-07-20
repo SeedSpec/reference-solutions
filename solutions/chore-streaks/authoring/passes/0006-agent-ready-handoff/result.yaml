@@ -1,0 +1,40 @@
+authoring_result_version: "0.1"
+pass: 0006-agent-ready-handoff
+area: agent-ready-handoff
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:f85df5d4e26cb9b4551f4afd044e102b3e40c0589388cbd6a99b80825c49e187
+package_digest_after: sha256:79ad4c15679607b269257b1612e6b2f0118af4144ca6b4392af1076f775eb21b
+outcome: completed
+summary: A cold agent can identify the portable streak behavior, host capability boundary, configuration, integration review, and observable completion scope without hidden authoring context.
+findings:
+  - id: cold-handoff-ready
+    source: npx --yes @seedspec/cli@0.1.0-alpha.3 begin solutions/chore-streaks/seedspec
+    assessment: The generated handoff points to the definition, full configuration, integration component, acceptance material, trust limits, and durable resolution step.
+    consequence: The feature can be evaluated as a root or addition without relying on the conversation that authored it.
+    recommendation: Treat the package as ready for independent implementation evaluation.
+    status: ready
+  - id: package-revision-required
+    source: seedspec.yaml#version
+    assessment: The audit materially clarified package behavior, so retaining the previous package version would make two different digests claim the same author version.
+    consequence: Registries and locks could not distinguish the clarified package.
+    recommendation: Advance the package prerelease version.
+    status: resolved
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied:
+    - path: solutions/chore-streaks/seedspec/seedspec.yaml
+      basis: mechanical
+      reason: Advanced the package from 0.1.0-alpha.1 to 0.1.0-alpha.2 after material authoring clarification.
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 begin solutions/chore-streaks/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/chore-streaks/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/chore-streaks/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 digest solutions/chore-streaks/seedspec

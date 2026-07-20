@@ -1,0 +1,12 @@
+protocol_version: "0.1"
+items:
+  - kind: component
+    id: allowance-acceptance
+    package: org.seedspec.examples.allowance-tracker
+    component: acceptance
+    selection: all
+  - kind: component
+    id: chore-streaks-acceptance
+    package: org.seedspec.chore-streaks
+    component: acceptance
+    selection: all

@@ -1,0 +1,36 @@
+authoring_result_version: "0.1"
+pass: 0002-kind-aware-discovery
+area: kind-aware-discovery
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+package_digest_after: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+outcome: completed
+summary: The application establishes actors, permissions, domain state, core workflows, failure behavior, and observable success at hardening depth. Recurring allowance remains the only materially unclear behavior discovered through the application lens.
+findings:
+  - id: application-lens-core
+    source: definition/app.md; acceptance/criteria.md
+    assessment: Actors, household boundaries, assignment state, approvals, immutable transactions, concurrency, correction behavior, and failure cases are explicitly established.
+    consequence: An implementation agent can preserve the product identity across architectures.
+    recommendation: Preserve this level of behavioral specificity.
+    status: established
+  - id: recurring-allowance-behavior
+    source: definition/app.md#configuration-behavior
+    assessment: The scheduled base allowance is named but its workflow, authorization, idempotency, history, and failures are materially missing.
+    consequence: A selected configuration cannot be implemented without invention.
+    recommendation: Resolve its core-versus-addition status before hardening the behavior.
+    status: materially-missing
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/allowance-tracker/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/allowance-tracker/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 digest solutions/allowance-tracker/seedspec

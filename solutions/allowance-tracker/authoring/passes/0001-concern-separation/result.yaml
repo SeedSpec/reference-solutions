@@ -1,0 +1,31 @@
+authoring_result_version: "0.1"
+pass: 0001-concern-separation
+area: concern-separation
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+package_digest_after: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+outcome: completed
+summary: Core intent, configuration, acceptance, capability contracts, and the optional ProductSpec are generally well separated. Recurring base allowance is the one material concern whose classification remains unclear because it is configurable but otherwise largely unspecified.
+findings:
+  - id: recurring-allowance-scope
+    source: configuration/example.yaml#recurring_allowance; definition/app.md#configuration-behavior
+    assessment: Recurring base allowance is presented as product configuration, but the package does not define its transaction behavior, scheduling edge cases, failure behavior, or acceptance. It may be under-specified core behavior or a separately composable addition.
+    consequence: Implementing agents must invent consequential accounting and scheduling behavior or may omit a selected configuration entirely.
+    recommendation: Confirm whether recurring base allowance belongs to the core application. If it does, shape and harden it; otherwise remove it from core configuration and package it separately later.
+    status: needs-author
+questions:
+  asked: []
+  answered: []
+  deferred:
+    - Is recurring base allowance core Allowance Tracker behavior or a separate optional addition?
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/allowance-tracker/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/allowance-tracker/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 digest solutions/allowance-tracker/seedspec

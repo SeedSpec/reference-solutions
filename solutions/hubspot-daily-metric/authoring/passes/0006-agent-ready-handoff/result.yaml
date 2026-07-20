@@ -1,0 +1,40 @@
+authoring_result_version: "0.1"
+pass: 0006-agent-ready-handoff
+area: agent-ready-handoff
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:8935cc090490ab4411e7a9ca2d40173a5dc7bcab52b252747bb8af29a6df787b
+package_digest_after: sha256:8935cc090490ab4411e7a9ca2d40173a5dc7bcab52b252747bb8af29a6df787b
+outcome: completed
+summary: The cold handoff communicates systems, authority, configuration, security, evidence, and implementation directions, but the package cannot yet communicate a faithful metric calculation because its product semantics are incomplete.
+findings:
+  - id: profile-comparison-hidden
+    source: npx --yes @seedspec/cli@0.1.0-alpha.3 begin solutions/hubspot-daily-metric/seedspec
+    assessment: The generated text originally named profile descriptions but omitted their guidance paths, prerequisites, blockers, verification expectations, and tradeoffs.
+    consequence: The agent was told to compare profiles without receiving the author-supplied comparison evidence in the command output.
+    recommendation: Print compact profile conditions and tradeoffs in the deterministic handoff.
+    status: resolved-in-tooling
+  - id: cold-handoff-metric-gap
+    source: definition/solution.md#daily-workflow
+    assessment: No generated instruction can compensate for missing population, time-axis, and late-data product decisions.
+    consequence: A capable agent may confidently build the wrong metric.
+    recommendation: Keep the package in author-review state until those questions are answered.
+    status: needs-author
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied:
+    - path: npm:@seedspec/runtime@0.1.0-alpha.2/src/begin.js
+      basis: mechanical
+      reason: Added profile guidance, prerequisites, blockers, evidence expectations, and tradeoffs to agent-facing begin output.
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 begin solutions/hubspot-daily-metric/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/hubspot-daily-metric/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/hubspot-daily-metric/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 digest solutions/hubspot-daily-metric/seedspec
