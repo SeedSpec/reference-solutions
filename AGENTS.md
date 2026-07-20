@@ -1,5 +1,12 @@
-# SeedSpec reference applications
+# SeedSpec reference solutions
 
-Keep every runnable application inside `apps/<name>/` with its own package, tests, implementation, and `.seedspec` workspace. Run `npm run check` from the repository root before committing changes.
+Keep independently versioned SeedSpec packages under `packages/<name>/`,
+project-specific resolution inputs under `project-inputs/`, and realized
+solutions under `realizations/<name>/`. A realization may be an application,
+configured external system, automation, operational artifact, evaluation
+harness, or a combination of those forms.
 
-Reference applications consume the protocol but do not define it. Protocol schemas, runtime behavior, CLI behavior, and conformance rules belong in `SeedSpec/seedspec`.
+Run `npm run check` from the repository root before committing changes.
+Reference solutions consume the protocol but do not define it. Protocol
+schemas, runtime behavior, CLI behavior, and conformance fixtures belong in
+`SeedSpec/seedspec`.
