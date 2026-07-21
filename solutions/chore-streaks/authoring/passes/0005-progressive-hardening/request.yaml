@@ -1,0 +1,11 @@
+authoring_instruction_version: "0.1"
+pass: 0005-progressive-hardening
+area: progressive-hardening
+target: harden
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package:
+  id: org.seedspec.chore-streaks
+  version: 0.1.0-alpha.1
+  kind: feature
+package_digest_before: sha256:f85df5d4e26cb9b4551f4afd044e102b3e40c0589388cbd6a99b80825c49e187

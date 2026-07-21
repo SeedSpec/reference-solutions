@@ -1,0 +1,11 @@
+authoring_instruction_version: "0.1"
+pass: 0003-material-ambiguity
+area: material-ambiguity
+target: harden
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package:
+  id: org.seedspec.chore-streaks
+  version: 0.1.0-alpha.1
+  kind: feature
+package_digest_before: sha256:849b0cd3c96ba1d5e7da65cce23cdc2e41c238ec27e2e06a3f171f6ebbe81e77

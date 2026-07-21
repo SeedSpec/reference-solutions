@@ -1,0 +1,11 @@
+authoring_instruction_version: "0.1"
+pass: 0006-agent-ready-handoff
+area: agent-ready-handoff
+target: harden
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package:
+  id: org.seedspec.savings-goals
+  version: 0.1.0-alpha.1
+  kind: feature
+package_digest_before: sha256:8e993b0b3b502c4f1266720854c84adfd673af7af1edb499e35becad5bafe75b

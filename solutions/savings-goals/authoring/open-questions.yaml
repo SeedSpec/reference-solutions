@@ -1,0 +1,29 @@
+authoring_state_version: "0.1"
+questions:
+  - id: tracked-allocation-record
+    source: definition/feature.md#allocate-value
+    question: What exact auditable record represents an allocation in tracked mode when the balance does not change?
+    reason: The required transaction capability currently describes balance changes.
+    priority: high
+    status: resolved
+    resolution: Tracked allocations use an attributed goal-allocation record and do not claim to be host balance changes.
+  - id: fund-disposition-meanings
+    source: configuration/schema.json
+    question: What distinct outcome does deletion_funds return-available have compared with transfer-to-balance?
+    reason: The current labels may be synonymous, and the example selects return-available.
+    priority: high
+    status: open
+  - id: active-goal-limit
+    source: definition/feature.md#create-a-goal
+    question: Do reached but unclosed goals count toward max_active_goals?
+    reason: The limit must be observable and consistent across hosts.
+    priority: medium
+    status: resolved
+    resolution: Active and reached-but-unclosed goals count; closed and archived goals do not.
+  - id: reverse-state-transitions
+    source: definition/feature.md#state-model
+    question: Does withdrawing below target return a reached goal to active just as increasing its target does?
+    reason: Equivalent progress changes should not produce inconsistent states.
+    priority: medium
+    status: resolved
+    resolution: An accepted withdrawal or target increase that leaves progress below target returns a reached, unclosed goal to active.

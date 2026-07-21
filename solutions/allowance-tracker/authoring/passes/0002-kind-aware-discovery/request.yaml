@@ -1,0 +1,11 @@
+authoring_instruction_version: "0.1"
+pass: 0002-kind-aware-discovery
+area: kind-aware-discovery
+target: harden
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package:
+  id: org.seedspec.examples.allowance-tracker
+  version: 0.1.0-alpha.1
+  kind: application
+package_digest_before: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084

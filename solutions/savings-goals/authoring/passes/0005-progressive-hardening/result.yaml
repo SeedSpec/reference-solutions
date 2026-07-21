@@ -1,0 +1,42 @@
+authoring_result_version: "0.1"
+pass: 0005-progressive-hardening
+area: progressive-hardening
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:d265443d9a9150c852fe02959fa0fbf67a281497ac88c92bfca1a872c13205e5
+package_digest_after: sha256:8e993b0b3b502c4f1266720854c84adfd673af7af1edb499e35becad5bafe75b
+outcome: completed
+summary: The audit hardened atomicity and retry behavior for allocation, withdrawal, completion, and archival. The package meets hardening depth except for the unresolved deletion-fund vocabulary.
+findings:
+  - id: consequential-operation-atomicity
+    source: definition/feature.md#business-rules; acceptance/criteria.md
+    assessment: Completion and archival previously lacked the same explicit duplicate and atomic-failure guarantees as allocation.
+    consequence: Retried operations could release or spend the same reserved value twice.
+    recommendation: Apply the same transaction and idempotency boundary to every fund disposition.
+    status: resolved
+  - id: deletion-vocabulary-blocker
+    source: configuration/schema.json#deletion_funds
+    assessment: The remaining option meanings are not sufficiently distinct for hardening.
+    consequence: One configuration value cannot yet guarantee one observable accounting outcome.
+    recommendation: Resolve or remove the ambiguous option before claiming full hardening.
+    status: needs-author
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied:
+    - path: solutions/savings-goals/seedspec/definition/feature.md
+      basis: agent-proposed
+      reason: Added atomicity, idempotency, and failure invariants for all consequential fund dispositions.
+    - path: solutions/savings-goals/seedspec/acceptance/criteria.md
+      basis: agent-proposed
+      reason: Added observable retry, concurrency, and atomic-failure coverage.
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/savings-goals/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/savings-goals/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 digest solutions/savings-goals/seedspec

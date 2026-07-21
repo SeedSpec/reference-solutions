@@ -1,0 +1,20 @@
+authoring_state_version: "0.1"
+questions:
+  - id: average-population
+    source: definition/solution.md#purpose
+    question: Which HubSpot records and property values are included in the previous-day average, including filters and null handling?
+    reason: The current phrase can yield materially different sales values.
+    priority: blocking
+    status: open
+  - id: metric-time-axis
+    source: definition/solution.md#daily-workflow
+    question: Which HubSpot timestamp or business event assigns a record or value to the previous calendar day?
+    reason: The timezone-correct window needs an authoritative event-time field.
+    priority: blocking
+    status: open
+  - id: late-arriving-data
+    source: definition/solution.md#failures-and-edge-cases
+    question: What should happen when late CRM data changes a period after its briefing was delivered?
+    reason: Correction and duplicate-delivery behavior must be deliberate.
+    priority: high
+    status: open

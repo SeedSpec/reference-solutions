@@ -1,0 +1,129 @@
+protocol_version: "0.1"
+resolution_algorithm: declaration-review-v1
+root:
+  id: org.seedspec.examples.allowance-tracker
+  version: 0.1.0-alpha.1
+  kind: application
+  digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+additions:
+  - id: org.seedspec.chore-streaks
+    version: 0.1.0-alpha.2
+    kind: feature
+    digest: sha256:79ad4c15679607b269257b1612e6b2f0118af4144ca6b4392af1076f775eb21b
+capabilities:
+  - id: org.seedspec.core.actors
+    version: 1.0.0
+    provider:
+      id: org.seedspec.examples.allowance-tracker
+      version: 0.1.0-alpha.1
+      kind: application
+      digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+  - id: org.seedspec.core.approvals
+    version: 1.0.0
+    provider:
+      id: org.seedspec.examples.allowance-tracker
+      version: 0.1.0-alpha.1
+      kind: application
+      digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+  - id: org.seedspec.core.assignments
+    version: 1.0.0
+    provider:
+      id: org.seedspec.examples.allowance-tracker
+      version: 0.1.0-alpha.1
+      kind: application
+      digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+  - id: org.seedspec.core.balances
+    version: 1.0.0
+    provider:
+      id: org.seedspec.examples.allowance-tracker
+      version: 0.1.0-alpha.1
+      kind: application
+      digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+  - id: org.seedspec.core.chores
+    version: 1.1.0
+    provider:
+      id: org.seedspec.examples.allowance-tracker
+      version: 0.1.0-alpha.1
+      kind: application
+      digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+  - id: org.seedspec.core.households
+    version: 1.0.0
+    provider:
+      id: org.seedspec.examples.allowance-tracker
+      version: 0.1.0-alpha.1
+      kind: application
+      digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+  - id: org.seedspec.core.transactions
+    version: 1.0.0
+    provider:
+      id: org.seedspec.examples.allowance-tracker
+      version: 0.1.0-alpha.1
+      kind: application
+      digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+  - id: org.seedspec.engagement.chore-streaks
+    version: 1.0.0
+    provider:
+      id: org.seedspec.chore-streaks
+      version: 0.1.0-alpha.2
+      kind: feature
+      digest: sha256:79ad4c15679607b269257b1612e6b2f0118af4144ca6b4392af1076f775eb21b
+requirements:
+  - consumer: org.seedspec.chore-streaks
+    capability: org.seedspec.core.actors
+    tested_against: 1.0.0
+    providers:
+      - provider:
+          id: org.seedspec.examples.allowance-tracker
+          version: 0.1.0-alpha.1
+          kind: application
+          digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+        provided_version: 1.0.0
+        revision_status: tested-revision
+    issues: []
+    status: declared-aligned
+  - consumer: org.seedspec.chore-streaks
+    capability: org.seedspec.core.chores
+    tested_against: 1.0.0
+    providers:
+      - provider:
+          id: org.seedspec.examples.allowance-tracker
+          version: 0.1.0-alpha.1
+          kind: application
+          digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+        provided_version: 1.1.0
+        revision_status: different-revision
+    issues:
+      - revision-difference
+    status: review
+  - consumer: org.seedspec.chore-streaks
+    capability: org.seedspec.core.assignments
+    tested_against: 1.0.0
+    providers:
+      - provider:
+          id: org.seedspec.examples.allowance-tracker
+          version: 0.1.0-alpha.1
+          kind: application
+          digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+        provided_version: 1.0.0
+        revision_status: tested-revision
+    issues: []
+    status: declared-aligned
+  - consumer: org.seedspec.chore-streaks
+    capability: org.seedspec.core.approvals
+    tested_against: 1.0.0
+    providers:
+      - provider:
+          id: org.seedspec.examples.allowance-tracker
+          version: 0.1.0-alpha.1
+          kind: application
+          digest: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+        provided_version: 1.0.0
+        revision_status: tested-revision
+    issues: []
+    status: declared-aligned
+reviews:
+  - code: revision-difference
+    packages:
+      - org.seedspec.chore-streaks
+      - org.seedspec.examples.allowance-tracker
+    capability: org.seedspec.core.chores

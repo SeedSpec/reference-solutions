@@ -1,0 +1,17 @@
+protocol_version: "0.1"
+scope_digest: sha256:664f2d28ae219d30156314a4014841e41b7df5e93667f7eb0499bf79aa51ae5e
+status: verified-with-gaps
+items:
+  - id: allowance-acceptance
+    result: partial
+    evidence:
+      - verification-report.md
+      - ../test/domain.test.js
+      - ../test/server.test.js
+    note: The realized vertical slice is verified; deferred package criteria are listed in verification-report.md.
+  - id: chore-streaks-acceptance
+    result: partial
+    evidence:
+      - verification-report.md
+      - ../test/domain.test.js
+    note: Core streak derivation is verified; the full configuration and edge-case surface is not realized.

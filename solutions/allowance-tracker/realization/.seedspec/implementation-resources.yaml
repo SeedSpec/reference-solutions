@@ -1,0 +1,9 @@
+protocol_version: "0.1"
+policies:
+  - package: org.seedspec.examples.allowance-tracker
+    additional_guidance: unspecified
+    catalogs: []
+  - package: org.seedspec.chore-streaks
+    additional_guidance: unspecified
+    catalogs: []
+resources: []

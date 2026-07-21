@@ -1,0 +1,36 @@
+authoring_result_version: "0.1"
+pass: 0001-concern-separation
+area: concern-separation
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:7d0f14a31118facadaa5a2bc3656a7b7ecd49dbf3cdb56aa77a89eb54e7c26cf
+package_digest_after: sha256:7d0f14a31118facadaa5a2bc3656a7b7ecd49dbf3cdb56aa77a89eb54e7c26cf
+outcome: completed
+summary: Portable feature behavior, host integration, fund-disposition configuration, capability contracts, and acceptance are separated into the appropriate package concerns.
+findings:
+  - id: host-mapping-correctly-scoped
+    source: integration/requirements.md#savings-goals-integration-requirements
+    assessment: Allowance Tracker actor and balance mappings remain integration guidance rather than portable core assumptions.
+    consequence: The feature can remain useful to non-household balance hosts.
+    recommendation: Preserve the current separation.
+    status: accepted
+  - id: fund-disposition-is-product-configuration
+    source: configuration/example.yaml#completion_funds
+    assessment: Completion and deletion fund disposition change observable product behavior and therefore belong in configuration, not implementation profiles.
+    consequence: Their exact meanings require later ambiguity and consistency review but their concern classification is correct.
+    recommendation: Keep the options in behavioral configuration while clarifying their semantics.
+    status: accepted
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/savings-goals/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/savings-goals/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 digest solutions/savings-goals/seedspec

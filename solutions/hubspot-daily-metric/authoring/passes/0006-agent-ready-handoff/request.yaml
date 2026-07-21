@@ -1,0 +1,11 @@
+authoring_instruction_version: "0.1"
+pass: 0006-agent-ready-handoff
+area: agent-ready-handoff
+target: harden
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package:
+  id: org.seedspec.examples.hubspot-daily-metric
+  version: 0.1.0-alpha.1
+  kind: workflow
+package_digest_before: sha256:8935cc090490ab4411e7a9ca2d40173a5dc7bcab52b252747bb8af29a6df787b

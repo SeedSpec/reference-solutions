@@ -1,0 +1,30 @@
+id: org.seedspec.chore-streaks
+name: Chore Streaks
+version: 0.1.0-alpha.2
+kind: feature
+digest: sha256:79ad4c15679607b269257b1612e6b2f0118af4144ca6b4392af1076f775eb21b
+requires:
+  capabilities:
+    - id: org.seedspec.core.actors
+      tested_against: 1.0.0
+    - id: org.seedspec.core.chores
+      tested_against: 1.0.0
+    - id: org.seedspec.core.assignments
+      tested_against: 1.0.0
+    - id: org.seedspec.core.approvals
+      tested_against: 1.0.0
+provides:
+  capabilities:
+    - id: org.seedspec.engagement.chore-streaks
+      version: 1.0.0
+      contract: capabilities/chore-streaks.md
+compatibility:
+  scope: domain
+  domain: org.seedspec.domain.household-work
+conflicts: {}
+decisions: []
+implementation_profiles: []
+artifacts: []
+relationships: []
+implementation_resources: null
+extensions: {}

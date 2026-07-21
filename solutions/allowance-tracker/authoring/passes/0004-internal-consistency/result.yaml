@@ -1,0 +1,36 @@
+authoring_result_version: "0.1"
+pass: 0004-internal-consistency
+area: internal-consistency
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+package_digest_after: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+outcome: completed
+summary: Schema, capability, ProductSpec, definition, and acceptance references are consistent. Recurring allowance remains a semantic coverage gap that deterministic validation and keyword lint do not detect.
+findings:
+  - id: recurring-configuration-has-no-contract
+    source: configuration/schema.json#recurring_allowance; acceptance/criteria.md
+    assessment: A required configuration object selects scheduled financial behavior that has no corresponding workflow or observable acceptance.
+    consequence: The package is structurally valid while remaining semantically incomplete for one selected behavior.
+    recommendation: Keep the package unchanged until the author resolves the scope question, but retain this as a blocking package-hardening finding.
+    status: open
+  - id: productspec-alignment
+    source: intent/allowance-tracker.product-spec.md; definition/app.md
+    assessment: The optional ProductSpec's problem, scope, and three acceptance claims align with the fuller SeedSpec definition and do not override it.
+    consequence: Consumers can use the artifact without receiving contradictory product intent.
+    recommendation: Preserve the relationship.
+    status: consistent
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/allowance-tracker/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/allowance-tracker/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 digest solutions/allowance-tracker/seedspec

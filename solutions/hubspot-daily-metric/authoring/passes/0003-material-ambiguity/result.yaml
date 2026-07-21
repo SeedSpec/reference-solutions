@@ -1,0 +1,45 @@
+authoring_result_version: "0.1"
+pass: 0003-material-ambiguity
+area: material-ambiguity
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:8935cc090490ab4411e7a9ca2d40173a5dc7bcab52b252747bb8af29a6df787b
+package_digest_after: sha256:8935cc090490ab4411e7a9ca2d40173a5dc7bcab52b252747bb8af29a6df787b
+outcome: completed
+summary: The phrase previous-day average hides the package's most consequential unresolved product decisions. Population, time-axis, and late-data behavior must be authored before the metric can be implemented faithfully.
+findings:
+  - id: average-population
+    source: definition/solution.md#purpose
+    assessment: The package names an object and numeric property but does not define filters, eligibility, null handling, or whether the average spans records created, changed, closed, or merely existing during the day.
+    consequence: Different implementations can produce materially different values while satisfying the current words.
+    recommendation: Add explicit population and inclusion configuration or fixed intent.
+    status: deferred
+  - id: metric-time-axis
+    source: definition/solution.md#daily-workflow
+    assessment: No HubSpot timestamp or event determines which calendar day owns a property value.
+    consequence: The previous-day window cannot be calculated consistently.
+    recommendation: Define the authoritative event-time field and timezone conversion behavior.
+    status: deferred
+  - id: late-arriving-data
+    source: definition/solution.md#failures-and-edge-cases
+    assessment: The package acknowledges late data but does not say whether a delivered briefing is corrected, resent, or left as a point-in-time result.
+    consequence: Daily values and message duplication behavior can diverge after late CRM updates.
+    recommendation: Define the correction window and whether revised values create a replacement, follow-up, or no additional message.
+    status: deferred
+questions:
+  asked: []
+  answered: []
+  deferred:
+    - average-population
+    - metric-time-axis
+    - late-arriving-data
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/hubspot-daily-metric/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/hubspot-daily-metric/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 digest solutions/hubspot-daily-metric/seedspec

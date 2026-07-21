@@ -1,0 +1,35 @@
+protocol_version: "0.1"
+root:
+  package: org.seedspec.examples.allowance-tracker
+  selection: example
+  values:
+    household_mode: multiple-guardians
+    child_access: child-sign-in
+    approval_required: true
+    currency:
+      code: USD
+      display_name: dollars
+      decimal_places: 2
+    recurring_allowance:
+      enabled: true
+      cadence: weekly
+      weekday: friday
+    chore_rewards:
+      allow_zero_value: true
+      allow_negative_adjustments: true
+      allow_negative_balances: false
+    overdue_policy: remain-available
+    balance_visibility: child-own-balance
+    transaction_corrections: append-only-adjustments
+additions:
+  org.seedspec.chore-streaks:
+    package: org.seedspec.chore-streaks
+    selection: example
+    values:
+      qualification: approved
+      daily_target: 1
+      day_boundary: household-local
+      include_zero_reward: true
+      show_longest: true
+decisions: {}
+technical_preferences: {}

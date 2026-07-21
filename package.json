@@ -5,7 +5,7 @@
   "description": "Independent reference packages and realized solutions for the SeedSpec Protocol",
   "type": "module",
   "workspaces": [
-    "realizations/*"
+    "solutions/allowance-tracker/realization"
   ],
   "scripts": {
     "test": "npm run test --workspaces --if-present",

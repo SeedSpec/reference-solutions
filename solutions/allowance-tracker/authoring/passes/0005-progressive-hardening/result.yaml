@@ -1,0 +1,36 @@
+authoring_result_version: "0.1"
+pass: 0005-progressive-hardening
+area: progressive-hardening
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+package_digest_after: sha256:d3303a5c6feccd7e936a9b64e186a6ed2c78722044c7e84008d0a3539dd29084
+outcome: completed
+summary: Assignment, approval, transaction, authorization, concurrency, failure, and negative-balance behavior meet the requested hardening lens. The package is not hardened for recurring allowance or overdue time boundaries because those author decisions remain open.
+findings:
+  - id: core-workflows-hardened
+    source: definition/app.md; acceptance/criteria.md
+    assessment: Core household, chore, assignment, approval, accounting, correction, retry, concurrency, archival, and failure invariants have observable coverage.
+    consequence: Agents can implement the primary product without inventing safety-critical accounting behavior.
+    recommendation: Preserve the current specificity.
+    status: hardened
+  - id: selected-configuration-not-hardened
+    source: configuration/example.yaml#recurring_allowance; definition/app.md#configuration-behavior
+    assessment: A required and enabled example configuration selects behavior below hardening depth.
+    consequence: The package should not be described as comprehensively hardened while that option remains.
+    recommendation: Resolve the recorded scope and schedule questions.
+    status: needs-author
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/allowance-tracker/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/allowance-tracker/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 digest solutions/allowance-tracker/seedspec

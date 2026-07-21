@@ -1,0 +1,36 @@
+authoring_result_version: "0.1"
+pass: 0004-internal-consistency
+area: internal-consistency
+protocol_version: "0.1"
+tool_version: 0.1.0-alpha.2
+package_digest_before: sha256:8935cc090490ab4411e7a9ca2d40173a5dc7bcab52b252747bb8af29a6df787b
+package_digest_after: sha256:8935cc090490ab4411e7a9ca2d40173a5dc7bcab52b252747bb8af29a6df787b
+outcome: completed
+summary: Manifest profiles, guidance, security constraints, workflow, and acceptance are internally aligned. The metric definition remains semantically circular because acceptance asks for the intended average without defining that average.
+findings:
+  - id: circular-average-acceptance
+    source: acceptance/criteria.md#2; definition/solution.md#daily-workflow
+    assessment: A known-data check can verify an implementation only after population and event-time semantics are independently defined.
+    consequence: Two incompatible calculations can each choose known data that makes their own interpretation pass.
+    recommendation: Treat population and time-axis questions as blocking author input rather than repairing them with agent inference.
+    status: open
+  - id: profile-guidance-alignment
+    source: seedspec.yaml#implementation_profiles; implementation/
+    assessment: Each profile's prerequisites, blocker, tradeoff, and guidance describe the same core outcome without silently changing it.
+    consequence: Profile selection remains implementation direction rather than product mutation.
+    recommendation: Preserve the current structure.
+    status: consistent
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/hubspot-daily-metric/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/hubspot-daily-metric/seedspec
+    - npx --yes @seedspec/cli@0.1.0-alpha.3 digest solutions/hubspot-daily-metric/seedspec
