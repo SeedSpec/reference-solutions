@@ -1,0 +1,90 @@
+protocol_version: "0.1"
+id: org.seedspec.examples.customer-onboarding-orchestrator
+name: Customer Onboarding Orchestrator
+version: 0.1.0-alpha.1
+kind: workflow
+description: Turn an approved customer handoff into owned milestones, customer updates, escalation, and auditable completion.
+
+metadata:
+  license: Apache-2.0
+
+definition:
+  entrypoint: definition/customer-onboarding.md
+
+configuration:
+  schema: configuration/schema.json
+  example: configuration/example.yaml
+  guide: configuration/guide.md
+
+provides:
+  capabilities:
+    - id: org.seedspec.examples.customer-onboarding-coordination
+      version: 1.0.0
+      contract: capabilities/customer-onboarding-coordination.md
+
+implementation_profiles:
+  - id: configured-saas-stack
+    name: Configured existing SaaS stack
+    description: Coordinate onboarding primarily by configuring systems the organization already uses.
+    guidance: implementation/configured-saas-stack.md
+    prerequisites:
+      - id: suitable-systems
+        statement: Existing approved systems can represent the required milestones, ownership, customer-visible state, and audit history.
+        verification:
+          method: environment-inspection
+          evidence: required
+    blockers:
+      - id: no-coherent-state
+        statement: The current systems cannot expose one coherent onboarding state without misleading duplication.
+        verification:
+          method: environment-inspection
+          evidence: required
+    tradeoffs:
+      - Minimizes new operated software but is bounded by the current systems' workflow and reporting capabilities.
+  - id: automation-platform
+    name: Approved automation platform
+    description: Use an automation platform to coordinate records, messages, timers, and evidence across approved systems.
+    guidance: implementation/automation-platform.md
+    prerequisites:
+      - id: approved-platform
+        statement: The organization operates an approved automation platform with accountable ownership and supported connections.
+        verification:
+          method: user-confirmation
+          evidence: optional
+    blockers:
+      - id: prohibited-data-flow
+        statement: Policy prohibits the platform from processing required customer or contract data.
+        verification:
+          method: document-review
+          evidence: required
+    tradeoffs:
+      - Reuses an integration layer while inheriting its reliability, observability, and change-management limits.
+  - id: dedicated-coordination-service
+    name: Dedicated coordination service
+    description: Build and operate a dedicated service when the configured workflow cannot be realized faithfully in existing tools.
+    guidance: implementation/dedicated-coordination-service.md
+    prerequisites:
+      - id: operational-owner
+        statement: A team accepts responsibility for credentials, monitoring, failures, change management, and maintenance.
+        verification:
+          method: user-confirmation
+          evidence: required
+    blockers:
+      - id: no-service-owner
+        statement: No accountable team will operate the service and its external-system access.
+        verification:
+          method: user-confirmation
+          evidence: required
+    tradeoffs:
+      - Provides the most control while creating a separately operated system.
+
+components:
+  acceptance: acceptance/
+
+extensions:
+  org.seedspec.examples.catalog:
+    audience: revenue-and-delivery-teams
+    demonstrates:
+      - cross-system-workflow
+      - implementation-profiles
+      - operational-evidence

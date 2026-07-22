@@ -1,0 +1,34 @@
+protocol_version: "0.1"
+id: org.seedspec.examples.operations-dashboard-starter
+name: Operations Dashboard Starter Kit
+version: 0.1.0-alpha.1
+kind: application
+description: Create a role-aware internal operations dashboard around a team's records, metrics, actions, and saved views.
+
+metadata:
+  license: Apache-2.0
+
+definition:
+  entrypoint: definition/operations-dashboard.md
+
+configuration:
+  schema: configuration/schema.json
+  example: configuration/example.yaml
+  guide: configuration/guide.md
+
+provides:
+  capabilities:
+    - id: org.seedspec.examples.operations-workbench
+      version: 1.0.0
+      contract: capabilities/operations-workbench.md
+
+components:
+  acceptance: acceptance/
+
+extensions:
+  org.seedspec.examples.catalog:
+    audience: internal-teams
+    demonstrates:
+      - reusable-starter
+      - role-aware-data
+      - trustworthy-metrics

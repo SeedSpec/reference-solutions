@@ -1,0 +1,12 @@
+timezone: America/Chicago
+child_access: participating-members
+event_privacy: private-details-supported
+task_completion: guardian-confirm
+
+notifications:
+  daily_digest: true
+  upcoming_event_hours: 24
+
+modules:
+  allowance_tracking: true
+  meal_planning: true

@@ -16,6 +16,12 @@ SeedSpec.
 
 ```text
 solutions/
+├── family-hub/
+│   └── seedspec/       configurable household application package
+├── operations-dashboard-starter/
+│   └── seedspec/       reusable internal application package
+├── customer-onboarding-orchestrator/
+│   └── seedspec/       profiled cross-system workflow package
 ├── allowance-tracker/
 │   ├── seedspec/       distributable application package
 │   ├── authoring/      non-distributable audit state
@@ -83,6 +89,9 @@ npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/allowance-tracker/seeds
 npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/savings-goals/seedspec
 npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/chore-streaks/seedspec
 npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/hubspot-daily-metric/seedspec
+npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/family-hub/seedspec
+npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/operations-dashboard-starter/seedspec
+npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/customer-onboarding-orchestrator/seedspec
 ```
 
 Cross-solution project inputs live under `project-inputs/`. For example:

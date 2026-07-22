@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Family Hub configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "timezone",
+    "child_access",
+    "event_privacy",
+    "task_completion",
+    "notifications",
+    "modules"
+  ],
+  "properties": {
+    "timezone": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "child_access": {
+      "enum": ["guardian-managed", "participating-members"]
+    },
+    "event_privacy": {
+      "enum": ["all-details-shared", "private-details-supported"]
+    },
+    "task_completion": {
+      "enum": ["self-complete", "guardian-confirm"]
+    },
+    "notifications": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["daily_digest", "upcoming_event_hours"],
+      "properties": {
+        "daily_digest": { "type": "boolean" },
+        "upcoming_event_hours": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 168
+        }
+      }
+    },
+    "modules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowance_tracking", "meal_planning"],
+      "properties": {
+        "allowance_tracking": { "type": "boolean" },
+        "meal_planning": { "type": "boolean" }
+      }
+    }
+  }
+}

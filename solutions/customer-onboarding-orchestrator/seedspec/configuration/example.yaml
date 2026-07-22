@@ -1,0 +1,23 @@
+start_condition: approved-handoff
+target_business_days: 30
+stalled_after_business_days: 3
+customer_updates: weekly-and-milestones
+completion_policy: required-milestones-and-owner-signoff
+
+required_milestones:
+  - id: handoff-accepted
+    label: Handoff accepted
+    owner_role: onboarding-owner
+    customer_visible: false
+  - id: kickoff-complete
+    label: Kickoff complete
+    owner_role: onboarding-owner
+    customer_visible: true
+  - id: access-ready
+    label: Required access ready
+    owner_role: implementation-owner
+    customer_visible: true
+  - id: first-value
+    label: First value achieved
+    owner_role: customer-success-owner
+    customer_visible: true

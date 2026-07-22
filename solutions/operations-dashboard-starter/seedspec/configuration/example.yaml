@@ -1,0 +1,40 @@
+workspace_name: Returns Operations
+
+record_model:
+  singular: case
+  plural: cases
+  statuses:
+    - new
+    - investigating
+    - waiting-on-customer
+    - approved
+    - resolved
+
+metrics:
+  - id: open-cases
+    label: Open cases
+    definition: Count cases whose status is not resolved.
+    format: number
+    aggregation: count
+  - id: cases-at-risk
+    label: Cases at risk
+    definition: Count open cases older than the team's response target.
+    format: number
+    aggregation: count
+  - id: median-resolution-time
+    label: Median resolution time
+    definition: Median elapsed time from case creation to resolved status for cases resolved in the selected period.
+    format: duration
+    aggregation: median
+
+freshness:
+  stale_after_minutes: 30
+
+views: private-and-team
+
+actions:
+  assignment: true
+  status_change: true
+  bulk_actions: true
+
+exports: authorized-view

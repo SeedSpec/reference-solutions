@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Customer Onboarding Orchestrator configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "start_condition",
+    "target_business_days",
+    "stalled_after_business_days",
+    "customer_updates",
+    "completion_policy",
+    "required_milestones"
+  ],
+  "properties": {
+    "start_condition": {
+      "enum": ["approved-handoff", "signed-agreement"]
+    },
+    "target_business_days": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 90
+    },
+    "stalled_after_business_days": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 30
+    },
+    "customer_updates": {
+      "enum": ["none", "milestones", "weekly-and-milestones"]
+    },
+    "completion_policy": {
+      "enum": ["required-milestones", "required-milestones-and-owner-signoff"]
+    },
+    "required_milestones": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "owner_role", "customer_visible"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "label": { "type": "string", "minLength": 1, "maxLength": 100 },
+          "owner_role": { "type": "string", "minLength": 1, "maxLength": 80 },
+          "customer_visible": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}
