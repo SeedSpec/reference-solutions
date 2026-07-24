@@ -1,0 +1,6 @@
+{
+  "release_version": "0.2.0",
+  "protocol_family": "0.2",
+  "cli": "@seedspec/cli@0.2.0",
+  "package_glob": "solutions/*/seedspec"
+}

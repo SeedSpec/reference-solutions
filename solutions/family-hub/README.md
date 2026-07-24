@@ -10,7 +10,7 @@ choices, and observable completion criteria without selecting a framework or
 service provider. It has no committed realization yet.
 
 ```bash
-npx --yes @seedspec/cli@0.1.0-alpha.3 validate solutions/family-hub/seedspec
-npx --yes @seedspec/cli@0.1.0-alpha.3 lint solutions/family-hub/seedspec
-npx --yes @seedspec/cli@0.1.0-alpha.3 begin solutions/family-hub/seedspec
+npx --yes @seedspec/cli@0.2.0 validate solutions/family-hub/seedspec
+npx --yes @seedspec/cli@0.2.0 lint solutions/family-hub/seedspec
+npx --yes @seedspec/cli@0.2.0 begin solutions/family-hub/seedspec
 ```

@@ -1,7 +1,7 @@
-protocol_version: "0.1"
+protocol_version: "0.2"
 id: org.seedspec.chore-streaks
 name: Chore Streaks
-version: "0.1.0-alpha.2"
+version: "0.2.0"
 kind: feature
 description: Show a child's current and longest streak of days with qualifying chore completion.
 

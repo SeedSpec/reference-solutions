@@ -1,7 +1,7 @@
-protocol_version: "0.1"
+protocol_version: "0.2"
 id: org.seedspec.examples.allowance-tracker
 name: Allowance Tracker
-version: "0.1.0-alpha.1"
+version: "0.2.0"
 kind: application
 description: Help a household assign chores, approve completed work, and maintain a trustworthy allowance balance.
 
