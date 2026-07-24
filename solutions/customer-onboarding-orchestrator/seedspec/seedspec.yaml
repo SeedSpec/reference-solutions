@@ -1,7 +1,7 @@
-protocol_version: "0.1"
+protocol_version: "0.2"
 id: org.seedspec.examples.customer-onboarding-orchestrator
 name: Customer Onboarding Orchestrator
-version: 0.1.0-alpha.1
+version: "0.2.0"
 kind: workflow
 description: Turn an approved customer handoff into owned milestones, customer updates, escalation, and auditable completion.
 

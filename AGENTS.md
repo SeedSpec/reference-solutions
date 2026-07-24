@@ -11,7 +11,7 @@ the distributable package. Keep cross-solution resolution choices under
 `project-inputs/`.
 
 User- and agent-facing commands must invoke the exact npm CLI package with
-`npx --yes @seedspec/cli@0.1.0-alpha.3`; do not rely on a sibling protocol
+`npx --yes @seedspec/cli@0.2.0`; do not rely on a sibling protocol
 checkout, a globally installed `seedspec`, or an unspecified CLI version.
 
 Run `npm run check` from the repository root before committing changes.

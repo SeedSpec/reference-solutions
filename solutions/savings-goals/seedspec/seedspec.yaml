@@ -1,7 +1,7 @@
-protocol_version: "0.1"
+protocol_version: "0.2"
 id: org.seedspec.savings-goals
 name: Savings Goals
-version: "0.1.0-alpha.2"
+version: "0.2.0"
 kind: feature
 description: Let an actor reserve or track part of a balance toward named targets and see progress.
 

@@ -1,7 +1,7 @@
-protocol_version: "0.1"
+protocol_version: "0.2"
 id: org.seedspec.examples.operations-dashboard-starter
 name: Operations Dashboard Starter Kit
-version: 0.1.0-alpha.1
+version: "0.2.0"
 kind: application
 description: Create a role-aware internal operations dashboard around a team's records, metrics, actions, and saved views.
 

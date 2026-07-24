@@ -1,7 +1,7 @@
-protocol_version: "0.1"
+protocol_version: "0.2"
 id: org.seedspec.examples.family-hub
 name: Family Hub
-version: 0.1.0-alpha.1
+version: "0.2.0"
 kind: application
 description: Coordinate a household's shared events and tasks, with optional allowance tracking and meal planning.
 

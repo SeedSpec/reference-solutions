@@ -14,10 +14,32 @@ jobs:
       matrix:
         node-version: [20, 22]
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+      - uses: actions/checkout@v6
+        with:
+          path: reference-solutions
+      - name: Read exact SeedSpec source revision
+        id: release
+        working-directory: reference-solutions
+        run: |
+          CORE_COMMIT=$(node -p "require('./release.json').core_commit")
+          echo "core_commit=${CORE_COMMIT}" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v6
+        with:
+          repository: SeedSpec/seedspec
+          ref: ${{ steps.release.outputs.core_commit }}
+          path: seedspec
+      - uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
+          cache-dependency-path: |
+            reference-solutions/package-lock.json
+            seedspec/package-lock.json
       - run: npm ci
+        working-directory: seedspec
+      - run: npm ci
+        working-directory: reference-solutions
       - run: npm run check
+        working-directory: reference-solutions
+        env:
+          SEEDSPEC_CLI_BIN: ${{ github.workspace }}/seedspec/packages/cli/bin/seedspec.js
