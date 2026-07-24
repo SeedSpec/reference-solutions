@@ -1,6 +1,7 @@
 {
   "release_version": "0.2.0",
   "protocol_family": "0.2",
+  "core_commit": "2736599c61a1d589730f25a548c614eef0a4651e",
   "cli": "@seedspec/cli@0.2.0",
   "package_glob": "solutions/*/seedspec"
 }

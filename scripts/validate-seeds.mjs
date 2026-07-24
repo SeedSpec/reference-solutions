@@ -1,5 +1,5 @@
 import { execFile } from "node:child_process";
-import { readFile, readdir } from "node:fs/promises";
+import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
@@ -35,7 +35,17 @@ for (const name of solutionNames) {
 
 if (packages.length === 0) throw new Error("No reference SeedSpec packages found");
 
-const localCli = process.env.SEEDSPEC_CLI_BIN;
+async function exists(filePath) {
+  try {
+    return (await stat(filePath)).isFile();
+  } catch {
+    return false;
+  }
+}
+
+const siblingCli = path.resolve(root, "../seedspec/packages/cli/bin/seedspec.js");
+const localCli = process.env.SEEDSPEC_CLI_BIN
+  ?? (await exists(siblingCli) ? siblingCli : null);
 for (const item of packages) {
   if (localCli) {
     await execFileAsync(process.execPath, [path.resolve(localCli), "validate", item.packagePath]);
