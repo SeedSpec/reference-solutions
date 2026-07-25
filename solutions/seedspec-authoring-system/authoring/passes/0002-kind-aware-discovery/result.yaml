@@ -1,0 +1,48 @@
+authoring_result_version: "0.2"
+pass: 0002-kind-aware-discovery
+area: kind-aware-discovery
+protocol_version: "0.2"
+tool_version: 0.2.0
+package_digest_before: sha256:c6416725a00318dba671426e1d9a8695bea28598b8cba0579e104fb3f6a0601b
+package_digest_after: sha256:c6416725a00318dba671426e1d9a8695bea28598b8cba0579e104fb3f6a0601b
+outcome: completed
+summary: The solution-kind lens is established across the compound outcome, participant authority, coordination and failure boundaries, and realization-level evidence plan without prescribing identical frontend capabilities.
+findings:
+  - id: solution-compound-outcome
+    source: definition/solution.md#purpose
+    assessment: established
+    consequence: The package defines one cross-frontend authoring outcome while preserving different CLI and web capabilities.
+    recommendation: Keep durable artifact parity as the solution boundary.
+    status: established
+  - id: solution-participants-authority
+    source: definition/solution.md#participants-and-authority
+    assessment: established
+    consequence: Package author, authoring agent, engine, frontend, and persistence responsibilities have distinct authority.
+    recommendation: Preserve these roles in operation contracts and frontend copy.
+    status: established
+  - id: solution-coordination-failure
+    source: definition/solution.md#workspace-lifecycle
+    assessment: established
+    consequence: Revision conflicts, retries, invalid drafts, model sessions, and interrupted operations have observable boundaries.
+    recommendation: Verify the negative paths through shared engine tests before adding web-only orchestration.
+    status: established
+  - id: solution-observable-evidence
+    source: definition/solution.md#success-and-evidence
+    assessment: established
+    consequence: Cross-frontend artifact identity, authority, recovery, and independent package use have concrete verification plans.
+    recommendation: Keep future realization evidence outside the package and bind it to exact engine and frontend revisions.
+    status: established
+questions:
+  asked: []
+  answered: []
+  deferred: []
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.2.0 validate solutions/seedspec-authoring-system/seedspec
+    - npx --yes @seedspec/cli@0.2.0 lint solutions/seedspec-authoring-system/seedspec
+    - npx --yes @seedspec/cli@0.2.0 digest solutions/seedspec-authoring-system/seedspec

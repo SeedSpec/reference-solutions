@@ -13,7 +13,7 @@ From the repository root, verify that its recorded package locks still match
 the selected package bytes with the exact SeedSpec CLI version:
 
 ```bash
-npx --yes @seedspec/cli@0.2.0 verify-lock \
+npx --yes @seedspec/cli@0.2.2 verify-lock \
   solutions/allowance-tracker/realization \
   --package solutions/allowance-tracker/seedspec \
   --package solutions/chore-streaks/seedspec

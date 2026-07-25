@@ -16,6 +16,9 @@ SeedSpec.
 
 ```text
 solutions/
+├── seedspec-authoring-system/
+│   ├── seedspec/       shared authoring engine, CLI, and web-workbench package
+│   └── authoring/      current dogfooding and review state
 ├── family-hub/
 │   └── seedspec/       configurable household application package
 ├── operations-dashboard-starter/
@@ -59,16 +62,14 @@ solution does not yet have a committed realization.
 
 ## Use the npm CLI
 
-All repository instructions pin the exact npm package version used for the
-current examples:
+People can use the current CLI without installing it:
 
 ```bash
-npx --yes @seedspec/cli@0.2.0 --help
+npx @seedspec/cli --help
 ```
 
-Pinning avoids accidental behavior changes from a global install or a newer
-release. Update the version deliberately when the references are exercised
-against a newer CLI.
+Recorded tests and automation below pin the exact package version and use
+`--yes` so their behavior is reproducible and unattended.
 
 ## Development
 
@@ -88,25 +89,26 @@ npm run start:allowance-tracker
 Validate every independently versioned package directly from npm:
 
 ```bash
-npx --yes @seedspec/cli@0.2.0 validate solutions/allowance-tracker/seedspec
-npx --yes @seedspec/cli@0.2.0 validate solutions/savings-goals/seedspec
-npx --yes @seedspec/cli@0.2.0 validate solutions/chore-streaks/seedspec
-npx --yes @seedspec/cli@0.2.0 validate solutions/hubspot-daily-metric/seedspec
-npx --yes @seedspec/cli@0.2.0 validate solutions/family-hub/seedspec
-npx --yes @seedspec/cli@0.2.0 validate solutions/operations-dashboard-starter/seedspec
-npx --yes @seedspec/cli@0.2.0 validate solutions/customer-onboarding-orchestrator/seedspec
+npx --yes @seedspec/cli@0.2.2 validate solutions/allowance-tracker/seedspec
+npx --yes @seedspec/cli@0.2.2 validate solutions/savings-goals/seedspec
+npx --yes @seedspec/cli@0.2.2 validate solutions/chore-streaks/seedspec
+npx --yes @seedspec/cli@0.2.2 validate solutions/hubspot-daily-metric/seedspec
+npx --yes @seedspec/cli@0.2.2 validate solutions/family-hub/seedspec
+npx --yes @seedspec/cli@0.2.2 validate solutions/operations-dashboard-starter/seedspec
+npx --yes @seedspec/cli@0.2.2 validate solutions/customer-onboarding-orchestrator/seedspec
+npx --yes @seedspec/cli@0.2.2 validate solutions/seedspec-authoring-system/seedspec
 ```
 
 Cross-solution project inputs live under `project-inputs/`. For example:
 
 ```bash
-npx --yes @seedspec/cli@0.2.0 resolve \
+npx --yes @seedspec/cli@0.2.2 resolve \
   solutions/allowance-tracker/seedspec \
   --configuration-selections project-inputs/configuration-selections/allowance-only.yaml \
   --completion-scope project-inputs/completion-scopes/allowance-only.yaml \
   --output .tmp/allowance-only
 
-npx --yes @seedspec/cli@0.2.0 resolve \
+npx --yes @seedspec/cli@0.2.2 resolve \
   solutions/hubspot-daily-metric/seedspec \
   -i hubspot-native \
   --configuration-selections project-inputs/configuration-selections/hubspot-daily-metric.yaml \

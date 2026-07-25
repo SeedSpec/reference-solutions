@@ -1,0 +1,30 @@
+authoring_state_version: "0.2"
+questions:
+  - id: agent-change-approval-granularity
+    source: definition/solution.md#change-control-and-concurrency
+    question: Must the author explicitly accept every agent-produced document change, or only changes classified as material; if only material changes require acceptance, who classifies them and what protects against misclassification?
+    reason: The answer defines the central authority boundary and determines whether CLI and web can safely offer automatic mechanical edits.
+    priority: blocking
+    status: resolved
+    resolution: Every agent-proposed document change requires explicit author acceptance. Deterministic mechanical changes may apply within an already authorized engine operation but remain visible, attributable, and revision-bound.
+  - id: cross-frontend-workspace-resumption
+    source: definition/solution.md#portability-and-privacy-boundary
+    question: Must a complete authoring workspace be explicitly exportable and importable so an author can resume between CLI and web, or does parity require only equivalent behavior and portable package output?
+    reason: Package-only portability is substantially simpler, while workspace portability changes identifiers, source handling, history formats, and hosted-service boundaries.
+    priority: high
+    status: resolved
+    resolution: Durable authoring artifacts are portable between CLI and web, including drafts, sources, questions, answers, findings, proposals, approvals, pass history, and format metadata. Capabilities need not match; conversation transcripts are optional and provider session state remains frontend-local.
+  - id: agent-session-model-consent
+    source: definition/solution.md#portability-and-privacy-boundary
+    question: Does explicitly starting an agent-assisted authoring session authorize model calls until the session is stopped, or must the author confirm each model step?
+    reason: The choice materially changes privacy, cost visibility, interruption behavior, and the interaction contract shared by CLI and web.
+    priority: high
+    status: resolved
+    resolution: Starting an agent-assisted authoring session authorizes model calls until the author pauses or stops it, with the active agent and model context visible. External tools and consequential actions retain separate authorization.
+  - id: human-cli-entrypoint
+    source: definition/solution.md#human-cli-experience
+    question: Must human authoring instructions expose npm confirmation, exact CLI versions, package paths, and state paths, or may the CLI discover and resume the local project from one friendly command?
+    reason: The answer determines whether non-developers encounter automation and storage details before they can begin co-authoring.
+    priority: high
+    status: resolved
+    resolution: The primary human entry point is `npx @seedspec/cli author`. It uses the current stable release, permits npm's ordinary first-run confirmation, discovers one unambiguous local project, and resumes its current work. Exact versions, `--yes`, explicit paths, expected revisions, and JSON remain automation controls.

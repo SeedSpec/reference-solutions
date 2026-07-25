@@ -1,0 +1,12 @@
+authoring_state_version: "0.2"
+sources:
+  - id: shared-authoring-engine-decision
+    kind: decision-record
+    location: https://github.com/SeedSpec/seedspec/blob/main/docs/decisions/0013-shared-authoring-engine-and-frontend-contract.md
+    authority: package-author-confirmed
+    use: Primary source for the engine, CLI, web-frontend, parity, and delivery boundaries captured in this package.
+  - id: deep-authoring-session
+    kind: author-conversation
+    location: private-session
+    authority: package-author
+    use: Origin of the request to clarify the authoring product and keep CLI and web workflows in parity while testing real authorship.

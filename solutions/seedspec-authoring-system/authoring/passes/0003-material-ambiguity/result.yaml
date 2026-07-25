@@ -1,0 +1,38 @@
+authoring_result_version: "0.2"
+pass: 0003-material-ambiguity
+area: material-ambiguity
+protocol_version: "0.2"
+tool_version: 0.2.0
+package_digest_before: sha256:c6416725a00318dba671426e1d9a8695bea28598b8cba0579e104fb3f6a0601b
+package_digest_after: sha256:82dc4849ed3bb704cde9cc4d27f096a455f1898d05f6a0899486e255d75fcd35
+outcome: completed
+summary: Resolved the material ambiguity between an automation-shaped CLI requiring exact versions and paths and a human authoring front door that discovers and resumes local work.
+findings:
+  - id: human-cli-entrypoint-ambiguity
+    source: definition/solution.md#human-cli-experience
+    assessment: Human instructions could plausibly require the same exact versions, npm confirmation flags, and explicit paths as automation, or present one discoverable current-release command.
+    consequence: The first interpretation exposes implementation and reproducibility details to non-developers and makes ordinary authoring appear to require local tool installation or repository knowledge.
+    recommendation: Make `npx @seedspec/cli author` the primary human command and retain precise controls for automation.
+    status: resolved-by-author
+questions:
+  asked:
+    - human-cli-entrypoint
+  answered:
+    - human-cli-entrypoint
+  deferred: []
+changes:
+  applied:
+    - path: definition/solution.md
+      basis: author-answer
+      reason: Defined no-install, no-path project discovery and separated human defaults from automation controls.
+    - path: acceptance/criteria.md
+      basis: author-answer
+      reason: Added observable CLI discovery and human-readable status criteria.
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - seedspec validate solutions/seedspec-authoring-system/seedspec
+    - seedspec lint solutions/seedspec-authoring-system/seedspec
+    - seedspec digest solutions/seedspec-authoring-system/seedspec

@@ -1,0 +1,11 @@
+authoring_instruction_version: "0.2"
+pass: 0001-concern-separation
+area: concern-separation
+target: package
+protocol_version: "0.2"
+tool_version: 0.2.0
+package:
+  id: dev.seedspec.authoring-system
+  version: 0.1.0
+  kind: solution
+package_digest_before: sha256:9e53d580b40e0203f72830828df88bc347c3fe86800c671ac008d594c290a57e

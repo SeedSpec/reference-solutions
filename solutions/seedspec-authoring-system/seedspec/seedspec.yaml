@@ -1,0 +1,15 @@
+protocol_version: "0.2"
+id: dev.seedspec.authoring-system
+name: SeedSpec Authoring System
+version: 0.2.0
+kind: solution
+description: A shared headless engine, CLI, and web workbench for producing reviewable, portable SeedSpec packages from source intent.
+definition:
+  entrypoint: definition/solution.md
+configuration:
+  schema: configuration/schema.json
+  example: configuration/example.yaml
+provides:
+  capabilities: []
+components:
+  acceptance: acceptance/

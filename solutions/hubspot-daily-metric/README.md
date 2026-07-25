@@ -7,10 +7,10 @@
 - It has no committed realization yet.
 
 ```bash
-npx --yes @seedspec/cli@0.2.0 validate solutions/hubspot-daily-metric/seedspec
-npx --yes @seedspec/cli@0.2.0 lint solutions/hubspot-daily-metric/seedspec
-npx --yes @seedspec/cli@0.2.0 begin solutions/hubspot-daily-metric/seedspec
-npx --yes @seedspec/cli@0.2.0 prepare \
+npx --yes @seedspec/cli@0.2.2 validate solutions/hubspot-daily-metric/seedspec
+npx --yes @seedspec/cli@0.2.2 lint solutions/hubspot-daily-metric/seedspec
+npx --yes @seedspec/cli@0.2.2 begin solutions/hubspot-daily-metric/seedspec
+npx --yes @seedspec/cli@0.2.2 prepare \
   solutions/hubspot-daily-metric/seedspec \
   --state solutions/hubspot-daily-metric/authoring-v0.2
 ```
@@ -18,7 +18,7 @@ npx --yes @seedspec/cli@0.2.0 prepare \
 Resolve the HubSpot-native direction into a new project directory:
 
 ```bash
-npx --yes @seedspec/cli@0.2.0 resolve \
+npx --yes @seedspec/cli@0.2.2 resolve \
   solutions/hubspot-daily-metric/seedspec \
   -i hubspot-native \
   --configuration-selections project-inputs/configuration-selections/hubspot-daily-metric.yaml \

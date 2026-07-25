@@ -1,0 +1,11 @@
+authoring_state_version: "0.2"
+package:
+  path: ../seedspec
+  id: dev.seedspec.authoring-system
+  version: 0.2.0
+  kind: solution
+protocol_version: "0.2"
+target: package
+created_with: 0.2.0
+last_observed_digest: sha256:c6416725a00318dba671426e1d9a8695bea28598b8cba0579e104fb3f6a0601b
+workspace_id: 4a01cbde-0d72-4de7-912a-15023f0ce25d
