@@ -1,0 +1,26 @@
+authoring_result_version: "0.3"
+pass: 0001-seed
+area: seed
+protocol_version: "0.2"
+tool_version: 0.2.3
+package_digest_before: sha256:82dc4849ed3bb704cde9cc4d27f096a455f1898d05f6a0899486e255d75fcd35
+package_digest_after: sha256:82dc4849ed3bb704cde9cc4d27f096a455f1898d05f6a0899486e255d75fcd35
+outcome: in-progress
+disposition: pending
+summary: ""
+findings: []
+contradictions: []
+inventory: []
+suggestions: []
+tooling_feedback: []
+questions:
+  asked: []
+  answered: []
+  declined: []
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands: []

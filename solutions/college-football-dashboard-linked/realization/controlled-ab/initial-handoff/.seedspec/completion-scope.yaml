@@ -1,0 +1,18 @@
+protocol_version: "0.2"
+status: recorded
+items:
+  - kind: component
+    id: complete-acceptance
+    package: org.seedspec.examples.college-football-dashboard-linked
+    component: acceptance
+    selection: all
+    note: Implement and verify the complete author-provided acceptance component.
+    verification:
+      subject: realization
+      method: tool-check
+      timing: completion
+      evidence: required
+      guidance: Verify the production build, automated interaction/state checks,
+        accessibility-oriented markup checks, and responsive layout rules
+        against CFD-01 through CFD-26.
+uncovered_packages: []

@@ -1,0 +1,3 @@
+# SeedSpec project guidance
+
+Read `.seedspec/agent-guide.md` before planning or realizing SeedSpec work. Resolve declared implementation resources through the SeedSpec CLI, report every bundled fallback, and explicitly consult only relevant resolved skills or instructions. Packaged skills are not installed or automatically invoked. Preserve local behavior and terminology, record material deviations and external resource identifiers in `.seedspec/implementation-notes.md`, record detailed realization and outcome evidence in `.seedspec/verification-report.md`, and keep `.seedspec/verification-state.yaml` aligned with the exact completion scope and evidence subjects.

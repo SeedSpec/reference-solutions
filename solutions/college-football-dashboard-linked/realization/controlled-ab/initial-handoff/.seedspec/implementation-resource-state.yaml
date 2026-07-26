@@ -1,0 +1,11 @@
+protocol_version: "0.2"
+index_digest: sha256:0f01e5ec7ddb3b910f31ad7fc2dd8bc294849f4dedb943ae0b9f14342e14983c
+status: not-resolved
+resources:
+  - package: org.seedspec.examples.college-football-dashboard-linked
+    id: org.seedspec.guidance.context7-current-docs
+    kind: instructions
+    usage: available
+    entrypoint: context7.md
+    resolution_status: not-resolved
+    use_status: not-recorded

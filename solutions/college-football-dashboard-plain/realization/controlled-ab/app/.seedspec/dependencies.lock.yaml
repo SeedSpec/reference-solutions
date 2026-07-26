@@ -1,0 +1,18 @@
+protocol_version: "0.2"
+resolution_algorithm: declaration-review-v1
+root:
+  id: org.seedspec.examples.college-football-dashboard-plain
+  version: 0.2.0
+  kind: application
+  digest: sha256:8af5c142c4aff9d82d1db87a42fc565a8cf60531e9c41fff43f9134b25db4653
+additions: []
+capabilities:
+  - id: org.seedspec.examples.college-football-tracking
+    version: 1.0.0
+    provider:
+      id: org.seedspec.examples.college-football-dashboard-plain
+      version: 0.2.0
+      kind: application
+      digest: sha256:8af5c142c4aff9d82d1db87a42fc565a8cf60531e9c41fff43f9134b25db4653
+requirements: []
+reviews: []

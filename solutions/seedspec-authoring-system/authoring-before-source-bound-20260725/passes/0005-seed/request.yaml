@@ -1,0 +1,11 @@
+authoring_instruction_version: "0.3"
+pass: 0005-seed
+area: seed
+target: package
+protocol_version: "0.2"
+tool_version: 0.2.3
+package:
+  id: dev.seedspec.authoring-system
+  version: 0.2.0
+  kind: solution
+package_digest_before: sha256:82dc4849ed3bb704cde9cc4d27f096a455f1898d05f6a0899486e255d75fcd35

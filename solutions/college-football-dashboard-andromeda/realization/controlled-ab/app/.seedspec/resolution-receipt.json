@@ -1,0 +1,35 @@
+{
+  "receipt_version": "1",
+  "receipt_id": "sha256:e540c96487a096d2618442bc0b08861e926bd4d63e4ea5bf0a45bda471fdf6ee",
+  "subject": {
+    "operation": "resolve",
+    "protocol_release": {
+      "id": "0.2.2",
+      "digest": "sha256:76e0118984ab18d41039fcce97160d8fe436022f67fb99fcb35cdbec63c92eca"
+    },
+    "packages": {
+      "root": {
+        "id": "org.seedspec.examples.college-football-dashboard-andromeda",
+        "version": "0.2.0",
+        "digest": "sha256:0afa19bed37dddf706a274224675a7aaf84539605af4bc191693c17dfdf8efcb"
+      },
+      "additions": []
+    },
+    "inputs": {
+      "configuration_selections": "sha256:3247e229e6a1be5200b1b771cc9c457e1db2801cbb14f5a50b8fc439e64322a7",
+      "applied_intent": "sha256:7fe0b61fc6c1dd3713b392e5851f234a33dbfc8751c271da97272f38e4681803",
+      "completion_scope": "sha256:dd9f3aee3cea3d6a19d1ec758b8f6d6a5ec2a41f9b795d809115f5bbde1d994a",
+      "implementation_profiles": [
+        "andromeda-reference"
+      ]
+    },
+    "result": {
+      "status": "ready",
+      "output_digest": "sha256:2262028e170242911591c9fff594f5f23f1fb020d51050fc1768628476532ee6"
+    }
+  },
+  "producer": {
+    "name": "@seedspec/runtime",
+    "version": "0.2.2"
+  }
+}

@@ -1,0 +1,5 @@
+protocol_version: "0.2"
+packages:
+  - package: org.seedspec.examples.college-football-dashboard-andromeda
+    use: as-authored
+contributions: []

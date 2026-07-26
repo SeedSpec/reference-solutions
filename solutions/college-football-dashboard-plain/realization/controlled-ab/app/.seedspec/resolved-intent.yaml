@@ -1,0 +1,15 @@
+protocol_version: "0.2"
+status: affirmed
+packages:
+  - package: org.seedspec.examples.college-football-dashboard-plain
+    version: 0.2.0
+    digest: sha256:8af5c142c4aff9d82d1db87a42fc565a8cf60531e9c41fff43f9134b25db4653
+    entrypoint: definition/college-football-dashboard.md
+    provenance: package-author
+    format:
+      type: org.seedspec.intent.native
+    use: as-authored
+    note: The implementation request explicitly asks for the dashboard described by
+      the assigned SeedSpec and directs use of its example configuration.
+contributions: []
+unresolved: []

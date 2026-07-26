@@ -1,0 +1,19 @@
+protocol_version: "0.2"
+status: recorded
+items:
+  - kind: component
+    id: complete-acceptance
+    package: org.seedspec.examples.college-football-dashboard-plain
+    component: acceptance
+    selection: all
+    note: Implement and verify the complete acceptance component, CFD-01 through
+      CFD-26.
+    verification:
+      subject: realization
+      method: tool-check
+      timing: completion
+      evidence: required
+      guidance: Verify the production build and deterministic state-model tests, then
+        review the rendered interaction and responsive semantics against every
+        acceptance reference.
+uncovered_packages: []

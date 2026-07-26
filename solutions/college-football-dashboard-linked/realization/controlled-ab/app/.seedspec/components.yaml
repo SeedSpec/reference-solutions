@@ -1,0 +1,7 @@
+protocol_version: "0.2"
+components:
+  - package: org.seedspec.examples.college-football-dashboard-linked
+    name: acceptance
+    source_path: acceptance/
+    path: components/org.seedspec.examples.college-football-dashboard-linked/acceptance/
+    review: before-completion-claim

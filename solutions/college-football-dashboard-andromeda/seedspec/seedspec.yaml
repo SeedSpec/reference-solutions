@@ -1,0 +1,113 @@
+protocol_version: "0.2"
+id: org.seedspec.examples.college-football-dashboard-andromeda
+name: College Football Dashboard — Andromeda Guided
+version: "0.2.0"
+kind: application
+description: Track a configurable watchlist of college football teams through trustworthy scores, schedules, rankings, trends, and comparisons.
+
+metadata:
+  license: Apache-2.0
+
+definition:
+  entrypoint: definition/college-football-dashboard.md
+
+configuration:
+  schema: configuration/schema.json
+  example: configuration/example.yaml
+  guide: configuration/guide.md
+
+provides:
+  capabilities:
+    - id: org.seedspec.examples.college-football-tracking
+      version: 1.0.0
+      contract: capabilities/college-football-tracking.md
+
+implementation_profiles:
+  - id: independent-web
+    name: Independent web interface
+    description: Implement the dashboard in a suitable web stack and choose visual components after inspecting the target project.
+    prerequisites:
+      - id: web-interface-viable
+        statement: The target can deliver an interactive web interface with responsive layouts and accessible controls.
+        verification:
+          method: environment-inspection
+          evidence: optional
+          guidance: Inspect the existing project and preserve its framework, component conventions, and dependency policy when practical.
+    tradeoffs:
+      - Maximizes freedom to use an existing design system or create a project-specific visual language.
+      - Deliberately declines the bundled Andromeda realization guidance.
+    implementation_resources:
+      - org.seedspec.guidance.context7-current-docs
+  - id: andromeda-reference
+    name: AI Canvas Andromeda reference
+    description: Use the bundled public Andromeda v1 component subset and design rules as the preferred visual realization while preserving the dashboard's product semantics.
+    guidance: implementation/andromeda-profile.md
+    prerequisites:
+      - id: react-interface
+        statement: The target uses React or can faithfully adapt React reference source without replacing a user-selected application architecture.
+        verification:
+          method: environment-inspection
+          evidence: optional
+          guidance: Inspect the actual project before adding dependencies or copying source.
+      - id: component-dependencies-permitted
+        statement: The project permits the dependencies required by the selected Andromeda component subset.
+        verification:
+          method: tool-check
+          evidence: optional
+          guidance: Compare the component-set dependency inventory with the target package manifest and dependency policy.
+    blockers:
+      - id: incompatible-visual-policy
+        statement: A required existing brand or design system forbids a faithful Andromeda visual treatment.
+        verification:
+          method: document-review
+          evidence: optional
+          guidance: Prefer the user's governing visual system and treat Andromeda as declined reference material.
+    tradeoffs:
+      - Supplies a coherent, data-dense dashboard language and exact editable component source.
+      - Adds React, Tailwind, animation, charting, icon, and utility dependencies unless the target already supplies equivalents.
+      - Requires adaptation from the dark technical-console aesthetic when the user's brand or accessibility evidence calls for it.
+    implementation_resources:
+      - org.seedspec.guidance.context7-current-docs
+      - org.seedspec.guidance.andromeda-college-football-dashboard
+
+components:
+  acceptance: acceptance/
+  reference: reference/
+
+implementation_resources:
+  additional_guidance: none
+  resources:
+    - id: org.seedspec.guidance.context7-current-docs
+      kind: instructions
+      description: Optional guidance for consulting current, version-specific dependency documentation through Context7 when it is already available.
+      usage: available
+      entrypoint: context7.md
+      version: "0.1.0"
+      update_policy: exact
+      bundled:
+        path: guidance/context7/
+        version: "0.1.0"
+        digest: sha256:d8782b9cb6b78e4e791fffa81fd4e4035b0dab29e2f1886d6c5185c6464b3e38
+        compatibility: exact
+    - id: org.seedspec.guidance.andromeda-college-football-dashboard
+      kind: skill
+      description: Adapt the bundled Andromeda source subset into an accessible, responsive realization of the resolved college football dashboard.
+      usage: recommended
+      entrypoint: SKILL.md
+      version: "0.1.0"
+      update_policy: exact
+      bundled:
+        path: guidance/build-college-football-dashboard/
+        version: "0.1.0"
+        digest: sha256:ac2effe0f5e3113018bc30e7a0dd976f08cba063af84253aab9080ec48064b63
+        compatibility: exact
+
+extensions:
+  org.seedspec.examples.catalog:
+    audience: college-football-fans-and-analysts
+    demonstrates:
+      - controlled-implementation-comparison
+      - author-selected-reference-components
+      - overridable-implementation-profile
+      - package-scoped-skill
+      - optional-current-documentation-guidance

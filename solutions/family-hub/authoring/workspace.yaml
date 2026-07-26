@@ -1,0 +1,11 @@
+authoring_state_version: "0.2"
+workspace_id: bf6db83a-adbb-4f68-a0a7-08a05830cc30
+package:
+  path: ../seedspec
+  id: org.seedspec.examples.family-hub
+  version: 0.2.0
+  kind: application
+protocol_version: "0.2"
+target: shape
+created_with: 0.2.3
+last_observed_digest: sha256:caf8991a1e1a4f2a4dc4043e8f8947933f857d7a473e1cc26630b112706a88d2

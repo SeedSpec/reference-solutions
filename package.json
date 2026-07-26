@@ -10,8 +10,9 @@
   "scripts": {
     "test": "npm run test --workspaces --if-present",
     "check:names": "node ./scripts/check-clean-names.mjs",
+    "check:dashboard-parity": "node ./scripts/check-dashboard-parity.mjs",
     "validate:seeds": "node ./scripts/validate-seeds.mjs",
-    "check": "npm run check:names && npm test && npm run validate:seeds",
+    "check": "npm run check:names && npm run check:dashboard-parity && npm test && npm run validate:seeds",
     "start:allowance-tracker": "npm run start --workspace @seedspec/reference-allowance-tracker"
   },
   "engines": {

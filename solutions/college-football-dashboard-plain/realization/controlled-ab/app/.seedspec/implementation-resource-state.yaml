@@ -1,0 +1,17 @@
+protocol_version: "0.2"
+index_digest: sha256:14cd2a7c085dfc771a1ea327c1b85c685cb106b8c4e5c156dc60b19d7d56c400
+status: resolved
+resources:
+  - package: org.seedspec.examples.college-football-dashboard-plain
+    id: org.seedspec.guidance.context7-current-docs
+    kind: instructions
+    usage: available
+    entrypoint: context7.md
+    resolution_status: bundled
+    resolved_version: 0.1.0
+    digest: sha256:d8782b9cb6b78e4e791fffa81fd4e4035b0dab29e2f1886d6c5185c6464b3e38
+    path: implementation-resources/org.seedspec.examples.college-football-dashboard-plain/org.seedspec.guidance.context7-current-docs/resolved/
+    use_status: consulted
+    use_reason: Read the resolved bundled instructions. Context7 was not available
+      in the implementation environment; no changed dependency API required
+      current documentation.

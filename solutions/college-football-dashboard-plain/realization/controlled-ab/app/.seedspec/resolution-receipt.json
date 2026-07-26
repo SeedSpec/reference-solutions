@@ -1,0 +1,35 @@
+{
+  "receipt_version": "1",
+  "receipt_id": "sha256:4d1d32d23feedbb67557af10ee6bc72a62e10f05e78a972769b10d4e91172668",
+  "subject": {
+    "operation": "resolve",
+    "protocol_release": {
+      "id": "0.2.2",
+      "digest": "sha256:76e0118984ab18d41039fcce97160d8fe436022f67fb99fcb35cdbec63c92eca"
+    },
+    "packages": {
+      "root": {
+        "id": "org.seedspec.examples.college-football-dashboard-plain",
+        "version": "0.2.0",
+        "digest": "sha256:8af5c142c4aff9d82d1db87a42fc565a8cf60531e9c41fff43f9134b25db4653"
+      },
+      "additions": []
+    },
+    "inputs": {
+      "configuration_selections": "sha256:0b9fb3a7e3daa479688d137c440897b6ee68148c00c9c06afcf82378371e0f54",
+      "applied_intent": "sha256:c4871274630bde02dd755cd37c1d350c772d98e9f2c9b86c18322cf5894fa64f",
+      "completion_scope": "sha256:ba14b6042f4c0723e14a3d68987baceec9187dc36e869a633fa60b4503f1d842",
+      "implementation_profiles": [
+        "independent-web"
+      ]
+    },
+    "result": {
+      "status": "ready",
+      "output_digest": "sha256:54ff50d592634e54e86dae22836a97b6ac1eb5badee2a17f1c454b9f6c013af1"
+    }
+  },
+  "producer": {
+    "name": "@seedspec/runtime",
+    "version": "0.2.2"
+  }
+}

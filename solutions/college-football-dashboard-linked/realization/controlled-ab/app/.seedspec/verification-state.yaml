@@ -1,0 +1,33 @@
+protocol_version: "0.2"
+scope_digest: sha256:9dca10528834b6c6177b9ad12b5ee122f2ce8ec8a9243827eee2983df4694a59
+status: verified
+items:
+  - id: complete-acceptance
+    result: pass
+    evidence:
+      - subject: realization
+        reference: "npm test"
+        source: tool
+        description: Production Vinext build completed and all 10 automated acceptance-oriented checks covering CFD-01 through CFD-26 passed.
+        observed_at: "2026-07-25T04:40:24Z"
+      - subject: realization
+        reference: "npm run lint"
+        source: tool
+        description: ESLint completed with no errors or warnings.
+        observed_at: "2026-07-25T04:40:24Z"
+      - subject: realization
+        reference: "curl -fsS http://localhost:3000/ and curl -fsSI http://localhost:3000/og.png"
+        source: tool
+        description: The development server returned the Saturday Signal page with product content and an absolute Open Graph image URL; the 1536x1024 PNG returned HTTP 200.
+        observed_at: "2026-07-25T04:37:14Z"
+      - subject: realization
+        reference: "npx --yes @seedspec/cli@0.2.2 verify-lock app --package seedspec"
+        source: tool
+        description: SeedSpec verified the exact root package lock and its capability declaration.
+        observed_at: "2026-07-25T04:38:45Z"
+      - subject: realization
+        reference: "npm audit --omit=dev --json"
+        source: tool
+        description: Production dependency audit completed with zero reported vulnerabilities after non-breaking patch updates and transitive overrides.
+        observed_at: "2026-07-25T04:40:24Z"
+    note: The full recorded acceptance component is implemented with deterministic fixture data; no live provider, deployment, or browser screenshot run is claimed.

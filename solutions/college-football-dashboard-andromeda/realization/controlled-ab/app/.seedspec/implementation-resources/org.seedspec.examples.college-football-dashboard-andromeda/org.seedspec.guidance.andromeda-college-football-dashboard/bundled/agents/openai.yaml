@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build College Football Dashboard"
+  short_description: "Adapt the bundled Andromeda components into the dashboard."
+  default_prompt: "Use the bundled Andromeda reference set to implement the resolved college football dashboard faithfully."

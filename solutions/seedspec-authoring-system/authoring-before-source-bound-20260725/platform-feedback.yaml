@@ -1,0 +1,140 @@
+authoring_state_version: "0.2"
+# Reusable SeedSpec protocol, authoring-engine, and CLI gaps surfaced while
+# authoring this package. These are platform work items, not package-author
+# decisions and not blocking authoring questions. This file is authoring
+# workspace state and is never part of the distributable package.
+#
+# Decision 0013 anticipates this file's purpose: "Manual authorship sessions
+# become contract discovery." Entries marked observed-in-session were hit
+# directly while co-authoring, not inferred.
+feedback:
+  - id: pf-mechanical-operation-contract
+    raised_in: 0004-decision-provenance
+    layer: authoring-engine
+    related_finding: dp-mechanical-change-classification
+    observed_in_session: false
+    summary: >-
+      No engine contract declares which operations may be classified as
+      mechanical, or who holds that classification authority.
+    why: >-
+      Decision 0013 and this package both permit deterministic mechanical work
+      inside an already authorized engine operation, and both require every
+      agent-proposed change to be accepted. Neither defines the qualifying set
+      or the classifier, so the mechanical basis is an unguarded bypass around
+      the acceptance invariant.
+    provisional_default:
+      - Only a closed set of engine-declared operations may be mechanical.
+      - An agent may never classify its own proposed document edit as mechanical.
+      - An undeclared change fails closed to agent-proposed and requires author acceptance.
+      - >-
+        Mechanical document results must be visible, attributable, and
+        deterministic, while operation metadata such as timestamps or revision
+        identifiers may differ.
+    package_impact: >-
+      No package wording or acceptance criterion added. This package can
+      reference the engine contract and its conformance tests once they exist.
+      Drafted specification wording is preserved at
+      candidates/mechanical-change-classification-wording.md.
+    status: open
+  - id: pf-authoring-state-mutation-operations
+    raised_in: 0004-decision-provenance
+    layer: authoring-engine
+    observed_in_session: true
+    summary: >-
+      Recording findings, questions, and question dispositions still requires
+      hand-editing open-questions.yaml and pass result.yaml.
+    why: >-
+      Decision 0013 lists this as a known consequence and a prerequisite for web
+      parity. Confirmed directly: completing this pass required writing both
+      files by hand, so a web workbench cannot reach parity on this pass without
+      the corresponding engine operations.
+    package_impact: >-
+      None. The package already describes the durable operations; the engine has
+      not yet exposed them.
+    status: open
+  - id: pf-question-disposition-vocabulary
+    raised_in: 0004-decision-provenance
+    layer: authoring-engine
+    observed_in_session: true
+    summary: >-
+      A question has no disposition for "not a package-author decision, routed to
+      the platform," only open and resolved.
+    why: >-
+      Routing a question out of the package is a real and correct outcome. With
+      no vocabulary for it, the choice is to delete the record and lose the audit
+      trail, or mark it resolved and imply the author decided package intent.
+      Both misreport what happened.
+    package_impact: None. Authoring-state schema concern.
+    status: open
+  - id: pf-workspace-archive-format-contract
+    raised_in: 0004-decision-provenance
+    layer: authoring-engine
+    related_finding: dp-workspace-archive-format
+    observed_in_session: false
+    summary: >-
+      The required versioned authoring-workspace archive has no defined schema,
+      version stamp, or compatibility policy.
+    why: >-
+      Decision 0013 requires the archive to carry drafts, sources, questions,
+      answers, findings, proposals, approvals, pass history, and format metadata
+      between frontends, and this package's acceptance criterion 9 makes that
+      observable. Neither defines the format, so two frontends could satisfy the
+      prose and still fail to exchange a workspace.
+    provisional_default:
+      - >-
+        Engine-owned format for first-party frontend interchange, versioned for
+        compatibility across engine versions rather than across vendors.
+    package_impact: >-
+      None. The package correctly scopes the archive to CLI and web frontends;
+      the schema belongs to the engine contract.
+    status: open
+  - id: pf-result-schema-decision-provenance-fields
+    raised_in: 0004-decision-provenance
+    layer: authoring-engine
+    observed_in_session: true
+    summary: >-
+      The standardized pass result has no first-class fields for the decision
+      inventory the decision-provenance area requires.
+    why: >-
+      The area asks for per-decision domain, alternatives, evidence, materiality
+      and its basis, separated roles, latitude, and attribution confidence. The
+      result schema supplies only id, source, assessment, consequence,
+      recommendation, and status. This pass added the remaining fields as
+      unvalidated extra keys, which the CLI accepted but does not guarantee, so
+      no two authors will structure the inventory the same way.
+    package_impact: None. Authoring-result schema concern.
+    status: open
+  - id: pf-result-tool-version-pinning
+    raised_in: 0004-decision-provenance
+    layer: cli
+    observed_in_session: true
+    summary: >-
+      A pass result must record the tool version that opened the pass, not the
+      version that did the work.
+    why: >-
+      This pass was opened by CLI 0.2.2 and worked with 0.2.3. Writing
+      tool_version 0.2.3 failed with INVALID_AUTHORING_RESULT requiring 0.2.2, so
+      the durable record now attributes the work to a version that did not
+      perform it. Following the documented human entry point, which uses the
+      current stable release, reproduces this whenever a release lands mid-pass.
+    package_impact: >-
+      None, but it weakens provenance, which is the subject of this review area.
+      Consider separate request and result tool-version fields.
+    status: open
+  - id: pf-depth-vocabulary-version-binding
+    raised_in: 0004-decision-provenance
+    layer: protocol
+    related_finding: dp-depth-and-area-vocabulary
+    observed_in_session: false
+    summary: >-
+      A package restating the protocol depth vocabulary in its own configuration
+      schema has no way to bind that enum to a protocol version.
+    why: >-
+      AUTHORING_TARGETS is frozen in the protocol runtime as capture, shape,
+      harden, compose, and package. This package duplicates the enum in
+      configuration/schema.json with no version binding, so a protocol change
+      would silently diverge. Any package configuring authoring depth has the
+      same problem.
+    package_impact: >-
+      Low. Considered for pass 5 internal consistency, not changed here.
+    status: open

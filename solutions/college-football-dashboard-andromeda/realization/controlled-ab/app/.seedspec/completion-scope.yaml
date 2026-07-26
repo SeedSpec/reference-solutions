@@ -1,0 +1,18 @@
+protocol_version: "0.2"
+status: recorded
+items:
+  - kind: component
+    id: complete-dashboard-acceptance
+    package: org.seedspec.examples.college-football-dashboard-andromeda
+    component: acceptance
+    selection: all
+    note: Implement and verify the complete authored dashboard acceptance component.
+    verification:
+      subject: realization
+      method: manual-observation
+      timing: completion
+      evidence: required
+      guidance: Verify every CFD criterion with automated checks, production build
+        evidence, and focused manual inspection of interaction, state,
+        accessibility, and responsive behavior.
+uncovered_packages: []

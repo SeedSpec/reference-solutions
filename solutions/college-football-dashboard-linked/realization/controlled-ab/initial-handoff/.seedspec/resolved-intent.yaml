@@ -1,0 +1,29 @@
+protocol_version: "0.2"
+status: affirmed
+packages:
+  - package: org.seedspec.examples.college-football-dashboard-linked
+    version: 0.2.0
+    digest: sha256:21e569cb2b568c1112b6f0bf0292bff65389633c07eb93989fba083d79d377af
+    entrypoint: definition/college-football-dashboard.md
+    provenance: package-author
+    format:
+      type: org.seedspec.intent.native
+    use: as-authored
+contributions:
+  - id: deterministic-fixtures
+    category: constraint
+    statement: Use clearly labeled deterministic fixture data and never imply that
+      it is live.
+    source: end-user
+    status: affirmed
+  - id: no-external-data-services
+    category: constraint
+    statement: Do not use credentials, paid services, or external data APIs.
+    source: end-user
+    status: affirmed
+  - id: no-deployment
+    category: constraint
+    statement: Build and verify the application locally, but do not deploy it.
+    source: end-user
+    status: affirmed
+unresolved: []

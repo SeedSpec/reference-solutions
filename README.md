@@ -23,6 +23,12 @@ solutions/
 │   └── seedspec/       configurable household application package
 ├── operations-dashboard-starter/
 │   └── seedspec/       reusable internal application package
+├── college-football-dashboard-plain/
+│   └── seedspec/       dashboard intent without bundled UI source
+├── college-football-dashboard-andromeda/
+│   └── seedspec/       same intent with Andromeda source and guidance
+├── college-football-dashboard-linked/
+│   └── seedspec/       same intent with only an external Andromeda reference
 ├── customer-onboarding-orchestrator/
 │   └── seedspec/       profiled cross-system workflow package
 ├── allowance-tracker/
@@ -95,9 +101,15 @@ npx --yes @seedspec/cli@0.2.2 validate solutions/chore-streaks/seedspec
 npx --yes @seedspec/cli@0.2.2 validate solutions/hubspot-daily-metric/seedspec
 npx --yes @seedspec/cli@0.2.2 validate solutions/family-hub/seedspec
 npx --yes @seedspec/cli@0.2.2 validate solutions/operations-dashboard-starter/seedspec
+npx --yes @seedspec/cli@0.2.2 validate solutions/college-football-dashboard-plain/seedspec
+npx --yes @seedspec/cli@0.2.2 validate solutions/college-football-dashboard-andromeda/seedspec
+npx --yes @seedspec/cli@0.2.2 validate solutions/college-football-dashboard-linked/seedspec
 npx --yes @seedspec/cli@0.2.2 validate solutions/customer-onboarding-orchestrator/seedspec
 npx --yes @seedspec/cli@0.2.2 validate solutions/seedspec-authoring-system/seedspec
 ```
+
+See [the college-football dashboard comparison](docs/college-football-dashboard-comparison.md)
+for the controlled prompting experiment and the Context7 packaging example.
 
 Cross-solution project inputs live under `project-inputs/`. For example:
 

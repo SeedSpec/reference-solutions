@@ -1,0 +1,28 @@
+protocol_version: "0.2"
+scope_digest: sha256:04661e12a6b97337bef4da10f68525df1084e350d10c4164ae2c7f38d64028a7
+status: verified
+items:
+  - id: complete-dashboard-acceptance
+    result: pass
+    evidence:
+      - subject: realization
+        reference: npm run build
+        source: tool
+        description: Production vinext build completed successfully.
+        observed_at: "2026-07-24T20:35:00-05:00"
+      - subject: realization
+        reference: node --test tests/*.test.mjs
+        source: tool
+        description: Nine automated tests passed for rendered first view, watchlist cardinality, state coverage, season isolation, responsive rules, ranking states, and final-score protection.
+        observed_at: "2026-07-24T20:35:00-05:00"
+      - subject: realization
+        reference: npm run lint
+        source: tool
+        description: Application-authored source and tests passed ESLint; preserved untyped Andromeda reference source is intentionally excluded.
+        observed_at: "2026-07-24T20:35:00-05:00"
+      - subject: realization
+        reference: .seedspec/verification-report.md
+        source: implementing-agent
+        description: Criterion-by-criterion review records the complete CFD-01 through CFD-26 coverage and focused manual source inspection.
+        observed_at: "2026-07-24T20:35:00-05:00"
+    note: Complete authored acceptance is implemented with clearly labeled deterministic fixture data; no live-provider or deployment claim is made.
