@@ -1,0 +1,31 @@
+protocol_version: "0.2"
+status: ready
+configuration_status: selected
+intent_status: affirmed
+completion_scope_status: recorded
+declaration_status: no-declared-concerns
+artifact_status: recorded
+implementation_profile_status: recorded
+root:
+  id: org.seedspec.examples.college-football-dashboard-linked
+  version: 0.2.0
+  digest: sha256:21e569cb2b568c1112b6f0bf0292bff65389633c07eb93989fba083d79d377af
+additions: []
+configuration: resolved-config.yaml
+resolved_intent: resolved-intent.yaml
+task_index: tasks.yaml
+component_index: components.yaml
+artifact_index: artifacts.yaml
+implementation_resource_index: implementation-resources.yaml
+implementation_resource_state: implementation-resource-state.yaml
+implementation_profile_state: implementation-profile-state.yaml
+lockfile: dependencies.lock.yaml
+resolved_spec: resolved-spec.md
+agent_guide: agent-guide.md
+implementation_notes: implementation-notes.md
+verification_report: verification-report.md
+completion_scope: completion-scope.yaml
+verification_state: verification-state.yaml
+resolution_receipt: resolution-receipt.json
+resolved_decisions: []
+unresolved_decisions: []

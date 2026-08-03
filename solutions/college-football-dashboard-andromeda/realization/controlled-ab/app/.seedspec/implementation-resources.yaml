@@ -1,0 +1,36 @@
+protocol_version: "0.2"
+policies:
+  - package: org.seedspec.examples.college-football-dashboard-andromeda
+    additional_guidance: none
+    catalogs: []
+resources:
+  - package: org.seedspec.examples.college-football-dashboard-andromeda
+    id: org.seedspec.guidance.context7-current-docs
+    kind: instructions
+    description: Optional guidance for consulting current, version-specific
+      dependency documentation through Context7 when it is already available.
+    usage: available
+    entrypoint: context7.md
+    version: 0.1.0
+    update_policy: exact
+    bundled:
+      path: implementation-resources/org.seedspec.examples.college-football-dashboard-andromeda/org.seedspec.guidance.context7-current-docs/bundled/
+      source_path: guidance/context7/
+      version: 0.1.0
+      digest: sha256:d8782b9cb6b78e4e791fffa81fd4e4035b0dab29e2f1886d6c5185c6464b3e38
+      compatibility: exact
+  - package: org.seedspec.examples.college-football-dashboard-andromeda
+    id: org.seedspec.guidance.andromeda-college-football-dashboard
+    kind: skill
+    description: Adapt the bundled Andromeda source subset into an accessible,
+      responsive realization of the resolved college football dashboard.
+    usage: recommended
+    entrypoint: SKILL.md
+    version: 0.1.0
+    update_policy: exact
+    bundled:
+      path: implementation-resources/org.seedspec.examples.college-football-dashboard-andromeda/org.seedspec.guidance.andromeda-college-football-dashboard/bundled/
+      source_path: guidance/build-college-football-dashboard/
+      version: 0.1.0
+      digest: sha256:ac2effe0f5e3113018bc30e7a0dd976f08cba063af84253aab9080ec48064b63
+      compatibility: exact

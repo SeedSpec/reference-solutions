@@ -1,6 +1,6 @@
 {
   "name": "@seedspec/reference-solutions",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "description": "Independent reference packages and realized solutions for the SeedSpec Protocol",
   "type": "module",
@@ -10,8 +10,9 @@
   "scripts": {
     "test": "npm run test --workspaces --if-present",
     "check:names": "node ./scripts/check-clean-names.mjs",
+    "check:dashboard-parity": "node ./scripts/check-dashboard-parity.mjs",
     "validate:seeds": "node ./scripts/validate-seeds.mjs",
-    "check": "npm run check:names && npm test && npm run validate:seeds",
+    "check": "npm run check:names && npm run check:dashboard-parity && npm test && npm run validate:seeds",
     "start:allowance-tracker": "npm run start --workspace @seedspec/reference-allowance-tracker"
   },
   "engines": {

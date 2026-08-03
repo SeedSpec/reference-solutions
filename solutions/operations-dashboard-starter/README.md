@@ -10,7 +10,7 @@ may adapt the interaction and technical architecture to its environment. It has
 no committed realization yet.
 
 ```bash
-npx --yes @seedspec/cli@0.2.0 validate solutions/operations-dashboard-starter/seedspec
-npx --yes @seedspec/cli@0.2.0 lint solutions/operations-dashboard-starter/seedspec
-npx --yes @seedspec/cli@0.2.0 begin solutions/operations-dashboard-starter/seedspec
+npx @seedspec/cli validate solutions/operations-dashboard-starter/seedspec
+npx @seedspec/cli lint solutions/operations-dashboard-starter/seedspec
+npx @seedspec/cli begin solutions/operations-dashboard-starter/seedspec
 ```

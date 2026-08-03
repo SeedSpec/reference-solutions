@@ -1,11 +1,21 @@
-protocol_version: "0.2"
+protocol_version: "0.3"
 id: org.seedspec.examples.hubspot-daily-metric
 name: HubSpot Daily Metric
-version: "0.2.0"
+version: "0.3.0"
 kind: workflow
 description: Configure a HubSpot metric and dashboard, then deliver its previous-day average to Slack on a schedule.
 definition:
-  entrypoint: definition/solution.md
+  module: primary-intent
+
+context:
+  modules:
+    - id: primary-intent
+      format: org.seedspec.intent.markdown
+      description: The package author's primary intent.
+      entrypoint: solution.md
+      source:
+        kind: package
+        path: definition/solution.md
 configuration:
   schema: configuration/schema.json
   example: configuration/example.yaml

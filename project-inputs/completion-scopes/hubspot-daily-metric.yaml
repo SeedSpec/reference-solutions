@@ -1,7 +1,13 @@
-protocol_version: "0.2"
+protocol_version: "0.3"
 items:
   - kind: component
     id: hubspot-daily-metric-acceptance
     package: org.seedspec.examples.hubspot-daily-metric
     component: acceptance
     selection: all
+    verification:
+      subject: realization
+      method: tool-check
+      timing: completion
+      evidence: required
+      guidance: Verify the selected acceptance material against the realized solution and attach the results.

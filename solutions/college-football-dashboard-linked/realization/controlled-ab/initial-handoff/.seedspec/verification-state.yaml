@@ -1,0 +1,7 @@
+protocol_version: "0.2"
+scope_digest: sha256:9dca10528834b6c6177b9ad12b5ee122f2ce8ec8a9243827eee2983df4694a59
+status: not-started
+items:
+  - id: complete-acceptance
+    result: not-run
+    evidence: []

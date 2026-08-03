@@ -10,9 +10,11 @@ Never copy `authoring/` or `realization/` into `seedspec/` or bundle them with
 the distributable package. Keep cross-solution resolution choices under
 `project-inputs/`.
 
-User- and agent-facing commands must invoke the exact npm CLI package with
-`npx --yes @seedspec/cli@0.2.0`; do not rely on a sibling protocol
-checkout, a globally installed `seedspec`, or an unspecified CLI version.
+Human-facing instructions should use the friendly current-release form
+`npx @seedspec/cli ...` without `--yes` or an exact version. Reproducible tests,
+automation, and recorded evidence must invoke the exact npm CLI package with
+`npx --yes @seedspec/cli@<version>`; do not rely on a sibling protocol checkout
+or globally installed `seedspec`.
 
 Run `npm run check` from the repository root before committing changes.
 Reference solutions consume the protocol but do not define it. Protocol

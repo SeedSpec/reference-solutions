@@ -1,0 +1,29 @@
+protocol_version: "0.2"
+scope: project
+status: recorded
+packages:
+  - package: org.seedspec.examples.college-football-dashboard-plain
+    kind: application
+    selection: preferred
+    preferred_profile: independent-web
+    profiles:
+      - id: independent-web
+        name: Independent web interface
+        description: Implement the dashboard in a suitable web stack and choose visual
+          components after inspecting the target project.
+        prerequisites:
+          - id: web-interface-viable
+            statement: The target can deliver an interactive web interface with responsive
+              layouts and accessible controls.
+            verification:
+              method: environment-inspection
+              evidence: optional
+              guidance: Inspect the existing project and preserve its framework, component
+                conventions, and dependency policy when practical.
+        blockers: []
+        tradeoffs:
+          - Maximizes freedom to use an existing design system or create a
+            project-specific visual language.
+          - Provides no bundled component source or visual composition rules.
+        implementation_resources:
+          - org.seedspec.guidance.context7-current-docs

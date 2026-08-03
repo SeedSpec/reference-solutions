@@ -1,0 +1,11 @@
+authoring_instruction_version: "0.2"
+pass: 0003-material-ambiguity
+area: material-ambiguity
+target: package
+protocol_version: "0.2"
+tool_version: 0.2.0
+package:
+  id: dev.seedspec.authoring-system
+  version: 0.2.0
+  kind: solution
+package_digest_before: sha256:c6416725a00318dba671426e1d9a8695bea28598b8cba0579e104fb3f6a0601b

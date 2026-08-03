@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Seedspec Authoring System configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "initial_target_depth": {
+      "type": "string",
+      "enum": [
+        "capture",
+        "shape",
+        "harden",
+        "compose",
+        "package"
+      ],
+      "description": "The initial authoring depth selected for a new workspace. The author may change it deliberately later."
+    }
+  },
+  "required": [
+    "initial_target_depth"
+  ]
+}

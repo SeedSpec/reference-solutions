@@ -1,0 +1,71 @@
+protocol_version: "0.2"
+scope: project
+status: recorded
+packages:
+  - package: org.seedspec.examples.college-football-dashboard-andromeda
+    kind: application
+    selection: preferred
+    preferred_profile: andromeda-reference
+    profiles:
+      - id: independent-web
+        name: Independent web interface
+        description: Implement the dashboard in a suitable web stack and choose visual
+          components after inspecting the target project.
+        prerequisites:
+          - id: web-interface-viable
+            statement: The target can deliver an interactive web interface with responsive
+              layouts and accessible controls.
+            verification:
+              method: environment-inspection
+              evidence: optional
+              guidance: Inspect the existing project and preserve its framework, component
+                conventions, and dependency policy when practical.
+        blockers: []
+        tradeoffs:
+          - Maximizes freedom to use an existing design system or create a
+            project-specific visual language.
+          - Deliberately declines the bundled Andromeda realization guidance.
+        implementation_resources:
+          - org.seedspec.guidance.context7-current-docs
+      - id: andromeda-reference
+        name: AI Canvas Andromeda reference
+        description: Use the bundled public Andromeda v1 component subset and design
+          rules as the preferred visual realization while preserving the
+          dashboard's product semantics.
+        prerequisites:
+          - id: react-interface
+            statement: The target uses React or can faithfully adapt React reference source
+              without replacing a user-selected application architecture.
+            verification:
+              method: environment-inspection
+              evidence: optional
+              guidance: Inspect the actual project before adding dependencies or copying
+                source.
+          - id: component-dependencies-permitted
+            statement: The project permits the dependencies required by the selected
+              Andromeda component subset.
+            verification:
+              method: tool-check
+              evidence: optional
+              guidance: Compare the component-set dependency inventory with the target package
+                manifest and dependency policy.
+        blockers:
+          - id: incompatible-visual-policy
+            statement: A required existing brand or design system forbids a faithful
+              Andromeda visual treatment.
+            verification:
+              method: document-review
+              evidence: optional
+              guidance: Prefer the user's governing visual system and treat Andromeda as
+                declined reference material.
+        tradeoffs:
+          - Supplies a coherent, data-dense dashboard language and exact
+            editable component source.
+          - Adds React, Tailwind, animation, charting, icon, and utility
+            dependencies unless the target already supplies equivalents.
+          - Requires adaptation from the dark technical-console aesthetic when
+            the user's brand or accessibility evidence calls for it.
+        implementation_resources:
+          - org.seedspec.guidance.context7-current-docs
+          - org.seedspec.guidance.andromeda-college-football-dashboard
+        guidance: implementation-profiles/org.seedspec.examples.college-football-dashboard-andromeda/andromeda-reference/andromeda-profile.md

@@ -1,0 +1,7 @@
+protocol_version: "0.3"
+packages:
+  - package: org.seedspec.examples.allowance-tracker
+    use: as-authored
+  - package: org.seedspec.chore-streaks
+    use: as-authored
+contributions: []

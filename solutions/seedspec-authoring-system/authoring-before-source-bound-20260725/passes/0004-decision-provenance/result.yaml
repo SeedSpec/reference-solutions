@@ -1,0 +1,634 @@
+authoring_result_version: "0.2"
+pass: 0004-decision-provenance
+area: decision-provenance
+protocol_version: "0.2"
+tool_version: 0.2.2
+package_digest_before: sha256:82dc4849ed3bb704cde9cc4d27f096a455f1898d05f6a0899486e255d75fcd35
+package_digest_after: sha256:82dc4849ed3bb704cde9cc4d27f096a455f1898d05f6a0899486e255d75fcd35
+outcome: completed
+summary: >-
+  Inventoried sixteen consequential decisions the package exposes. Six are fixed
+  by author declaration, four are deliberately delegated, and one is constrained
+  by the protocol rather than by this package. Five began the pass ambient. Four
+  of those five resolved against the primary sources — decision record 0013 and
+  ADR 0005 — which place workspace-revision conflict granularity, the archive's
+  first-party interchange scope, operator-choice ownership, and hosted identity
+  outside this package's authority, and establish that a configuration example is
+  never a default. The fifth, the mechanical-change classification boundary, is a
+  missing authoring-engine contract rather than missing package intent; the author
+  routed it to platform feedback with a provisional default and declined a package
+  change until the engine contract exists. No package document changed, so the
+  digest is unchanged and no acceptance criteria were added or renumbered. Seven
+  reusable protocol, engine, and CLI gaps were routed to platform-feedback.yaml,
+  four of them observed directly while doing this pass. This is the authored
+  decision surface, not evidence about decisions any implementation actually made.
+findings:
+  - id: dp-explicit-change-acceptance
+    domain: authority
+    source: definition/solution.md#change-control-and-concurrency
+    assessment: >-
+      Every agent-proposed document change requires explicit author acceptance,
+      and every package mutation is attributable to an author answer, supplied
+      source, mechanical operation, or agent proposal.
+    alternatives:
+      - Acceptance required only for changes classified as material.
+      - Post-hoc review of automatically applied agent changes.
+      - Silence or continued conversation treated as acceptance.
+    evidence:
+      - definition/solution.md#change-control-and-concurrency
+      - definition/solution.md#decision-latitude
+      - acceptance/criteria.md#4
+      - acceptance/criteria.md#5
+      - open-questions.yaml#agent-change-approval-granularity
+      - decision-0013#durable-truth-and-mutation-rules
+    materiality: critical
+    materiality_basis: author-declaration
+    materiality_reason: >-
+      The author was asked directly and declared it fixed. Decision 0013 states
+      the same rule at the platform layer, so package and platform agree.
+    roles:
+      proposed_by: authoring-agent
+      selected_by: package-author
+      constrained_by: package-author-intent
+      implemented_by: implementing-agent
+    latitude: fixed
+    attribution_confidence: high
+    consequence: >-
+      Determines whether agent inference can reach the distributable package
+      without a durable acceptance record.
+    recommendation: No change. Attribution is explicit and traceable.
+    status: recorded
+  - id: dp-mechanical-change-classification
+    domain: authority
+    source: definition/solution.md#change-control-and-concurrency
+    assessment: >-
+      The package establishes a four-value attribution basis and permits a
+      deterministic mechanical change to apply inside an already authorized
+      engine operation, but neither the package nor decision 0013 states which
+      mutations qualify as mechanical or who holds that classification authority.
+    alternatives:
+      - Only the engine may emit a mechanical change, from a closed documented set.
+      - The engine classifies each mutation at runtime by a determinism test.
+      - The proposing agent declares the basis and the engine re-derives and verifies it.
+      - Classification is left to the implementing agent.
+    evidence:
+      - definition/solution.md#change-control-and-concurrency
+      - acceptance/criteria.md#5
+      - open-questions.yaml#agent-change-approval-granularity
+      - open-questions.yaml#mechanical-change-classification-authority
+      - decision-0013#durable-truth-and-mutation-rules
+    materiality: critical
+    materiality_basis: mixed
+    materiality_reason: >-
+      Evaluator judgment identified it as the only path around
+      dp-explicit-change-acceptance. The author then confirmed the invariant but
+      placed its definition at the platform layer, so the classification is
+      author-confirmed and platform-owned rather than package-author-selected.
+    roles:
+      proposed_by: authoring-agent
+      selected_by: seedspec-platform
+      constrained_by: seedspec-authoring-engine-contract
+      implemented_by: implementing-agent
+    latitude: fixed
+    provisional_default:
+      - Only a closed set of engine-declared operations may be mechanical.
+      - An agent may never classify its own proposed document edit as mechanical.
+      - An undeclared change fails closed to agent-proposed and requires author acceptance.
+      - >-
+        Mechanical document results must be visible, attributable, and
+        deterministic, while operation metadata such as timestamps or revision
+        identifiers may differ.
+    platform_feedback: pf-mechanical-operation-contract
+    attribution_confidence: high
+    consequence: >-
+      Without the engine contract, an implementing agent could satisfy the literal
+      text while defeating the acceptance invariant by labelling its own edits
+      mechanical. The provisional default closes that gap for the rest of this
+      review without asserting package intent the engine has not yet defined.
+    recommendation: >-
+      Do not change the package yet, and do not enumerate the engine's individual
+      mechanical operations here. Define the engine contract and its conformance
+      tests first, then reference that contract. Drafted wording is held at
+      candidates/mechanical-change-classification-wording.md.
+    status: routed-to-platform
+  - id: dp-revision-conflict-granularity
+    domain: concurrency
+    source: definition/solution.md#change-control-and-concurrency
+    assessment: >-
+      The unit at which a stale mutation is detected is the workspace. Decision
+      0013 states that mutations require an expected workspace revision and fail
+      on concurrent modification, which resolves the package's otherwise silent
+      wording.
+    alternatives:
+      - A single whole-workspace revision, so any concurrent mutation conflicts.
+      - Per-document or per-record revisions, so only overlapping edits conflict.
+      - Digest-only comparison of package bytes.
+    evidence:
+      - definition/solution.md#change-control-and-concurrency
+      - acceptance/criteria.md#6
+      - acceptance/criteria.md#7
+      - decision-0013#durable-truth-and-mutation-rules
+    materiality: material
+    materiality_basis: mixed
+    materiality_reason: >-
+      Evaluator judgment raised it because it changes what criterion 6 observes.
+      The primary source settles it at the platform layer, so it is not a
+      package-author decision.
+    roles:
+      proposed_by: seedspec-platform
+      selected_by: seedspec-platform
+      constrained_by: seedspec-authoring-engine-contract
+      implemented_by: implementing-agent
+    latitude: fixed
+    attribution_confidence: high
+    consequence: >-
+      Concurrent edits to unrelated documents do conflict. Finer granularity is
+      permissible only as an optimization that never silently overwrites newer
+      work. Real-time multi-user editing is a stated non-goal, so the coarse unit
+      costs little.
+    recommendation: >-
+      No package change. Constrained implementation mechanics, delegated to the
+      implementing agent under the no-silent-overwrite invariant.
+    status: resolved-by-source
+  - id: dp-workspace-archive-format
+    domain: portability
+    source: definition/solution.md#portability-and-privacy-boundary
+    assessment: >-
+      The archive carries drafts, sources, questions, answers, findings,
+      proposals, approvals, pass history, and format metadata between the CLI and
+      web frontends. Decision 0013 states the same contents and the same
+      between-frontends scope, so the obligation is first-party interchange rather
+      than a cross-vendor public format. The format's schema and compatibility
+      policy remain undefined at the platform layer.
+    alternatives:
+      - An engine-owned normative format any conforming implementation can read and write.
+      - A first-party interchange contract between this CLI and this web workbench only.
+      - A SeedSpec protocol artifact this package merely requires conformance to.
+    evidence:
+      - definition/solution.md#portability-and-privacy-boundary
+      - acceptance/criteria.md#9
+      - open-questions.yaml#cross-frontend-workspace-resumption
+      - decision-0013#consequences
+    materiality: critical
+    materiality_basis: mixed
+    materiality_reason: >-
+      The author declared the archive and its contents fixed. Evaluator judgment
+      separated format ownership, which the primary source assigns to the engine.
+    roles:
+      proposed_by: package-author
+      selected_by: seedspec-platform
+      constrained_by: seedspec-authoring-engine-contract
+      implemented_by: implementing-agent
+    latitude: fixed
+    platform_feedback: pf-workspace-archive-format-contract
+    attribution_confidence: high
+    consequence: >-
+      Acceptance criterion 9 is a first-party obligation between this CLI and this
+      web workbench. The package correctly declines to define the schema; until
+      the engine does, two frontends could satisfy the prose and still fail to
+      exchange a workspace.
+    recommendation: >-
+      No package change. The wording already scopes the archive to CLI and web.
+    status: resolved-by-source
+  - id: dp-operator-choice-configuration-surface
+    domain: configuration
+    source: definition/solution.md#decision-latitude
+    assessment: >-
+      Four of the five declared operator-selectable choices have no expression in
+      the configuration schema, which exposes only initial_target_depth and sets
+      additionalProperties to false. Decision 0013 assigns each of the four
+      elsewhere: the authoring agent and model provider to the replaceable agent
+      host, storage location to storage adapters, and collaboration, retention,
+      and organization-specific gates to frontend-owned organization policy. They
+      are deployment-time and frontend concerns, not package configuration.
+    alternatives:
+      - Represent the operator choices in the configuration schema.
+      - Declare them deployment concerns intentionally outside package configuration.
+      - Widen the schema so a realization may add its own operator properties.
+    evidence:
+      - definition/solution.md#decision-latitude
+      - configuration/schema.json
+      - decision-0013#product-boundary
+      - decision-0013#non-goals
+    materiality: material
+    materiality_basis: mixed
+    materiality_reason: >-
+      Evaluator judgment raised the gap between declared latitude and the closed
+      configuration surface. The primary source resolves ownership, reducing it
+      from an ambient decision to an unstated but attributable one.
+    roles:
+      proposed_by: package-author
+      selected_by: end-user-applied-intent
+      constrained_by: seedspec-authoring-engine-contract
+      implemented_by: implementing-agent
+    latitude: delegated
+    attribution_confidence: high
+    consequence: >-
+      Only authoring depth is package configuration. The remaining operator
+      choices are selected at deployment or in the frontend, so the closed schema
+      is correct rather than incomplete. The definition does not say where they
+      are selected, which a reader must infer from decision 0013.
+    recommendation: >-
+      No change here. Pass 5 may consider one clause naming these as
+      deployment-time and frontend concerns, since the omission is a readability
+      gap rather than a missing decision.
+    status: resolved-by-source
+  - id: dp-hosted-identity-and-tenancy
+    domain: privacy
+    source: definition/solution.md#participants-and-authority
+    assessment: >-
+      Account, tenancy, and authorization models for the hosted surface are
+      frontend-owned and organization-owned, not package concerns. Decision 0013
+      assigns collaboration and organization policy to the frontend, requires
+      opaque workspace and document identifiers for hosted operations, and makes
+      it a non-goal for a hosted account to be necessary to author or consume a
+      package.
+    alternatives:
+      - Bound the hosted identity model in the package.
+      - Declare it an operating-organization concern outside package scope.
+      - Leave it to the implementing agent as frontend latitude.
+    evidence:
+      - definition/solution.md#participants-and-authority
+      - definition/solution.md#portability-and-privacy-boundary
+      - acceptance/criteria.md#13
+      - acceptance/criteria.md#14
+      - decision-0013#product-boundary
+      - decision-0013#non-goals
+    materiality: material
+    materiality_basis: mixed
+    materiality_reason: >-
+      Evaluator judgment raised the silence beside explicit rules for adjacent
+      concerns. The primary source shows the silence is deliberate scope, not an
+      omission.
+    roles:
+      proposed_by: package-author
+      selected_by: end-user-applied-intent
+      constrained_by: environment
+      implemented_by: implementing-agent
+    latitude: delegated
+    attribution_confidence: high
+    consequence: >-
+      Residual gap for pass 5: decision 0013 makes a hosted account unnecessary
+      to author as well as to consume, while the package states the guarantee only
+      for consuming and covers authoring indirectly through the CLI being
+      sufficient for local work. The package guarantee is narrower than its source.
+    recommendation: >-
+      No change here. Carry the narrower-than-source guarantee into pass 5.
+    status: resolved-by-source
+  - id: dp-agent-session-consent-scope
+    domain: privacy
+    source: definition/solution.md#portability-and-privacy-boundary
+    assessment: >-
+      Starting an agent-assisted session authorizes model calls until the author
+      pauses or stops it, with the active agent and model context visible. The
+      Decision latitude section does not list this among the fixed decisions.
+    alternatives:
+      - Per-step author confirmation of each model call.
+      - Session-scoped consent with a separate confirmation for consequential actions.
+      - Consent scope selected by the operating organization.
+    evidence:
+      - definition/solution.md#portability-and-privacy-boundary
+      - open-questions.yaml#agent-session-model-consent
+      - decision-0013#durable-truth-and-mutation-rules
+    materiality: critical
+    materiality_basis: author-declaration
+    materiality_reason: >-
+      The author was asked directly and chose session-scoped consent because it
+      changes privacy, cost visibility, and the shared interaction contract.
+      Decision 0013 states the same rule normatively at the platform layer.
+    roles:
+      proposed_by: authoring-agent
+      selected_by: package-author
+      constrained_by: seedspec-authoring-engine-contract
+      implemented_by: implementing-agent
+    latitude: fixed
+    attribution_confidence: high
+    consequence: >-
+      An implementing agent reading the Decision latitude section as the
+      exhaustive list of fixed decisions could treat consent granularity as
+      delegated and reintroduce per-call confirmation, contradicting both the
+      author's choice and the platform decision.
+    recommendation: >-
+      Pass 5 should check the obligations against the Decision latitude summary
+      rather than adding an entry here.
+    status: recorded
+  - id: dp-artifact-level-parity
+    domain: portability
+    source: definition/solution.md#purpose
+    assessment: >-
+      Parity binds durable authoring artifacts and engine semantics, not the
+      capability set. A web-only decision-support capability is allowed if it
+      submits its durable results through the shared engine.
+    alternatives:
+      - Full capability parity between frontends.
+      - Parity only on exported package output.
+      - No parity obligation.
+    evidence:
+      - definition/solution.md#purpose
+      - definition/solution.md#decision-latitude
+      - acceptance/criteria.md#10
+      - decision-0013#one-engine-multiple-frontends
+      - decision-0013#human-cli-ergonomics
+    materiality: critical
+    materiality_basis: author-declaration
+    materiality_reason: >-
+      Declared fixed, restated as an acceptance criterion, and matched by the
+      primary source's four-part parity definition.
+    roles:
+      proposed_by: package-author
+      selected_by: package-author
+      constrained_by: seedspec-authoring-engine-contract
+      implemented_by: implementing-agent
+    latitude: fixed
+    attribution_confidence: high
+    consequence: Bounds how far frontends may diverge without breaking resumption.
+    recommendation: No change.
+    status: recorded
+  - id: dp-portable-package-output
+    domain: portability
+    source: definition/solution.md#portability-and-privacy-boundary
+    assessment: >-
+      The distributable output is declarative package content that excludes
+      candidates, transcripts, unresolved-work queues, hosted identifiers,
+      credentials, and authoring review state.
+    alternatives:
+      - Bundle authoring state with the distributable package.
+      - Make authoring state an optional package component.
+    evidence:
+      - definition/solution.md#portability-and-privacy-boundary
+      - acceptance/criteria.md#12
+      - acceptance/criteria.md#13
+      - decision-0013#non-goals
+    materiality: critical
+    materiality_basis: author-declaration
+    materiality_reason: >-
+      Declared fixed, load-bearing for consumer independence, and a stated
+      platform non-goal to do otherwise.
+    roles:
+      proposed_by: package-author
+      selected_by: package-author
+      constrained_by: seedspec-protocol
+      implemented_by: implementing-agent
+    latitude: fixed
+    attribution_confidence: high
+    consequence: Keeps consumption independent of the frontend that authored the package.
+    recommendation: No change.
+    status: recorded
+  - id: dp-invalid-draft-tolerance
+    domain: lifecycle
+    source: definition/solution.md#workspace-lifecycle
+    assessment: >-
+      A structurally invalid draft stays inspectable and editable, while pass
+      completion, publish checking, and export stay blocked.
+    alternatives:
+      - Require validity for any edit or resume.
+      - Auto-repair invalid drafts.
+    evidence:
+      - definition/solution.md#workspace-lifecycle
+      - acceptance/criteria.md#3
+      - decision-0013#durable-truth-and-mutation-rules
+    materiality: material
+    materiality_basis: author-declaration
+    materiality_reason: >-
+      Stated as an explicit obligation with a matching observable criterion and
+      the same rule in the primary source.
+    roles:
+      proposed_by: package-author
+      selected_by: package-author
+      constrained_by: seedspec-authoring-engine-contract
+      implemented_by: implementing-agent
+    latitude: fixed
+    attribution_confidence: high
+    consequence: Determines whether an author can recover from a broken draft.
+    recommendation: No change.
+    status: recorded
+  - id: dp-target-depth-selection
+    domain: lifecycle
+    source: definition/solution.md#workspace-lifecycle
+    assessment: >-
+      The author selects the target depth and may stop at an honest capture,
+      shape, harden, compose, or package depth.
+    alternatives:
+      - Require every package to reach package depth.
+      - Derive depth from the review areas completed.
+    evidence:
+      - definition/solution.md#workspace-lifecycle
+      - definition/solution.md#decision-latitude
+      - configuration/schema.json
+      - decision-0013#initial-operation-surface
+    materiality: material
+    materiality_basis: author-declaration
+    materiality_reason: >-
+      Explicitly listed among author-selectable choices, and the only one of the
+      five with a package configuration representation.
+    roles:
+      proposed_by: package-author
+      selected_by: end-user-applied-intent
+      constrained_by: seedspec-protocol
+      implemented_by: implementing-agent
+    latitude: delegated
+    attribution_confidence: high
+    consequence: Sets how much review a package receives before it is considered done.
+    recommendation: No change.
+    status: recorded
+  - id: dp-depth-and-area-vocabulary
+    domain: lifecycle
+    source: configuration/schema.json
+    assessment: >-
+      The five depth values and the seven review areas are frozen in the protocol
+      runtime as AUTHORING_TARGETS and the review-area list, not defined by this
+      package. The configuration schema restates the depth enum without binding it
+      to a protocol version.
+    alternatives:
+      - Reference the protocol vocabulary instead of restating it.
+      - Restate it and declare the protocol version it tracks.
+      - Define a package-local vocabulary independent of the protocol.
+    evidence:
+      - configuration/schema.json
+      - definition/solution.md#workspace-lifecycle
+      - seedspec.yaml
+      - seedspec/packages/runtime/src/authoring.js
+    materiality: material
+    materiality_basis: evaluator-judgment
+    materiality_reason: >-
+      Verified against the runtime rather than assumed. A duplicated enum with no
+      version binding silently diverges if the protocol changes the vocabulary.
+    roles:
+      proposed_by: seedspec-protocol
+      selected_by: seedspec-protocol
+      constrained_by: seedspec-protocol
+      implemented_by: implementing-agent
+    latitude: fixed
+    platform_feedback: pf-depth-vocabulary-version-binding
+    attribution_confidence: high
+    consequence: >-
+      Constrained externally rather than by this package's author. A protocol
+      change to the depth vocabulary would not be reflected here.
+    recommendation: >-
+      Consider in pass 5 whether the restated enum should cite its protocol source.
+    status: recorded
+  - id: dp-agent-integration-contract
+    domain: interface
+    source: definition/solution.md#participants-and-authority
+    assessment: >-
+      The authoring agent is replaceable and owns semantic work while the engine
+      validates and records proposals. Decision 0013 divides those
+      responsibilities explicitly but defines no attachment mechanism, and treats
+      frontend-specific assistance as capability latitude.
+    alternatives:
+      - An engine-defined agent API.
+      - Versioned instructions the engine emits for any agent to read, as the CLI does today.
+      - Frontend-owned integration with no shared contract.
+    evidence:
+      - definition/solution.md#purpose
+      - definition/solution.md#participants-and-authority
+      - definition/solution.md#decision-latitude
+      - decision-0013#product-boundary
+    materiality: material
+    materiality_basis: mixed
+    materiality_reason: >-
+      Replaceability is asserted as a property, while the mechanism falls under
+      declared frontend-assistance latitude. Both readings are source-supported.
+    roles:
+      proposed_by: package-author
+      selected_by: implementing-agent
+      constrained_by: package-author-intent
+      implemented_by: implementing-agent
+    latitude: delegated
+    attribution_confidence: high
+    consequence: >-
+      Replaceability is claimed but not made observable by any acceptance
+      criterion. The engine's requirement not to treat model output as trusted
+      state is the binding constraint.
+    recommendation: >-
+      Leave delegated unless pass 6 finds the replaceability claim needs evidence.
+    status: recorded
+  - id: dp-cli-distribution-identity
+    domain: delivery
+    source: definition/solution.md#human-cli-experience
+    assessment: >-
+      The primary human entry point is the literal command npx @seedspec/cli
+      author, which binds the definition and an acceptance criterion to npm and a
+      specific package name.
+    alternatives:
+      - Describe the entry point abstractly as one no-install discovery command.
+      - Name the command in acceptance criteria only.
+    evidence:
+      - definition/solution.md#human-cli-experience
+      - acceptance/criteria.md#15
+      - open-questions.yaml#human-cli-entrypoint
+      - decision-0013#human-cli-ergonomics
+    materiality: material
+    materiality_basis: author-declaration
+    materiality_reason: >-
+      The author was asked and chose the concrete command so non-developers meet
+      no installation or path detail. The primary source names the same command.
+    roles:
+      proposed_by: authoring-agent
+      selected_by: package-author
+      constrained_by: package-author-intent
+      implemented_by: implementing-agent
+    latitude: fixed
+    attribution_confidence: high
+    consequence: >-
+      A realization distributed through another channel cannot satisfy criterion
+      15 verbatim. Accepted as a deliberate first-party coupling, matching the
+      platform decision.
+    recommendation: No change. The coupling is recorded, not accidental.
+    status: recorded
+  - id: dp-realization-technology-latitude
+    domain: implementation
+    source: definition/solution.md#decision-latitude
+    assessment: >-
+      Interface layout, framework, database, transport, diff representation,
+      storage-adapter architecture, and frontend-specific assistance capabilities
+      are explicitly delegated to the implementing agent.
+    alternatives:
+      - Prescribe a reference stack.
+      - Constrain a subset such as transport or storage.
+    evidence:
+      - definition/solution.md#decision-latitude
+      - decision-0013#product-boundary
+    materiality: material
+    materiality_basis: author-declaration
+    materiality_reason: >-
+      Delegated deliberately and bounded by a stated constraint, so these are not
+      ambient choices.
+    roles:
+      proposed_by: package-author
+      selected_by: implementing-agent
+      constrained_by: package-author-intent
+      implemented_by: implementing-agent
+    latitude: delegated
+    attribution_confidence: high
+    consequence: >-
+      Bounded by preserving the shared durable artifacts and operations and by not
+      making the CLI or hosted web service the hidden authority for package
+      meaning. Storage adapters must not change authoring semantics.
+    recommendation: No change. This is the reference case for deliberate delegation.
+    status: recorded
+  - id: dp-example-configuration-influence
+    domain: configuration
+    source: configuration/example.yaml
+    assessment: >-
+      The example configuration sets initial_target_depth to shape. ADR 0005
+      establishes protocol-wide that a configuration example is required
+      author-supplied material and never a user-selected default, so the value is
+      illustrative by protocol rule rather than by omission.
+    alternatives:
+      - Declare the example illustrative only.
+      - Declare a preferred default depth in the definition.
+      - Add a schema default.
+    evidence:
+      - configuration/example.yaml
+      - configuration/schema.json
+      - definition/solution.md#workspace-lifecycle
+      - decision-0005#decision
+    materiality: minor
+    materiality_basis: protocol-default
+    materiality_reason: >-
+      The protocol already fixes the influence of any configuration example, and
+      the schema makes the property required, so nothing depends on this value.
+    roles:
+      proposed_by: package-author
+      selected_by: end-user-applied-intent
+      constrained_by: seedspec-protocol
+      implemented_by: implementing-agent
+    latitude: fixed
+    attribution_confidence: high
+    consequence: >-
+      An implementing agent must not read the example as a recommended default.
+      Selecting it explicitly is permitted; inheriting it silently is not.
+    recommendation: >-
+      No change. The protocol rule is stronger than any package wording would be.
+    status: resolved-by-source
+questions:
+  asked:
+    - mechanical-change-classification-authority
+  answered:
+    - mechanical-change-classification-authority
+  deferred: []
+changes:
+  applied: []
+  proposed: []
+  rejected:
+    - path: definition/solution.md
+      basis: agent-proposed
+      reason: >-
+        Proposed wording bounding the mechanical-change class and its
+        classification authority. Author confirmed the invariant but ruled the
+        detail belongs to the authoring-engine contract, so no package change was
+        applied. Held at candidates/mechanical-change-classification-wording.md
+        for reference once that contract exists.
+    - path: acceptance/criteria.md
+      basis: agent-proposed
+      reason: >-
+        Proposed two criteria observing default-deny and mechanical
+        reproducibility. Author declined adding or renumbering criteria until the
+        engine contract and its conformance tests define the behavior.
+validation:
+  protocol_valid: true
+  commands:
+    - seedspec validate solutions/seedspec-authoring-system/seedspec
+    - seedspec lint solutions/seedspec-authoring-system/seedspec
+    - seedspec digest solutions/seedspec-authoring-system/seedspec

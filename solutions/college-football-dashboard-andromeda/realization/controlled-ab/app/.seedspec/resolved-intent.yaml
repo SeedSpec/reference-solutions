@@ -1,0 +1,13 @@
+protocol_version: "0.2"
+status: affirmed
+packages:
+  - package: org.seedspec.examples.college-football-dashboard-andromeda
+    version: 0.2.0
+    digest: sha256:0afa19bed37dddf706a274224675a7aaf84539605af4bc191693c17dfdf8efcb
+    entrypoint: definition/college-football-dashboard.md
+    provenance: package-author
+    format:
+      type: org.seedspec.intent.native
+    use: as-authored
+contributions: []
+unresolved: []

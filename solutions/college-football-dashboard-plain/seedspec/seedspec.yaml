@@ -1,0 +1,77 @@
+protocol_version: "0.3"
+id: org.seedspec.examples.college-football-dashboard-plain
+name: College Football Dashboard — Intent Only
+version: "0.3.0"
+kind: application
+description: Track a configurable watchlist of college football teams through trustworthy scores, schedules, rankings, trends, and comparisons.
+
+metadata:
+  license: Apache-2.0
+
+definition:
+  module: primary-intent
+
+context:
+  modules:
+    - id: primary-intent
+      format: org.seedspec.intent.markdown
+      description: The package author's primary intent.
+      entrypoint: college-football-dashboard.md
+      source:
+        kind: package
+        path: definition/college-football-dashboard.md
+
+configuration:
+  schema: configuration/schema.json
+  example: configuration/example.yaml
+  guide: configuration/guide.md
+
+provides:
+  capabilities:
+    - id: org.seedspec.examples.college-football-tracking
+      version: 1.0.0
+      contract: capabilities/college-football-tracking.md
+
+implementation_profiles:
+  - id: independent-web
+    name: Independent web interface
+    description: Implement the dashboard in a suitable web stack and choose visual components after inspecting the target project.
+    prerequisites:
+      - id: web-interface-viable
+        statement: The target can deliver an interactive web interface with responsive layouts and accessible controls.
+        verification:
+          method: environment-inspection
+          evidence: optional
+          guidance: Inspect the existing project and preserve its framework, component conventions, and dependency policy when practical.
+    tradeoffs:
+      - Maximizes freedom to use an existing design system or create a project-specific visual language.
+      - Provides no bundled component source or visual composition rules.
+    implementation_resources:
+      - org.seedspec.guidance.context7-current-docs
+
+components:
+  acceptance: acceptance/
+
+implementation_resources:
+  additional_guidance: none
+  resources:
+    - id: org.seedspec.guidance.context7-current-docs
+      kind: instructions
+      description: Optional guidance for consulting current, version-specific dependency documentation through Context7 when it is already available.
+      usage: available
+      entrypoint: context7.md
+      version: "0.1.0"
+      update_policy: exact
+      bundled:
+        path: guidance/context7/
+        version: "0.1.0"
+        digest: sha256:d8782b9cb6b78e4e791fffa81fd4e4035b0dab29e2f1886d6c5185c6464b3e38
+        compatibility: exact
+
+extensions:
+  org.seedspec.examples.catalog:
+    audience: college-football-fans-and-analysts
+    demonstrates:
+      - controlled-implementation-comparison
+      - intent-without-reference-components
+      - optional-current-documentation-guidance

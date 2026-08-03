@@ -1,0 +1,18 @@
+protocol_version: "0.2"
+index_digest: sha256:0f01e5ec7ddb3b910f31ad7fc2dd8bc294849f4dedb943ae0b9f14342e14983c
+status: resolved
+resources:
+  - package: org.seedspec.examples.college-football-dashboard-linked
+    id: org.seedspec.guidance.context7-current-docs
+    kind: instructions
+    usage: available
+    entrypoint: context7.md
+    resolution_status: bundled
+    resolved_version: 0.1.0
+    digest: sha256:d8782b9cb6b78e4e791fffa81fd4e4035b0dab29e2f1886d6c5185c6464b3e38
+    path: implementation-resources/org.seedspec.examples.college-football-dashboard-linked/org.seedspec.guidance.context7-current-docs/resolved/
+    use_status: consulted
+    use_reason: Consulted the verified bundled instructions; Context7 is not
+      available in this environment and is unnecessary because the
+      implementation will use React and native HTML/CSS APIs already present in
+      the starter without adding version-sensitive chart or motion libraries.

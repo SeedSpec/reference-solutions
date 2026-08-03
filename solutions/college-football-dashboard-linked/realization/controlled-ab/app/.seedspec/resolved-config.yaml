@@ -1,0 +1,44 @@
+protocol_version: "0.2"
+root:
+  package: org.seedspec.examples.college-football-dashboard-linked
+  selection: example
+  values:
+    dashboard_name: Saturday Signal
+    season: 2026
+    timezone: America/Chicago
+    favorite_team_id: texas
+    teams:
+      - id: texas
+        name: Texas Longhorns
+        short_name: Texas
+        accent_color: "#BF5700"
+      - id: ohio-state
+        name: Ohio State Buckeyes
+        short_name: Ohio State
+        accent_color: "#BA0C2F"
+      - id: oregon
+        name: Oregon Ducks
+        short_name: Oregon
+        accent_color: "#154733"
+      - id: notre-dame
+        name: Notre Dame Fighting Irish
+        short_name: Notre Dame
+        accent_color: "#0C2340"
+    ranking_sources:
+      - ap
+      - coaches
+      - cfp
+    comparison_metrics:
+      - win-percentage
+      - points-per-game
+      - points-allowed-per-game
+      - total-offense-yards-per-game
+    freshness:
+      live_scores_seconds: 30
+      schedules_minutes: 360
+      rankings_hours: 24
+      statistics_hours: 12
+    default_view: overview
+additions: {}
+decisions: {}
+technical_preferences: {}

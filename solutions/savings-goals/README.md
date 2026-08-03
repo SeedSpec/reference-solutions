@@ -7,10 +7,10 @@
 - It has no committed realization yet.
 
 ```bash
-npx --yes @seedspec/cli@0.2.0 validate solutions/savings-goals/seedspec
-npx --yes @seedspec/cli@0.2.0 lint solutions/savings-goals/seedspec
-npx --yes @seedspec/cli@0.2.0 begin solutions/savings-goals/seedspec
-npx --yes @seedspec/cli@0.2.0 prepare \
+npx @seedspec/cli validate solutions/savings-goals/seedspec
+npx @seedspec/cli lint solutions/savings-goals/seedspec
+npx @seedspec/cli begin solutions/savings-goals/seedspec
+npx @seedspec/cli prepare \
   solutions/savings-goals/seedspec \
-  --state solutions/savings-goals/authoring-v0.2
+  --state solutions/savings-goals/authoring-current
 ```

@@ -1,0 +1,6 @@
+protocol_version: "0.2"
+packages:
+  - package: org.seedspec.examples.college-football-dashboard-plain
+    use: as-authored
+    note: The implementation request explicitly asks for the dashboard described by the assigned SeedSpec and directs use of its example configuration.
+contributions: []

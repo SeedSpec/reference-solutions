@@ -1,0 +1,80 @@
+protocol_version: "0.3"
+id: org.seedspec.examples.college-football-dashboard-linked
+name: College Football Dashboard — Andromeda Link Only
+version: "0.3.0"
+kind: application
+description: Track a configurable watchlist of college football teams through trustworthy scores, schedules, rankings, trends, and comparisons.
+
+metadata:
+  license: Apache-2.0
+
+definition:
+  module: primary-intent
+
+context:
+  modules:
+    - id: primary-intent
+      format: org.seedspec.intent.markdown
+      description: The package author's primary intent.
+      entrypoint: college-football-dashboard.md
+      source:
+        kind: package
+        path: definition/college-football-dashboard.md
+
+configuration:
+  schema: configuration/schema.json
+  example: configuration/example.yaml
+  guide: configuration/guide.md
+
+provides:
+  capabilities:
+    - id: org.seedspec.examples.college-football-tracking
+      version: 1.0.0
+      contract: capabilities/college-football-tracking.md
+
+implementation_profiles:
+  - id: andromeda-external
+    name: External AI Canvas Andromeda
+    description: Use the externally published AI Canvas Andromeda design system and components as the preferred visual realization without carrying their source or design guidance in this package.
+    guidance: implementation/andromeda-external-profile.md
+    prerequisites:
+      - id: react-interface
+        statement: The target uses React or can faithfully adapt externally retrieved React component source without replacing a user-selected application architecture.
+        verification:
+          method: environment-inspection
+          evidence: optional
+          guidance: Inspect the target project before retrieving or installing external component code.
+    tradeoffs:
+      - Names the author's preferred component and design system without increasing the SeedSpec package size.
+      - Depends on what the external site exposes, the implementing agent's available tools, and any applicable access or licensing boundary at implementation time.
+      - Provides no bundled Andromeda source, tokens, rules, component mapping, or package-scoped implementation skill.
+    implementation_resources:
+      - org.seedspec.guidance.context7-current-docs
+
+components:
+  acceptance: acceptance/
+
+implementation_resources:
+  additional_guidance: none
+  resources:
+    - id: org.seedspec.guidance.context7-current-docs
+      kind: instructions
+      description: Optional guidance for consulting current, version-specific dependency documentation through Context7 when it is already available.
+      usage: available
+      entrypoint: context7.md
+      version: "0.1.0"
+      update_policy: exact
+      bundled:
+        path: guidance/context7/
+        version: "0.1.0"
+        digest: sha256:d8782b9cb6b78e4e791fffa81fd4e4035b0dab29e2f1886d6c5185c6464b3e38
+        compatibility: exact
+
+extensions:
+  org.seedspec.examples.catalog:
+    audience: college-football-fans-and-analysts
+    demonstrates:
+      - controlled-implementation-comparison
+      - external-design-system-reference
+      - no-bundled-reference-components
+      - optional-current-documentation-guidance

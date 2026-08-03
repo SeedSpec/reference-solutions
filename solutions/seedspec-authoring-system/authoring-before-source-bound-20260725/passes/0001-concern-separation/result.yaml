@@ -1,0 +1,75 @@
+authoring_result_version: "0.2"
+pass: 0001-concern-separation
+area: concern-separation
+protocol_version: "0.2"
+tool_version: 0.2.0
+package_digest_before: sha256:9e53d580b40e0203f72830828df88bc347c3fe86800c671ac008d594c290a57e
+package_digest_after: sha256:c6416725a00318dba671426e1d9a8695bea28598b8cba0579e104fb3f6a0601b
+outcome: completed
+summary: The package gives primary intent, acceptance, configuration, and decision latitude distinct canonical owners. The author resolved approval, artifact-portability, and model-session boundaries without requiring identical CLI and web capabilities.
+findings:
+  - id: concern-primary-intent-coherent
+    source: definition/solution.md
+    assessment: The definition is the coherent canonical owner for the shared engine outcome, participant authority, workspace behavior, mutation boundaries, portability, and decision latitude.
+    consequence: CLI and web can be evaluated against one durable product boundary without duplicating it in frontend-specific instructions.
+    recommendation: Keep frontend documentation as summaries and links rather than shadow specifications.
+    status: established
+  - id: concern-acceptance-distinct
+    source: acceptance/criteria.md
+    assessment: Acceptance restates the definition only as observable cross-frontend and failure-path checks.
+    consequence: Verification remains independently inspectable without turning implementation architecture into acceptance.
+    recommendation: Preserve acceptance as the canonical verification checklist and keep actual evidence outside the package until a realization exists.
+    status: established
+  - id: concern-configuration-narrow
+    source: configuration/schema.json
+    assessment: Configuration currently contains only the author-selected initial target depth; engine invariants are not exposed as weakening switches.
+    consequence: Installations can choose authoring altitude without making attribution, revision safety, or portability optional.
+    recommendation: Add configuration only when manual authoring sessions demonstrate meaningful product variation.
+    status: established
+  - id: concern-approval-boundary
+    source: definition/solution.md#change-control-and-concurrency
+    assessment: Every agent-proposed document change requires explicit acceptance, while deterministic mechanical work may apply only within an already authorized and fully recorded operation.
+    consequence: CLI and web preserve one author-control boundary without requiring an unreliable materiality classifier.
+    recommendation: Make proposal acceptance and revision checking shared engine operations.
+    status: established
+  - id: concern-workspace-portability
+    source: definition/solution.md#portability-and-privacy-boundary
+    assessment: Drafts, sources, questions, answers, findings, proposals, approvals, pass history, and format metadata are portable artifacts; conversations, credentials, provider session state, and frontend-only capabilities are not.
+    consequence: An author can resume durable work across CLI and web without forcing both frontends to have the same assistance features.
+    recommendation: Define a versioned workspace archive independently of package export.
+    status: established
+  - id: concern-capability-parity
+    source: definition/solution.md#purpose
+    assessment: Artifact parity is fixed while frontend capability parity is explicitly unnecessary.
+    consequence: The web can offer an embedded decision-support agent and the CLI can remain composable without forking durable authoring semantics.
+    recommendation: Route every frontend-specific capability through shared findings, questions, proposals, answers, and mutations.
+    status: established
+questions:
+  asked:
+    - agent-change-approval-granularity
+    - cross-frontend-workspace-resumption
+    - agent-session-model-consent
+  answered:
+    - agent-change-approval-granularity
+    - cross-frontend-workspace-resumption
+    - agent-session-model-consent
+  deferred: []
+changes:
+  applied:
+    - path: seedspec.yaml
+      basis: mechanical
+      reason: Align the first-party package version with the reference-solutions 0.2.0 release and correct SeedSpec brand capitalization.
+    - path: definition/solution.md
+      basis: author-answer
+      reason: Record explicit agent-change acceptance, artifact-level portability, non-parity of frontend capabilities, and session-scoped model consent.
+    - path: acceptance/criteria.md
+      basis: author-answer
+      reason: Add observable cross-frontend workspace portability and frontend-specific assistance boundaries.
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands:
+    - npx --yes @seedspec/cli@0.2.0 validate solutions/seedspec-authoring-system/seedspec
+    - npx --yes @seedspec/cli@0.2.0 lint solutions/seedspec-authoring-system/seedspec
+    - npx --yes @seedspec/cli@0.2.0 digest solutions/seedspec-authoring-system/seedspec

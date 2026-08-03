@@ -1,0 +1,36 @@
+protocol_version: "0.2"
+scope: project
+status: recorded
+packages:
+  - package: org.seedspec.examples.college-football-dashboard-linked
+    kind: application
+    selection: preferred
+    preferred_profile: andromeda-external
+    profiles:
+      - id: andromeda-external
+        name: External AI Canvas Andromeda
+        description: Use the externally published AI Canvas Andromeda design system and
+          components as the preferred visual realization without carrying their
+          source or design guidance in this package.
+        prerequisites:
+          - id: react-interface
+            statement: The target uses React or can faithfully adapt externally retrieved
+              React component source without replacing a user-selected
+              application architecture.
+            verification:
+              method: environment-inspection
+              evidence: optional
+              guidance: Inspect the target project before retrieving or installing external
+                component code.
+        blockers: []
+        tradeoffs:
+          - Names the author's preferred component and design system without
+            increasing the SeedSpec package size.
+          - Depends on what the external site exposes, the implementing agent's
+            available tools, and any applicable access or licensing boundary at
+            implementation time.
+          - Provides no bundled Andromeda source, tokens, rules, component
+            mapping, or package-scoped implementation skill.
+        implementation_resources:
+          - org.seedspec.guidance.context7-current-docs
+        guidance: implementation-profiles/org.seedspec.examples.college-football-dashboard-linked/andromeda-external/andromeda-external-profile.md

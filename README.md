@@ -16,10 +16,19 @@ SeedSpec.
 
 ```text
 solutions/
+├── seedspec-authoring-system/
+│   ├── seedspec/       shared authoring engine, CLI, and web-workbench package
+│   └── authoring/      current dogfooding and review state
 ├── family-hub/
 │   └── seedspec/       configurable household application package
 ├── operations-dashboard-starter/
 │   └── seedspec/       reusable internal application package
+├── college-football-dashboard-plain/
+│   └── seedspec/       dashboard intent without bundled UI source
+├── college-football-dashboard-andromeda/
+│   └── seedspec/       same intent with Andromeda source and guidance
+├── college-football-dashboard-linked/
+│   └── seedspec/       same intent with only an external Andromeda reference
 ├── customer-onboarding-orchestrator/
 │   └── seedspec/       profiled cross-system workflow package
 ├── allowance-tracker/
@@ -37,6 +46,7 @@ solutions/
     └── authoring/
 
 project-inputs/
+├── applied-intent/             example package-fit decisions
 ├── completion-scopes/         example project completion boundaries
 └── configuration-selections/ example package configuration choices
 ```
@@ -46,29 +56,25 @@ them for a newer protocol in its own commits and releases; their source does not
 serve as protocol conformance data. The protocol repository keeps small,
 artificial fixtures for self-contained schema, runtime, and conformance tests.
 
-Each existing `authoring/` directory preserves historical Protocol 0.1 audit
-instructions, standardized results, open questions, and package digests. Those
-records were not rewritten for different 0.2 bytes and do not satisfy a current
-publish check; see [the 0.2 migration note](docs/0.2-migration.md). Each
-`realization/` is an output created
-from selected package versions. Neither is part of the sibling `seedspec/`
-package or its digest.
+Each existing `authoring/` directory preserves the records produced by its
+original tool version. Those records are not rewritten for new package bytes
+and do not satisfy a current publish check. Each `realization/` is an output
+created from selected package versions. Neither is part of the sibling
+`seedspec/` package or its digest.
 
 The per-solution READMEs contain the relevant commands and clearly state when a
 solution does not yet have a committed realization.
 
 ## Use the npm CLI
 
-All repository instructions pin the exact npm package version used for the
-current examples:
+People can use the current CLI without installing it:
 
 ```bash
-npx --yes @seedspec/cli@0.2.0 --help
+npx @seedspec/cli --help
 ```
 
-Pinning avoids accidental behavior changes from a global install or a newer
-release. Update the version deliberately when the references are exercised
-against a newer CLI.
+Human-facing commands use the current release. Repository validation pins the
+exact release declared in `release.json`.
 
 ## Development
 
@@ -88,27 +94,36 @@ npm run start:allowance-tracker
 Validate every independently versioned package directly from npm:
 
 ```bash
-npx --yes @seedspec/cli@0.2.0 validate solutions/allowance-tracker/seedspec
-npx --yes @seedspec/cli@0.2.0 validate solutions/savings-goals/seedspec
-npx --yes @seedspec/cli@0.2.0 validate solutions/chore-streaks/seedspec
-npx --yes @seedspec/cli@0.2.0 validate solutions/hubspot-daily-metric/seedspec
-npx --yes @seedspec/cli@0.2.0 validate solutions/family-hub/seedspec
-npx --yes @seedspec/cli@0.2.0 validate solutions/operations-dashboard-starter/seedspec
-npx --yes @seedspec/cli@0.2.0 validate solutions/customer-onboarding-orchestrator/seedspec
+npx @seedspec/cli validate solutions/allowance-tracker/seedspec
+npx @seedspec/cli validate solutions/savings-goals/seedspec
+npx @seedspec/cli validate solutions/chore-streaks/seedspec
+npx @seedspec/cli validate solutions/hubspot-daily-metric/seedspec
+npx @seedspec/cli validate solutions/family-hub/seedspec
+npx @seedspec/cli validate solutions/operations-dashboard-starter/seedspec
+npx @seedspec/cli validate solutions/college-football-dashboard-plain/seedspec
+npx @seedspec/cli validate solutions/college-football-dashboard-andromeda/seedspec
+npx @seedspec/cli validate solutions/college-football-dashboard-linked/seedspec
+npx @seedspec/cli validate solutions/customer-onboarding-orchestrator/seedspec
+npx @seedspec/cli validate solutions/seedspec-authoring-system/seedspec
 ```
+
+See [the college-football dashboard comparison](docs/college-football-dashboard-comparison.md)
+for the controlled prompting experiment and the Context7 packaging example.
 
 Cross-solution project inputs live under `project-inputs/`. For example:
 
 ```bash
-npx --yes @seedspec/cli@0.2.0 resolve \
+npx @seedspec/cli resolve \
   solutions/allowance-tracker/seedspec \
+  --applied-intent project-inputs/applied-intent/allowance-only.yaml \
   --configuration-selections project-inputs/configuration-selections/allowance-only.yaml \
   --completion-scope project-inputs/completion-scopes/allowance-only.yaml \
   --output .tmp/allowance-only
 
-npx --yes @seedspec/cli@0.2.0 resolve \
+npx @seedspec/cli resolve \
   solutions/hubspot-daily-metric/seedspec \
   -i hubspot-native \
+  --applied-intent project-inputs/applied-intent/hubspot-daily-metric.yaml \
   --configuration-selections project-inputs/configuration-selections/hubspot-daily-metric.yaml \
   --completion-scope project-inputs/completion-scopes/hubspot-daily-metric.yaml \
   --output .tmp/hubspot-daily-metric

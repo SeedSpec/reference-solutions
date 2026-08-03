@@ -1,0 +1,28 @@
+protocol_version: "0.2"
+index_digest: sha256:59adde2211a782e8944a1095236d5319b3bba08ef11bd0cc972d0c2f15690b12
+status: resolved
+resources:
+  - package: org.seedspec.examples.college-football-dashboard-andromeda
+    id: org.seedspec.guidance.context7-current-docs
+    kind: instructions
+    usage: available
+    entrypoint: context7.md
+    resolution_status: bundled
+    resolved_version: 0.1.0
+    digest: sha256:d8782b9cb6b78e4e791fffa81fd4e4035b0dab29e2f1886d6c5185c6464b3e38
+    path: implementation-resources/org.seedspec.examples.college-football-dashboard-andromeda/org.seedspec.guidance.context7-current-docs/resolved/
+    use_status: skipped
+    use_reason: Consulted bundled instructions; no Context7 capability is present
+      and bundled source plus installed-package inspection are sufficient.
+  - package: org.seedspec.examples.college-football-dashboard-andromeda
+    id: org.seedspec.guidance.andromeda-college-football-dashboard
+    kind: skill
+    usage: recommended
+    entrypoint: SKILL.md
+    resolution_status: bundled
+    resolved_version: 0.1.0
+    digest: sha256:ac2effe0f5e3113018bc30e7a0dd976f08cba063af84253aab9080ec48064b63
+    path: implementation-resources/org.seedspec.examples.college-football-dashboard-andromeda/org.seedspec.guidance.andromeda-college-football-dashboard/resolved/
+    use_status: consulted
+    use_reason: Selected Andromeda profile; consulted resolved skill and component
+      mapping before planning.
