@@ -5,9 +5,11 @@ protocol_version: "0.2"
 tool_version: 0.2.3
 package_digest_before: sha256:caf8991a1e1a4f2a4dc4043e8f8947933f857d7a473e1cc26630b112706a88d2
 package_digest_after: sha256:caf8991a1e1a4f2a4dc4043e8f8947933f857d7a473e1cc26630b112706a88d2
-outcome: in-progress
-disposition: pending
-summary: ""
+outcome: reviewed
+disposition: good-enough
+summary: Family Hub remains a shared household application for coordinating
+  schedules, tasks, ownership, and consequential changes, with optional
+  allowance and meal-planning modules.
 findings: []
 contradictions: []
 inventory: []
@@ -15,7 +17,8 @@ suggestions: []
 tooling_feedback: []
 questions:
   asked: []
-  answered: []
+  answered:
+    - question-family-hub-gives-households-one-shared-p
   declined: []
 changes:
   applied: []
@@ -23,4 +26,11 @@ changes:
   rejected: []
 validation:
   protocol_valid: true
-  commands: []
+  commands:
+    - seedspec validate
+      /Users/davidturner/Code/SeedSpec/reference-solutions/solutions/family-hub/seedspec
+    - seedspec lint
+      /Users/davidturner/Code/SeedSpec/reference-solutions/solutions/family-hub/seedspec
+    - seedspec digest
+      /Users/davidturner/Code/SeedSpec/reference-solutions/solutions/family-hub/seedspec
+  lint_diagnostics: 0

@@ -1,17 +1,35 @@
-protocol_version: "0.2"
+protocol_version: "0.3"
 items:
   - kind: component
     id: allowance-acceptance
     package: org.seedspec.examples.allowance-tracker
     component: acceptance
     selection: all
+    verification:
+      subject: realization
+      method: tool-check
+      timing: completion
+      evidence: required
+      guidance: Verify the selected acceptance material against the realized solution and attach the results.
   - kind: component
     id: savings-acceptance
     package: org.seedspec.savings-goals
     component: acceptance
     selection: all
+    verification:
+      subject: realization
+      method: tool-check
+      timing: completion
+      evidence: required
+      guidance: Verify the selected acceptance material against the realized solution and attach the results.
   - kind: component
     id: chore-streaks-acceptance
     package: org.seedspec.chore-streaks
     component: acceptance
     selection: all
+    verification:
+      subject: realization
+      method: tool-check
+      timing: completion
+      evidence: required
+      guidance: Verify the selected acceptance material against the realized solution and attach the results.

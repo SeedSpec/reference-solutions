@@ -1,7 +1,7 @@
-protocol_version: "0.2"
+protocol_version: "0.3"
 id: org.seedspec.examples.operations-dashboard-starter
 name: Operations Dashboard Starter Kit
-version: "0.2.0"
+version: "0.3.0"
 kind: application
 description: Create a role-aware internal operations dashboard around a team's records, metrics, actions, and saved views.
 
@@ -9,7 +9,17 @@ metadata:
   license: Apache-2.0
 
 definition:
-  entrypoint: definition/operations-dashboard.md
+  module: primary-intent
+
+context:
+  modules:
+    - id: primary-intent
+      format: org.seedspec.intent.markdown
+      description: The package author's primary intent.
+      entrypoint: operations-dashboard.md
+      source:
+        kind: package
+        path: definition/operations-dashboard.md
 
 configuration:
   schema: configuration/schema.json

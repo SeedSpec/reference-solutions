@@ -1,0 +1,11 @@
+authoring_instruction_version: "0.5"
+pass: 0002-coherence
+area: coherence
+target: shape
+protocol_version: "0.2"
+tool_version: 0.2.3
+package:
+  id: org.seedspec.examples.family-hub
+  version: 0.2.0
+  kind: application
+package_digest_before: sha256:caf8991a1e1a4f2a4dc4043e8f8947933f857d7a473e1cc26630b112706a88d2

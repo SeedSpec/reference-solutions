@@ -7,10 +7,10 @@
   this feature as an addition.
 
 ```bash
-npx --yes @seedspec/cli@0.2.2 validate solutions/chore-streaks/seedspec
-npx --yes @seedspec/cli@0.2.2 lint solutions/chore-streaks/seedspec
-npx --yes @seedspec/cli@0.2.2 begin solutions/chore-streaks/seedspec
-npx --yes @seedspec/cli@0.2.2 prepare \
+npx @seedspec/cli validate solutions/chore-streaks/seedspec
+npx @seedspec/cli lint solutions/chore-streaks/seedspec
+npx @seedspec/cli begin solutions/chore-streaks/seedspec
+npx @seedspec/cli prepare \
   solutions/chore-streaks/seedspec \
-  --state solutions/chore-streaks/authoring-v0.2
+  --state solutions/chore-streaks/authoring-current
 ```

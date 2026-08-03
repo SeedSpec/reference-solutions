@@ -1,0 +1,35 @@
+authoring_result_version: "0.3"
+pass: 0002-coherence
+area: coherence
+protocol_version: "0.2"
+tool_version: 0.2.3
+package_digest_before: sha256:caf8991a1e1a4f2a4dc4043e8f8947933f857d7a473e1cc26630b112706a88d2
+package_digest_after: sha256:caf8991a1e1a4f2a4dc4043e8f8947933f857d7a473e1cc26630b112706a88d2
+outcome: in-progress
+disposition: pending
+summary: ""
+findings: []
+contradictions:
+  - id: contradiction-definition-family-hub-md-household-setup
+    claim_a: "definition/family-hub.md: Household setup lets a guardian choose
+      direct participation or guardian management for each member."
+    claim_b: "configuration/schema.json and acceptance/criteria.md: child_access
+      selects one participation mode for the household."
+    assessment: The participation choice cannot be both per-member and
+      household-wide in one realization.
+    recorded_at: 2026-07-27T18:19:35.914Z
+inventory: []
+suggestions: []
+tooling_feedback: []
+questions:
+  asked:
+    - question-the-household-setup-says-a-guardian-choo
+  answered: []
+  declined: []
+changes:
+  applied: []
+  proposed: []
+  rejected: []
+validation:
+  protocol_valid: true
+  commands: []

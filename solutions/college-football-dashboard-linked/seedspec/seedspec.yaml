@@ -1,7 +1,7 @@
-protocol_version: "0.2"
+protocol_version: "0.3"
 id: org.seedspec.examples.college-football-dashboard-linked
 name: College Football Dashboard — Andromeda Link Only
-version: "0.2.0"
+version: "0.3.0"
 kind: application
 description: Track a configurable watchlist of college football teams through trustworthy scores, schedules, rankings, trends, and comparisons.
 
@@ -9,7 +9,17 @@ metadata:
   license: Apache-2.0
 
 definition:
-  entrypoint: definition/college-football-dashboard.md
+  module: primary-intent
+
+context:
+  modules:
+    - id: primary-intent
+      format: org.seedspec.intent.markdown
+      description: The package author's primary intent.
+      entrypoint: college-football-dashboard.md
+      source:
+        kind: package
+        path: definition/college-football-dashboard.md
 
 configuration:
   schema: configuration/schema.json

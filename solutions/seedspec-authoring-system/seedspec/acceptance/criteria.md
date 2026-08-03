@@ -42,3 +42,27 @@
 16. Human-readable authoring status emphasizes the draft, questions, current
     review, and next action while machine-readable output retains workspace
     identity, revisions, digests, and version metadata.
+17. A frozen prior-probe brief identifies the exact source or package digest,
+    workspace revision, instruction version, model, runner, settings, permitted
+    resources, and run limits.
+18. Each prior-probe candidate separates source claims from model inference,
+    records materially different interpretations and affected concerns, and
+    recommends an explicit disposition without changing package bytes.
+19. Repeated and cross-model probe results can be compared by stable candidate
+    identity while retaining run-level model identity, cost, capture
+    limitations, convergence, and divergence.
+20. Probe agreement does not become author intent, and accepting one candidate
+    does not accept another candidate or a model's complete interpretation.
+21. Clarification, expansion, and contraction are distinct proposal kinds with
+    source or model basis, affected concerns, expected cost, latitude changes,
+    and portability consequences.
+22. Expansion requires an explicit opt-in author action before proposal work,
+    and no expanded concept enters the package before its change is accepted.
+23. Contraction identifies the meaning that remains fixed and cannot silently
+    remove an invariant, authority boundary, required failure behavior, accepted
+    distinction, or unmatched acceptance obligation.
+24. Declining, delegating, or deferring a probe candidate leaves package bytes
+    unchanged and preserves an attributable authoring-state disposition.
+25. Every consequential product intervention identifies whether it is
+    declarative, advisory, enforced, or observed; the system does not present
+    tool availability, invocation, result, and enforcement as equivalent.

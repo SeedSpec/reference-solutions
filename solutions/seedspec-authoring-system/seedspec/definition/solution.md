@@ -14,6 +14,12 @@ semantics. They may present different interactions, but an accepted package,
 review history, deterministic result, and error condition must mean the same
 thing in either interface.
 
+The system helps an author reach minimum sufficient portable intent rather than
+maximum document detail. It can probe what receiving models infer, clarify
+consequential ambiguity, explore optional expansion, and contract accidental or
+unnecessary definition. None of those operations makes model inference into
+author intent without explicit acceptance.
+
 Parity applies to durable authoring artifacts, not to an identical capability
 set. The web workbench may include an embedded agent that helps an author
 explore and make decisions while the CLI composes with a separately supplied
@@ -28,8 +34,9 @@ changes, and package documents use the same engine records either way.
   decisions, accepts or rejects consequential changes, and decides when the
   package is ready to export.
 - A replaceable **authoring agent** interprets sources, identifies gaps, asks
-  material questions, and proposes findings and document changes. Its proposal
-  is not package-author intent until accepted.
+  material questions, probes plausible receiving-agent interpretations, and
+  proposes findings, scope changes, and document changes. Its proposal is not
+  package-author intent until accepted.
 - The **authoring engine** owns workspace state transitions, revision checks,
   deterministic operations, attribution records, and portable package output.
 - A **frontend** presents the workspace through terminal, conversational,
@@ -58,16 +65,80 @@ The engine supports these durable operations:
 1. inspect workspace status and package documents;
 2. validate, lint, and digest a valid draft;
 3. start or resume a kind-aware review area at the selected target depth;
-4. record findings, material questions, author answers, and deferrals;
-5. propose package-document changes with their source and rationale;
-6. accept, reject, abandon, or supersede proposed work;
-7. complete a review pass only against current deterministic results; and
-8. explicitly export the portable package or run its publication gate.
+4. prepare a frozen prior-probe brief and record attributable probe results;
+5. compare repeated or cross-model interpretations without treating agreement
+   as author authority;
+6. record findings, material questions, author answers, delegations, and
+   deferrals;
+7. propose clarification, expansion, contraction, and package-document changes
+   with their source and consequences;
+8. accept, reject, abandon, or supersede proposed work;
+9. complete a review pass only against current deterministic results; and
+10. explicitly export the portable package or run its publication gate.
 
-The seven standard review areas are reusable lenses, not protocol-conformance
-steps or a quality score. A preparation flow may order them, while a focused
-review may select one area. An author can stop at an honest capture, shape,
-harden, compose, or package depth.
+Standard review areas are reusable lenses, not protocol-conformance steps or a
+quality score. A preparation flow may order them, while a focused review may
+select one area. An author can stop at an honest capture, shape, harden,
+compose, or package depth.
+
+### Minimum sufficient intent and scope shaping
+
+Authoring classifies consequential material as one of:
+
+- fixed package intent;
+- deliberately offered configuration;
+- delegated implementation latitude;
+- transferable implementation or domain resources;
+- environment facts that implementation must discover; or
+- ambient model knowledge whose variation does not threaten intended outcomes.
+
+The system does not try to encode everything a capable model already knows.
+Leaving knowledge ambient preserves latitude and reduces context, but may
+reduce portability across models or time. A prior probe can provide evidence
+about that tradeoff without selecting an unstated user-specific choice.
+
+Clarification resolves materially different meanings already present in the
+source. Expansion introduces optional concepts only after the author opts into
+broader ideation. Contraction removes false precision, accidental scope,
+redundant policy, or premature implementation restrictions while preserving
+fixed outcomes and authority.
+
+Every scope-change candidate identifies:
+
+- its source or model basis;
+- materially different alternatives where applicable;
+- the default a receiving model assumed;
+- affected outcomes, architecture, configuration, authority, resources,
+  completion, and verification;
+- the meaning that remains fixed;
+- any latitude, implementation cost, or portability risk that changes; and
+- a recommended author disposition.
+
+A contraction is not automatic summarization. It cannot silently remove an
+invariant, required failure behavior, authority boundary, accepted distinction,
+or unmatched acceptance obligation.
+
+### Prior probes
+
+A probe binds exact source or package bytes, the workspace revision, a
+versioned instruction, model and runner identity, settings, permitted resources,
+and run limits. It asks a receiving model to:
+
+1. produce one plausible interpretation or implementation outline;
+2. identify materially different interpretations;
+3. map each difference to consequential downstream effects;
+4. state its assumed default and basis;
+5. recommend whether to ask, delegate, retain ambient knowledge, expand,
+   contract, or take no action; and
+6. separate source claims from model inference.
+
+The system prioritizes observed consequence and variation over self-reported
+model confidence. It can compare repeated cold runs or materially different
+models. Agreement can support retaining latitude, but does not prove alignment
+with unstated author intent.
+
+Probe results, comparison records, and unaccepted candidates remain authoring
+workspace state. They do not enter the distributable package by default.
 
 ### Change control and concurrency
 
@@ -85,6 +156,35 @@ command is not a substitute for an engine-observed result.
 If an agent, model provider, browser session, network request, or storage write
 fails, the last accepted workspace revision remains recoverable. Retrying must
 not duplicate an accepted answer, proposal, or mutation.
+
+### Three loops and control strength
+
+The authoring system participates in three loops:
+
+1. The **authoring loop** probes and proposes meaning, obtains author
+   disposition, and applies accepted revisioned changes.
+2. The **inner implementation loop** lets an implementing agent plan, build,
+   inspect, and revise from resolved intent.
+3. The **outer assurance loop** checkpoints a realization, invokes independent
+   verification, routes findings, and enforces continuation or stopping policy.
+
+The authoring engine owns only the first loop's state transitions. It may
+prepare portable declarations and evidence inputs for the other loops, but the
+implementing agent owns local technical judgment and an implementation harness
+owns durable scheduling, verifier invocation, retries, budgets, and stopping
+policy.
+
+Each product intervention is classified as:
+
+- **declarative** when it states intended or required meaning;
+- **advisory** when it supplies context that may influence agent judgment;
+- **enforced** when a trusted operation blocks, permits, or performs an action;
+  or
+- **observed** when it records an outcome without controlling it.
+
+Availability, selection, authorization, invocation, result, and enforcement are
+separate states. The interface must not present an advisory prompt or available
+tool as an enforced outcome.
 
 ### Portability and privacy boundary
 
@@ -155,6 +255,17 @@ A realization is successful when all of the following can be demonstrated:
    and frontend-specific identifiers.
 9. A consumer with only the exported package and compatible SeedSpec tooling
    can inspect and begin the package without the authoring frontend.
+10. A prior probe preserves exact subject, instruction, model, runner, settings,
+    and workspace-revision identity while keeping model inference separate from
+    source claims.
+11. Repeated or cross-model probe results can be compared without making
+    convergence, divergence, or a recommended default into author intent.
+12. Clarification, expansion, and contraction proposals expose their basis and
+    consequential effects, and change no package bytes before author acceptance.
+13. A contraction that would remove fixed meaning or leave unmatched acceptance
+    is rejected or presented as an unresolved material conflict.
+14. Product and engine output identifies whether a consequential intervention
+    is declarative, advisory, enforced, or observed.
 
 These are verification plans for a future realization. They are not evidence
 that the current CLI or a future web workbench already satisfies the package.
@@ -168,8 +279,9 @@ are fixed.
 
 The author or operating organization may select the target review depth,
 authoring agent and model provider, local or hosted storage, collaboration and
-retention policies, and additional organization-specific review gates. Those
-choices must not weaken the fixed attribution, revision, or export boundaries.
+retention policies, probe modes and budgets, and additional
+organization-specific review gates. Those choices must not weaken the fixed
+attribution, revision, or export boundaries.
 
 An implementing agent may choose interface layout, framework, database,
 transport, diff representation, storage-adapter architecture, and

@@ -1,7 +1,7 @@
-protocol_version: "0.2"
+protocol_version: "0.3"
 id: org.seedspec.examples.customer-onboarding-orchestrator
 name: Customer Onboarding Orchestrator
-version: "0.2.0"
+version: "0.3.0"
 kind: workflow
 description: Turn an approved customer handoff into owned milestones, customer updates, escalation, and auditable completion.
 
@@ -9,7 +9,17 @@ metadata:
   license: Apache-2.0
 
 definition:
-  entrypoint: definition/customer-onboarding.md
+  module: primary-intent
+
+context:
+  modules:
+    - id: primary-intent
+      format: org.seedspec.intent.markdown
+      description: The package author's primary intent.
+      entrypoint: customer-onboarding.md
+      source:
+        kind: package
+        path: definition/customer-onboarding.md
 
 configuration:
   schema: configuration/schema.json

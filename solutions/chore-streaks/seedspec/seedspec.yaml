@@ -1,7 +1,7 @@
-protocol_version: "0.2"
+protocol_version: "0.3"
 id: org.seedspec.chore-streaks
 name: Chore Streaks
-version: "0.2.0"
+version: "0.3.0"
 kind: feature
 description: Show a child's current and longest streak of days with qualifying chore completion.
 
@@ -9,7 +9,17 @@ metadata:
   license: Apache-2.0
 
 definition:
-  entrypoint: definition/feature.md
+  module: primary-intent
+
+context:
+  modules:
+    - id: primary-intent
+      format: org.seedspec.intent.markdown
+      description: The package author's primary intent.
+      entrypoint: feature.md
+      source:
+        kind: package
+        path: definition/feature.md
 
 configuration:
   schema: configuration/schema.json

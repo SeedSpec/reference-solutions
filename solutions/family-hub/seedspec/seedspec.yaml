@@ -1,7 +1,7 @@
-protocol_version: "0.2"
+protocol_version: "0.3"
 id: org.seedspec.examples.family-hub
 name: Family Hub
-version: "0.2.0"
+version: "0.3.0"
 kind: application
 description: Coordinate a household's shared events and tasks, with optional allowance tracking and meal planning.
 
@@ -9,7 +9,17 @@ metadata:
   license: Apache-2.0
 
 definition:
-  entrypoint: definition/family-hub.md
+  module: primary-intent
+
+context:
+  modules:
+    - id: primary-intent
+      format: org.seedspec.intent.markdown
+      description: The package author's primary intent.
+      entrypoint: family-hub.md
+      source:
+        kind: package
+        path: definition/family-hub.md
 
 configuration:
   schema: configuration/schema.json

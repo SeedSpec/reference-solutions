@@ -9,7 +9,7 @@ operate a dedicated coordination service.
 It has no committed realization yet.
 
 ```bash
-npx --yes @seedspec/cli@0.2.2 validate solutions/customer-onboarding-orchestrator/seedspec
-npx --yes @seedspec/cli@0.2.2 lint solutions/customer-onboarding-orchestrator/seedspec
-npx --yes @seedspec/cli@0.2.2 begin solutions/customer-onboarding-orchestrator/seedspec
+npx @seedspec/cli validate solutions/customer-onboarding-orchestrator/seedspec
+npx @seedspec/cli lint solutions/customer-onboarding-orchestrator/seedspec
+npx @seedspec/cli begin solutions/customer-onboarding-orchestrator/seedspec
 ```

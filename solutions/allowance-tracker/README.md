@@ -8,28 +8,29 @@ artifacts together:
 - `realization/` is one Node.js implementation produced from a resolved
   Allowance Tracker plus Chore Streaks composition.
 
-Inspect the package with the exact SeedSpec CLI version:
+Inspect the package with the current SeedSpec CLI:
 
 ```bash
-npx --yes @seedspec/cli@0.2.2 validate solutions/allowance-tracker/seedspec
-npx --yes @seedspec/cli@0.2.2 lint solutions/allowance-tracker/seedspec
-npx --yes @seedspec/cli@0.2.2 begin solutions/allowance-tracker/seedspec
+npx @seedspec/cli validate solutions/allowance-tracker/seedspec
+npx @seedspec/cli lint solutions/allowance-tracker/seedspec
+npx @seedspec/cli begin solutions/allowance-tracker/seedspec
 ```
 
-Start a current 0.2 preparation record without rewriting that history:
+Start a current preparation record without rewriting that history:
 
 ```bash
-npx --yes @seedspec/cli@0.2.2 prepare \
+npx @seedspec/cli prepare \
   solutions/allowance-tracker/seedspec \
-  --state solutions/allowance-tracker/authoring-v0.2
+  --state solutions/allowance-tracker/authoring-current
 ```
 
 Resolve a fresh composed project into a new directory:
 
 ```bash
-npx --yes @seedspec/cli@0.2.2 resolve \
+npx @seedspec/cli resolve \
   solutions/allowance-tracker/seedspec \
   --add solutions/chore-streaks/seedspec \
+  --applied-intent project-inputs/applied-intent/allowance-with-chore-streaks.yaml \
   --configuration-selections project-inputs/configuration-selections/allowance-with-chore-streaks.yaml \
   --completion-scope project-inputs/completion-scopes/allowance-with-chore-streaks.yaml \
   --output .tmp/allowance-with-chore-streaks

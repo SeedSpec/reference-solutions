@@ -1,7 +1,7 @@
-protocol_version: "0.2"
+protocol_version: "0.3"
 id: org.seedspec.examples.allowance-tracker
 name: Allowance Tracker
-version: "0.2.0"
+version: "0.3.0"
 kind: application
 description: Help a household assign chores, approve completed work, and maintain a trustworthy allowance balance.
 
@@ -9,7 +9,17 @@ metadata:
   license: Apache-2.0
 
 definition:
-  entrypoint: definition/app.md
+  module: primary-intent
+
+context:
+  modules:
+    - id: primary-intent
+      format: org.seedspec.intent.markdown
+      description: The package author's primary intent.
+      entrypoint: app.md
+      source:
+        kind: package
+        path: definition/app.md
 
 configuration:
   schema: configuration/schema.json

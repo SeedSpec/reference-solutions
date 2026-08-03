@@ -5,6 +5,12 @@ authoring engine, CLI, and web workbench. The package captures the accepted
 cross-frontend boundary; its adjacent `authoring/` directory records the
 ongoing manual authorship session and is not distributable package content.
 
+The current package also defines the next authoring-product boundary: probe
+receiving-model priors, support deliberate clarification, expansion, and
+contraction, and keep the authoring, inner implementation, and outer assurance
+loops operationally distinct. These are realization requirements, not claims
+that the current CLI already implements the complete workflow.
+
 Enter this directory and resume authoring without installing the CLI:
 
 ```bash

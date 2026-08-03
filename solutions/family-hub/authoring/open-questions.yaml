@@ -1,2 +1,25 @@
 authoring_state_version: "0.2"
-questions: []
+questions:
+  - id: question-family-hub-gives-households-one-shared-p
+    question: Family Hub gives households one shared place to coordinate schedules,
+      tasks, ownership, and changes, with optional allowance and meal-planning
+      modules. Is that still the direction you want?
+    status: resolved
+    source: null
+    reason: null
+    priority: material
+    raised_in: 0001-seed
+    raised_at: 2026-07-27T18:18:38.107Z
+    answer: Yes. Preserve the stated direction at its current depth.
+    answered_at: 2026-07-27T18:18:44.404Z
+  - id: question-the-household-setup-says-a-guardian-choo
+    question: The household setup says a guardian chooses direct participation or
+      guardian management for each member, but the configuration defines one
+      child-access mode for the whole household. Should this be a household-wide
+      choice or a per-member choice?
+    status: open
+    source: null
+    reason: null
+    priority: material
+    raised_in: 0002-coherence
+    raised_at: 2026-07-27T18:19:35.914Z
